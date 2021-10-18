@@ -17,7 +17,7 @@ import co.kr.board.service.BoardService;
 
 @Controller
 public class BoardController {
-
+//채승재 바보
 	@Autowired
 	public BoardService boardService;
 	//----------------------------게시판 리스트-----------------------------------
