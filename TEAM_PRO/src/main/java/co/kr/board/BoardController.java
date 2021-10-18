@@ -18,7 +18,7 @@ import co.kr.board.service.BoardService;
 @Controller
 public class BoardController {
 	
-	//브랜치 테스트 한주영 
+	//브랜치 테스트 주영
 
 	@Autowired
 	public BoardService boardService;
