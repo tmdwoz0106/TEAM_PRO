@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.kr.board.service.mapper.BoardMapper">
+
+<select id="list" resultType="co.kr.board.VO.BoardUserVO">
+	<![CDATA[
+	SELECT * FROM(
+		SELECT ROW_NUMBER() OVER(order by board_no desc) rn,
+														 board_no,
+													     board_title,
+													     board_day,
+													     board_view,
+													     board_type,
+													     user_nick
+		FROM   pro_board,pro_user
+		WHERE  pro_board.user_no = pro_user.user_no
+	]]>		   	
+		<if test="keyword != null and keyword != ''">
+			AND ${type} LIKE '%'||#{keyword}||'%'
+		</if>		
+		order by board_no desc
+	<![CDATA[
+	)a
+	WHERE a.rn > #{startRn}
+	AND   a.rn <= #{endRn}
+	]]>
+	</select>
+
+	<select id="total" resultType="int">
+		SELECT COUNT(*)
+		FROM   pro_board
+	</select>
+
+	<select id="max" resultType="int">
+		SELECT NVL(MAX(board_no),0)
+		FROM   pro_board
+	</select>
+	
+	<insert id="insert">
+		insert into
+		pro_board(
+				  board_no,
+				  board_title,
+				  board_content,
+				  board_type,
+				  board_day,
+				  user_no
+				  )
+		values   (
+				  #{board_no},
+				  #{board_title},
+				  #{board_content},
+				  #{board_type},
+				  #{board_day},
+				  #{user_no}
+				  )
+	</insert>
+	
+	<select id="detail" resultType="co.kr.board.VO.BoardUserVO">
+		select * from(
+			select pro_board.user_no,
+			       board_no,
+				   board_title,
+			       board_content,
+			       board_type,
+			       user_nick,
+			       board_day,
+				   board_view
+			from   pro_board,pro_user
+			where  pro_board.user_no = pro_user.user_no
+		)a
+		where a.board_no = #{board_no}
+	</select>
+	
+	<delete id="delete">
+		delete
+		from   pro_board
+		where  board_no = #{board_no}
+	</delete>
+	
+	<update id="viewUp">
+		update pro_board
+		set    board_view = #{board_view}
+		where  board_no = #{board_no}
+	</update>
+	
+	<update id="modify">
+		update pro_board
+		set    board_type = #{board_type},
+		       board_title = #{board_title},
+		       board_content = #{board_content}
+		where  board_no = #{board_no}
+	</update>
+</mapper>
