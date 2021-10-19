@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script src="/resources/js/kakaoLogin.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 function login(){
@@ -46,5 +48,10 @@ function login(){
 </form>
 <button type="button" onclick="login()">로그인</button> |
 <a href="/userJoin.do"><button>회원가입</button></a>
+<div>
+<a href="javascript:kakaoLogin();" ><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFQOJtNpYFKTS1T5QdhIDFFgLzQO93BuFjFw&usqp=CAU" style="width:200px"/></a>
+<a href="javascript:kakaoLogout()">카카오 로그아웃</a>
+</div>	
+
 </body>
 </html>

@@ -61,4 +61,9 @@ public class UserServiceImpl implements UserService {
 		return userMapper.join(vo);
 
 	}
+
+	@Override
+	public int idCheck(String userid) {
+		return userMapper.userCheck(userid);
+	}
 }

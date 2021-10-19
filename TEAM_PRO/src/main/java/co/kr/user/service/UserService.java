@@ -12,4 +12,6 @@ public interface UserService {
 
 	public int join(UserVO vo);
 
+	public int idCheck(String userid);
+
 }
