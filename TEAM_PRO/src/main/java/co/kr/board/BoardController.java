@@ -1,5 +1,6 @@
 package co.kr.board;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -14,17 +15,23 @@ import org.springframework.web.servlet.ModelAndView;
 import co.kr.board.VO.BoardUserVO;
 import co.kr.board.VO.BoardVO;
 import co.kr.board.service.BoardService;
+import co.kr.like.service.LikeService;
 
 @Controller
 public class BoardController {
 	
-	//브랜치 테스트 ddd
-
+	
 	@Autowired
 	public BoardService boardService;
+	
+	@Autowired
+	public LikeService likeService;
 	//----------------------------게시판 리스트-----------------------------------
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String list(HttpSession session,Model model) {
+		
+		//int user_no= Integer.parseInt(session.getAttribute("user_no").toString());
+		//System.out.println("회원번호:"+user_no);
 
 		return "board/list";
 	}
@@ -76,6 +83,26 @@ public class BoardController {
 		BoardUserVO vo = boardService.detail(board_no);
 		vo.setBoard_view(vo.getBoard_view()+1);
 		boardService.viewUp(vo);
+		
+		//좋아요 로직 넣을 곳 
+		int likeCnt = likeService.likeCnt(board_no);
+		
+		int likeMax = likeService.likeMax();
+		
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		
+
+		int user_no = Integer.parseInt(session.getAttribute("user_no").toString());
+		
+		param.put("board_no", board_no);
+		param.put("user_no", user_no);
+		int likeBtn = likeService.likeBtn(param);
+		
+		model.addAttribute("likeBtn", likeBtn);
+		model.addAttribute("likeMax", likeMax+1);
+		model.addAttribute("like", likeCnt);
+		model.addAttribute("user_no", user_no);
+		
 		
 		model.addAttribute("vo", vo);
 		return "board/detail";

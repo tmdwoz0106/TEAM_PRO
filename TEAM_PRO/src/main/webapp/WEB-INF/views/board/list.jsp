@@ -19,15 +19,27 @@ function list(page){
 			$("#tbody").empty();
 			$("#paging").empty();
 			var list = result.list;
-			for(var i = 0; i<list.length; i++){
-				var html ="<tr>"
-				    html +="<td>"+list[i].board_type+"</td>"
-				    html +="<td><a href = /BoardDetail.do?board_no="+list[i].board_no+">"+list[i].board_title+"<a></td>"
-				    html +="<td>"+list[i].user_nick+"</td>"
-				    html +="<td>"+list[i].board_day+"</td>"
-				    html +="<td>"+list[i].board_view+"</td>"
-				    html +="<td></td>"
-				    $("#tbody").append(html);
+			for(var i = 0; i <list.length; i++){
+				$.ajax({
+					url:"/likeSu.do",
+					type:"GET",
+					data:{board_no:list[i].board_no},
+					dataType:"JSON",
+					async: false,
+					success : function(likeSu){
+						console.log(likeSu);
+						var html = "<tr>"
+				   		html += "<td>"+list[i].board_type+"</td>"
+				   		html += "<td><a href = /BoardDetail.do?board_no="+list[i].board_no+">"+list[i].board_title+"</td>"
+				    	html += "<td>"+list[i].user_nick+"</td>"
+				    	html += "<td>"+list[i].board_day+"</td>"
+				   	 	html += "<td>"+list[i].board_view+"</td>"
+				   	    html += "<td>"+likeSu.su+"</td>"
+				     	html += "<td>"+list[i].user_no+"</td>"
+						$("#tbody").append(html);				
+					}
+				})
+				
 			}
 			if(result.prev){
 				$("#paging").append("<button onclick = list("+Number(page-1)+")>이전</button>")
@@ -78,6 +90,7 @@ function logout(){
 			<td>날짜</td>
 			<td>조회수</td>
 			<td>좋아요</td>
+			<td>회원번호</td>
 		</tr>
 		<tbody id="tbody"></tbody>
 	</table>

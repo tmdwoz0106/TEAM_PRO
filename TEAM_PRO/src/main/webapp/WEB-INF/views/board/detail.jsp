@@ -22,6 +22,30 @@ function BoardDelete(){
 		})
 	}
 }
+function like(board_no,user_no,like_no){
+	$.ajax({
+		url:"/like.do",
+		type:"POST",
+		data:{board_no:board_no , user_no:user_no , like_no:like_no},
+		dataType:"JSON",
+		success : function(result){
+			location.href = "/BoardDetail.do?board_no="+$("#Board_NO").val();
+		}
+	})
+}
+
+function likeDelete(board_no,user_no){
+	$.ajax({
+		url:"/likeDelete.do",
+		type:"POST",
+		data:{board_no:board_no , user_no:user_no},
+		dataType:"JSON",
+		success : function(result){
+			location.href = "/BoardDetail.do?board_no="+$("#Board_NO").val();
+		}
+	})
+}
+
 </script>
 </head>
 <body>
@@ -32,7 +56,7 @@ function BoardDelete(){
 <a href="/"><button>홈</button></a>
 <form id="deleteForm">
 <input type="hidden" name="user_no" value="${vo.user_no }" readonly="readonly" />
-<input type="hidden" name="board_no" value="${vo.board_no }" readonly="readonly" />
+<input type="hidden" name="board_no" id="Board_NO" value="${vo.board_no }" readonly="readonly" />
 	<table border="1">
 		<tr>
 			<td>분류</td>
@@ -60,9 +84,16 @@ function BoardDelete(){
 		</tr>
 		<tr>
 			<td>좋아요</td>
-			<td></td>
+			<td><input type="text" name="board_like" value="${like}" readonly="readonly" /></td>
 		</tr>
 	</table>
+	
+	     <c:if test="${likeBtn > 0 }">
+		<button style="border: none; background: none; font-size: 13px;" onclick="likeDelete(${vo.board_no},${user_no})">싫어요~꾹</button>
+		</c:if>
+		<c:if test="${likeBtn <= 0 }">
+		<button style="border: none; background: none; font-size: 13px;" onclick="like(${vo.board_no},${user_no},${likeMax })">좋아요~꾹</button>
+		</c:if>
 </form>
 </body>
 </html>
