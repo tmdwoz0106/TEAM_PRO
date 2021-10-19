@@ -4,6 +4,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style type="text/css">
+.my-box 
+{ border:1px solid;
+  width: 500px;
+  padding: 20px;
+  margin: 30px;
+  border-radius: 4px;
+}
+</style>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -33,7 +42,6 @@ function like(board_no,user_no,like_no){
 		}
 	})
 }
-
 function likeDelete(board_no,user_no){
 	$.ajax({
 		url:"/likeDelete.do",
@@ -45,7 +53,6 @@ function likeDelete(board_no,user_no){
 		}
 	})
 }
-
 </script>
 </head>
 <body>
@@ -56,7 +63,7 @@ function likeDelete(board_no,user_no){
 <a href="/"><button>홈</button></a>
 <form id="deleteForm">
 <input type="hidden" name="user_no" value="${vo.user_no }" readonly="readonly" />
-<input type="hidden" name="board_no" id="Board_NO" value="${vo.board_no }" readonly="readonly" />
+<input type="hidden" name="board_no" value="${vo.board_no }" readonly="readonly" id="Board_NO"/>
 	<table border="1">
 		<tr>
 			<td>분류</td>
@@ -87,13 +94,25 @@ function likeDelete(board_no,user_no){
 			<td><input type="text" name="board_like" value="${like}" readonly="readonly" /></td>
 		</tr>
 	</table>
-	
-	     <c:if test="${likeBtn > 0 }">
+	 <c:if test="${likeBtn > 0 and user_no ne 0}">
 		<button style="border: none; background: none; font-size: 13px;" onclick="likeDelete(${vo.board_no},${user_no})">싫어요~꾹</button>
-		</c:if>
-		<c:if test="${likeBtn <= 0 }">
+	</c:if>
+	<c:if test="${likeBtn <= 0 and user_no ne 0}">
 		<button style="border: none; background: none; font-size: 13px;" onclick="like(${vo.board_no},${user_no},${likeMax })">좋아요~꾹</button>
-		</c:if>
+	</c:if>
+	
+	<div>
+	<c:forEach var="reply" items="${list }">
+	
+	</c:forEach>
+	<div class="my-box">
+			<em class="comment_inbox">${vo.user_nick }</em>
+			<br />
+			<textarea placeholder="댓글을 남겨주세요" class="comment_inbox" rows="1" style="overflow: hidden; overflow-wrap: break-word; height: 19px; margin: 0px -5px 0px 0px; border: none; width: 498px; font-size: 15px; outline: none; resize: none;"></textarea>
+			<button style="border: none; background-color: none;">등록</button>
+			<button>취소</button>
+	</div>
+	</div>
 </form>
 </body>
 </html>

@@ -35,7 +35,6 @@ function list(page){
 				    	html += "<td>"+list[i].board_day+"</td>"
 				   	 	html += "<td>"+list[i].board_view+"</td>"
 				   	    html += "<td>"+likeSu.su+"</td>"
-				     	html += "<td>"+list[i].user_no+"</td>"
 						$("#tbody").append(html);				
 					}
 				})
@@ -90,7 +89,6 @@ function logout(){
 			<td>날짜</td>
 			<td>조회수</td>
 			<td>좋아요</td>
-			<td>회원번호</td>
 		</tr>
 		<tbody id="tbody"></tbody>
 	</table>
