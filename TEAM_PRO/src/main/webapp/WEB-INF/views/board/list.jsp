@@ -85,11 +85,14 @@ function logout(){
 	<div id="paging"></div>
 	<c:if test="${user_no ne null }">
 		<a href="/BoardInsert.do"><button>게시글쓰기</button></a>
-		<button type="button" onclick="logout()">로그아웃</button>
+		<button type="button" onclick="logout()"><a href="javascript:kakaoLogout()">로그아웃</a></button>
 	</c:if>
 	<c:if test="${user_no eq null }">
 		<a href="/login.do"><button>로그인</button></a>
 	</c:if>
 	
+	
+	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+	<script src="/resources/js/kakaoLogin.js"></script>
 </body>
 </html>

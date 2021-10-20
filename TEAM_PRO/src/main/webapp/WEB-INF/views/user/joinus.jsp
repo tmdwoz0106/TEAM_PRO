@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+     <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,7 +44,12 @@ function join(){
 		<td>핸드폰번호</td>
 	</tr>
 	<tr>
+	<c:if test="${ssID ne null}">
+		<td><input type="text" name="user_id" value="${ssID}"/></td>
+	</c:if>
+	<c:if test="${ssID eq null}">
 		<td><input type="text" name="user_id" /></td>
+	</c:if>
 		<td><input type="text" name="user_pw" /></td>
 		<td><input type="text" name="user_name" /></td>
 		<td><input type="text" name="user_nick" /></td>

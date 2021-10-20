@@ -73,10 +73,13 @@ public class UserController {
 		return userid;
 	}
 	@RequestMapping(value="/kakaoLogin.do",method = RequestMethod.POST)
-	public ModelAndView kakaoLogin(String userid) {
+	public ModelAndView kakaoLogin(String userid,HttpSession session,UserVO vo) {
 		ModelAndView json = new ModelAndView("jsonView");
 		
-	    json.addObject("result",userService.idCheck(userid));
+		int i =userService.idCheck(userid);
+	
+	    json.addObject("result",i);
+	    
 		
 		return json;
 	}

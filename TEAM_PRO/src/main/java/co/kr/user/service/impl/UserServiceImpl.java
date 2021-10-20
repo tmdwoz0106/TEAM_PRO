@@ -64,6 +64,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public int idCheck(String userid) {
+		
 		return userMapper.userCheck(userid);
 	}
 }
