@@ -3,6 +3,8 @@ package co.kr.user.service.mapper;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import co.kr.user.VO.UserVO;
@@ -19,6 +21,8 @@ public interface UserMapper {
 	public List<UserVO> idCheck(UserVO vo);
 
 	public int join(UserVO vo);
+
+	public int socialLogin(String user_id);
 
 	
 }

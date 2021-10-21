@@ -25,7 +25,7 @@
 					}else if(rs > 0){
 						console.log("아이디 있음 로그인 가능");
 						location.href ="/";
-						 <%session.setAttribute("user_no",session.getAttribute("ssID")); %>
+						
 						alert("반갑습니다 회원님");
 					}
 				}
@@ -37,7 +37,7 @@
 <body>
 소셜로그인
 			<form id="sslogin">
-			<input type="text" name="userid" value="${ssID}"  />
+			<input type="text" name="user_id" value="${ssID}"  />
 			</form>
 			<button type="button" onclick="sslogin()" ><img src="/resources/img/kakao_login_medium_narrow.png" alt="kakaoLogin" /></button>
 

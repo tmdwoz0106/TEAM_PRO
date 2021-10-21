@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+ 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -63,6 +64,7 @@ public class UserController {
 		
 		return "user/socialLogin";
 	}
+	// 소셜로그인 parameter값 받아오기
 	@GetMapping("/test")
 	public String posttest(@RequestParam(name="userid")String userid,Model model,HttpSession session) {
 		System.out.println("\n\n\n\n\n");
@@ -72,12 +74,22 @@ public class UserController {
 		
 		return userid;
 	}
+	//카카오 아이디와 DB 확인
 	@RequestMapping(value="/kakaoLogin.do",method = RequestMethod.POST)
-	public ModelAndView kakaoLogin(String userid,HttpSession session,UserVO vo) {
+	public ModelAndView kakaoLogin(String user_id,HttpSession session,UserVO vo) {
 		ModelAndView json = new ModelAndView("jsonView");
 		
-		int i =userService.idCheck(userid);
-	
+		
+		int i =userService.idCheck(user_id);
+		if(i!=0) {
+			
+			int k = userService.socialLogin(user_id);
+			if(k !=0) {
+				session.setAttribute("user_no", k);
+				System.out.println("카카오 아이디 유저넘 ==>"+k);
+			}
+		}
+		
 	    json.addObject("result",i);
 	    
 		

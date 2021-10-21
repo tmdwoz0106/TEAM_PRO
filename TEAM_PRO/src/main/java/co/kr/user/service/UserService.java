@@ -12,6 +12,8 @@ public interface UserService {
 
 	public int join(UserVO vo);
 
-	public int idCheck(String userid);
+	public int idCheck(String user_id);
+
+	public int socialLogin(String user_id);
 
 }
