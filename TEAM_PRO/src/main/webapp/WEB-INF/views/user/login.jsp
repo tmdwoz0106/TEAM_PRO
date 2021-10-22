@@ -51,27 +51,28 @@ function login(){
 <div>
 <a href="javascript:kakaoLogin();" ><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFQOJtNpYFKTS1T5QdhIDFFgLzQO93BuFjFw&usqp=CAU" style="width:200px"/></a>
 <a href="javascript:kakaoLogout()">카카오 로그아웃</a>
+<a href="javascript:다른사용자()">카카오 자동로그인 로그아웃</a>
 </div>	
 
-<div>
-
-<a id="custom-login-btn" href="javascript:loginWithKakao()">
-  <img
-    src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg"
-    width="222"
-  />
-</a>
-<p id="token-result"></p>
-<script type="text/javascript">
-  function loginWithKakao() {
-    Kakao.Auth.authorize({
-      redirectUri: 'http://localhost:8088/login.do',
-      prompts: 'login'
-      
-    });
-  }
-  </script>
-</div>
+				<!-- <div>
+				
+				<a id="custom-login-btn" href="javascript:loginWithKakao()">
+				  <img
+				    src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg"
+				    width="222"
+				  />
+				</a>
+				<p id="token-result"></p>
+				<script type="text/javascript">
+				  function loginWithKakao() {
+				    Kakao.Auth.authorize({
+				      redirectUri: 'http://localhost:8088/login.do',
+				      prompts: 'login'
+				      
+				    });
+				  }
+				  </script>
+				</div> -->
 
 </body>
 </html>

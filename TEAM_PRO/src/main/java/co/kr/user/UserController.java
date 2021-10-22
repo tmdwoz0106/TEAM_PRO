@@ -86,7 +86,6 @@ public class UserController {
 			int k = userService.socialLogin(user_id);
 			if(k !=0) {
 				session.setAttribute("user_no", k);
-				System.out.println("카카오 아이디 유저넘 ==>"+k);
 			}
 		}
 		

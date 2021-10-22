@@ -47,16 +47,9 @@ function kakaoLogin() {
 	});
 }
 
-function 다른사용자(){
-	ㅋ
-}
 
-function kakaoLogout() {
-	if (Kakao.Auth.getAccessToken()) {
-		console.log('카카오 인증 엑세스 토큰이 존재합니다.', Kakao.Auth.getAccessToken())
-		Kakao.Auth.logout(() => {
-			console.log('로그아웃 되셨습니다.', Kakao.Auth.getAccessToken());
-/*			Kakao.API.request({
+function 다른사용자(){
+			Kakao.API.request({
 				url: '/v1/user/unlink',
 				success: function(response) {
 					console.log(response);
@@ -64,7 +57,16 @@ function kakaoLogout() {
 				fail: function(error) {
 					console.log(error);
 				},
-			});*/
+			});
+}
+
+
+function kakaoLogout() {
+	if (Kakao.Auth.getAccessToken()) {
+		console.log('카카오 인증 엑세스 토큰이 존재합니다.', Kakao.Auth.getAccessToken())
+		Kakao.Auth.logout(() => {
+			console.log('로그아웃 되셨습니다.', Kakao.Auth.getAccessToken());
+
 		});
 	}
 }
