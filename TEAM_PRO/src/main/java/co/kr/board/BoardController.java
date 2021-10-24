@@ -16,6 +16,8 @@ import co.kr.board.VO.BoardUserVO;
 import co.kr.board.VO.BoardVO;
 import co.kr.board.service.BoardService;
 import co.kr.like.service.LikeService;
+import co.kr.reply.service.ReplyService;
+import co.kr.reply.vo.ReplyVO;
 
 @Controller
 public class BoardController {
@@ -26,6 +28,9 @@ public class BoardController {
 	
 	@Autowired
 	public LikeService likeService;
+	
+	@Autowired
+	public ReplyService replyService;
 	//----------------------------게시판 리스트-----------------------------------
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String list(HttpSession session,Model model) {
@@ -80,6 +85,8 @@ public class BoardController {
 	//-------------------------------게시글 상세보기-------------------------------
 	@RequestMapping(value = "/BoardDetail.do", method = RequestMethod.GET)
 	public String detail(int board_no,Model model,HttpSession session) {
+		List<ReplyVO> list = replyService.list(board_no);
+		int replyMax = replyService.replyMax();
 		BoardUserVO vo = boardService.detail(board_no);
 		vo.setBoard_view(vo.getBoard_view()+1);
 		boardService.viewUp(vo);
@@ -110,7 +117,8 @@ public class BoardController {
 		model.addAttribute("likeMax", likeMax+1);
 		model.addAttribute("like", likeCnt);
 		
-		
+		model.addAttribute("replyMax", replyMax+1);
+		model.addAttribute("list", list);
 		model.addAttribute("vo", vo);
 		return "board/detail";
 	}

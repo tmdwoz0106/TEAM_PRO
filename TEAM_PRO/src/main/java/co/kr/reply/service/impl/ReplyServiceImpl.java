@@ -1,5 +1,7 @@
 package co.kr.reply.service.impl;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,5 +25,26 @@ public class ReplyServiceImpl implements ReplyService{
 	@Override
 	public int replyMax() {
 		return replyMapper.replyMax();
+	}
+
+	@Override
+	public int insert(ReplyVO vo) {
+		SimpleDateFormat simple = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = new Date();
+		vo.setReply_day(simple.format(date));
+		return replyMapper.insert(vo);
+	}
+
+	@Override
+	public int delete(int reply_no) {
+		return replyMapper.delete(reply_no);
+	}
+
+	@Override
+	public int modify(ReplyVO vo) {
+		SimpleDateFormat simple = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = new Date();
+		vo.setReply_day(simple.format(date));
+		return replyMapper.modify(vo);
 	}
 }

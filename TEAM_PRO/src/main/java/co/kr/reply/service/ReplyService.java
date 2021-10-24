@@ -10,4 +10,10 @@ public interface ReplyService {
 
 	public int replyMax();
 
+	public int insert(ReplyVO vo);
+
+	public int delete(int reply_no);
+
+	public int modify(ReplyVO vo);
+
 }

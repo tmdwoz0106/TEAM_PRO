@@ -6,20 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript">
-function insert(){
-	$.ajax({
-		url:"/InsertBoard.do",
-		type:"POST",
-		data:$("#insertForm").serialize(),
-		dataType:"JSON",
-		success : function(result){
-			alert("추가 성공");
-			location.href = "/";
-		}
-	})
-}
-</script>
+<script type="text/javascript" src="/resources/js/board/insert.js"></script>
 </head>
 <body>
 <form id="insertForm">

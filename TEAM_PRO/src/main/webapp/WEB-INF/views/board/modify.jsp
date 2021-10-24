@@ -6,20 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript">
-	function modify(){
-		$.ajax({
-			url:"/ModifyBoard.do",
-			type:"POST",
-			data:$("#modifyForm").serialize(),
-			dataType:"JSON",
-			success : function(result){
-				alert("수정하였습니다");
-				location.href = "/"
-			}
-		})
-	}
-</script>
+<script type="text/javascript" src="/resources/js/board/modify.js"></script>
 </head>
 <body>
 <h1>수정</h1>
