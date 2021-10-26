@@ -33,6 +33,7 @@ public class UserServiceImpl implements UserService {
 				return vo;
 			} else {
 				session.setAttribute("user_no", vo.getUser_no());
+				session.setAttribute("user_nick", vo.getUser_nick());
 				return vo;
 			}
 		} else {

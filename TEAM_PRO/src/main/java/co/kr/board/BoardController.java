@@ -1,20 +1,27 @@
 package co.kr.board;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import co.kr.board.VO.BoardUserVO;
 import co.kr.board.VO.BoardVO;
 import co.kr.board.service.BoardService;
+import co.kr.file.VO.FileVO;
+import co.kr.file.service.FileService;
 import co.kr.like.service.LikeService;
 import co.kr.reply.service.ReplyService;
 import co.kr.reply.vo.ReplyVO;
@@ -31,13 +38,18 @@ public class BoardController {
 	
 	@Autowired
 	public ReplyService replyService;
+	
+	@Autowired
+	public FileService fileService;
+	
+	@Resource(name = "uploadPath")
+	String uploadPath;
 	//----------------------------게시판 리스트-----------------------------------
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String list(HttpSession session,Model model) {
 		
-		//int user_no= Integer.parseInt(session.getAttribute("user_no").toString());
-		//System.out.println("회원번호:"+user_no);
-
+//		int user_no= Integer.parseInt(session.getAttribute("user_no").toString());
+//		model.addAttribute("user_no", user_no);
 		return "board/list";
 	}
 	@RequestMapping(value = "/listGET.do", method = RequestMethod.GET)
@@ -77,15 +89,32 @@ public class BoardController {
 		return "board/insert";
 	}
 	@RequestMapping(value = "/InsertBoard.do", method = RequestMethod.POST)
-	public ModelAndView insert_Post(BoardVO vo) {
-		ModelAndView json = new ModelAndView("jsonView");
+	public String insert_Post(BoardVO vo,FileVO Fvo,MultipartFile[] file) throws IOException {
+		//파일 업로드
+		int fileMax = fileService.fileMax();
+		for(int i = 0; i < file.length; i++) {
+			if(file[i].getOriginalFilename() != "") {
+			String file_name = file[i].getOriginalFilename();
+			String file_path = uploadPath +"\\" + file_name;
+			File target = new File(uploadPath, file_name);
+			FileCopyUtils.copy(file[i].getBytes(), target);
+			
+			Fvo.setFile_name(file_name);
+			Fvo.setFile_path(file_path);
+			Fvo.setFile_no(fileMax+1+i);
+			
+			fileService.insert(Fvo);
+			}
+		}
 		boardService.insert(vo);
-		return json;
+		return "board/list";
 	}
 	//-------------------------------게시글 상세보기-------------------------------
 	@RequestMapping(value = "/BoardDetail.do", method = RequestMethod.GET)
 	public String detail(int board_no,Model model,HttpSession session) {
+		String user_nick = (String)session.getAttribute("user_nick");
 		List<ReplyVO> list = replyService.list(board_no);
+		List<FileVO> File = fileService.fileList(board_no);
 		int replyMax = replyService.replyMax();
 		BoardUserVO vo = boardService.detail(board_no);
 		vo.setBoard_view(vo.getBoard_view()+1);
@@ -113,10 +142,12 @@ public class BoardController {
 			model.addAttribute("likeBtn", likeBtn);
 			model.addAttribute("user_no", user_no);
 		}
-
+		model.addAttribute("file", File);
+		
 		model.addAttribute("likeMax", likeMax+1);
 		model.addAttribute("like", likeCnt);
 		
+		model.addAttribute("user_nick", user_nick);
 		model.addAttribute("replyMax", replyMax+1);
 		model.addAttribute("list", list);
 		model.addAttribute("vo", vo);
@@ -126,20 +157,44 @@ public class BoardController {
 	@RequestMapping(value = "/BoardDelete.do", method = RequestMethod.POST)
 	public ModelAndView delete(int board_no) {
 		ModelAndView json = new ModelAndView("jsonView");
+		replyService.replyDelete(board_no);
+		likeService.likedelete(board_no);
 		boardService.delete(board_no);
+		fileService.delete(board_no);
 		return json;
 	}
 	//-------------------------------게시글 수정-------------------------------
 	@RequestMapping(value = "/BoardModify.do", method = RequestMethod.GET)
 	public String modify(int board_no,Model model) {
 		BoardUserVO vo = boardService.detail(board_no);
+		List<FileVO> list = fileService.fileList(board_no);
 		model.addAttribute("vo", vo);
+		model.addAttribute("list", list);
 		return "board/modify";
 	}
 	@RequestMapping(value = "/ModifyBoard.do", method = RequestMethod.POST)
-	public ModelAndView modify_Post(BoardUserVO vo) {
-		ModelAndView json = new ModelAndView("jsonView");
+	public String modify_Post(BoardUserVO vo,int board_no,MultipartFile[] file,FileVO fvo) throws IOException {
+//		ModelAndView json = new ModelAndView("jsonView");
 		boardService.modify(vo);
-		return json;
+		//파일 수정//기존 파일 삭제 후 새로 추가하는 파일을 업로드시킴
+		fileService.delete(board_no);
+		System.out.println(fvo);
+		int fileMax = fileService.fileMax();
+		for(int i = 0; i < file.length; i++) {
+			System.out.println(i);
+			String file_name = file[i].getOriginalFilename();
+			String file_path = uploadPath+"\\"+file_name;
+			File target = new File(uploadPath, file_name);
+			
+			FileCopyUtils.copy(file[i].getBytes(), target);
+			
+			fvo.setFile_no(fileMax+1+i);
+			fvo.setFile_name(file_name);
+			fvo.setFile_path(file_path);
+			
+			fileService.insert(fvo);
+		}
+		
+		return "redirect:/BoardDetail.do?board_no="+vo.getBoard_no();
 	}
 }

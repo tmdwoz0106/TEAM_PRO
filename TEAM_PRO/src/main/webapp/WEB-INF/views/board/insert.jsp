@@ -9,7 +9,7 @@
 <script type="text/javascript" src="/resources/js/board/insert.js"></script>
 </head>
 <body>
-<form id="insertForm">
+<form id="insertForm" action="/InsertBoard.do" method="POST" enctype="multipart/form-data">
 <input type="hidden" name="board_no" value="${max}" readonly="readonly"/>
 <input type="hidden" name="user_no" value="${user_no}" readonly="readonly"/>
 <table border="1" width="50%">
@@ -32,8 +32,10 @@
 		<td><input type="text" name="board_content" /></td>
 	</tr>
 </table>
-</form>
-<button type="button" onclick="insert()">게시물 추가</button> |
+<input type="file" name="file" multiple="multiple" />
+<br />
+<button type="submit" >게시물 추가</button> |
 <a href="/"><button>홈</button></a>
+</form>
 </body>
 </html>

@@ -19,4 +19,6 @@ public interface ReplyMapper {
 
 	public int modify(ReplyVO vo);
 
+	public int replyDelete(int board_no);
+
 }

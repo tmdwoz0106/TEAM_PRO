@@ -16,4 +16,6 @@ public interface ReplyService {
 
 	public int modify(ReplyVO vo);
 
+	public int replyDelete(int board_no);
+
 }

@@ -4,14 +4,16 @@ import java.util.HashMap;
 
 public interface LikeService {
 
-	int insert(HashMap<String, Object> param);
+	public int insert(HashMap<String, Object> param);
 
-	int delete(int board_no, int user_no);
+	public int delete(int board_no, int user_no);
 
-	int likeCnt(int board_no);
+	public int likeCnt(int board_no);
 
-	int likeMax();
+	public int likeMax();
 
-	int likeBtn(HashMap<String, Object> param);
+	public int likeBtn(HashMap<String, Object> param);
+
+	public int likedelete(int board_no);
 
 }

@@ -47,4 +47,9 @@ public class ReplyServiceImpl implements ReplyService{
 		vo.setReply_day(simple.format(date));
 		return replyMapper.modify(vo);
 	}
+
+	@Override
+	public int replyDelete(int board_no) {
+		return replyMapper.replyDelete(board_no);
+	}
 }

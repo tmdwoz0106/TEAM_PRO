@@ -59,7 +59,7 @@ width: 25%; /* Could be more or less, depending on screen size */
 <form id="deleteForm">
 <input type="hidden" name="user_no" value="${vo.user_no }" readonly="readonly" />
 <input type="hidden" name="board_no" value="${vo.board_no }" readonly="readonly" id="Board_NO"/>
-	<table border="1">
+	<table border="1" style="border: none;">
 		<tr>
 			<td>분류</td>
 			<td><input type="text" name="board_type" value="${vo.board_type }" readonly="readonly" /></td>
@@ -89,6 +89,9 @@ width: 25%; /* Could be more or less, depending on screen size */
 			<td><input type="text" name="board_like" value="${like}" readonly="readonly" /></td>
 		</tr>
 	</table>
+		<c:forEach var="File" items="${file}">
+			<img src="/resources/img/${File.file_name}" style="width: 150px; height: 150px;"/>
+		</c:forEach>
 	</form>
 	 <c:if test="${likeBtn > 0 and user_no ne 0}">
 		<button style="border: none; background: none; font-size: 13px;" onclick="likeDelete(${vo.board_no},${user_no})">싫어요~꾹</button>
@@ -100,7 +103,7 @@ width: 25%; /* Could be more or less, depending on screen size */
 	<div>
 	<c:if test="${user_no ne 0 }">
 	<div class="my-box" id="reply_box">
-			<em class="comment_inbox">${vo.user_nick }</em>
+			<em class="comment_inbox">${user_nick }</em>
 			<textarea placeholder="댓글을 남겨주세요" class="comment_inbox" rows="2" cols="3" style="height: 19px; margin: 0px -5px 0px 0px; border: none; width: 498px; font-size: 15px; outline: none; resize: none; max-height: 500px;" id="TextArea"></textarea>
 			<button style="font-size: 13px; color: #b7b7b7; background: none; border: none;" onclick="comment_add(0,0)">등록</button>
 	</div>
@@ -125,7 +128,7 @@ width: 25%; /* Could be more or less, depending on screen size */
 		</div>
 			</c:if>
 			<div class="my-box" style="display: none;" id="reply_open_box">
-				<em class="comment_inbox">${vo.user_nick }</em>
+				<em class="comment_inbox">${user_nick }</em>
 				<textarea placeholder="댓글을 남겨주세요" class="comment_inbox" rows="2" cols="3" style="height: 19px; margin: 0px -5px 0px 0px; border: none; width: 498px; font-size: 15px; outline: none; resize: none; max-height: 500px;" id="reply_TextArea"></textarea>
 				<button style="font-size: 13px; color: #b7b7b7; background: none; border: none;" onclick="reply_comment_add()">등록</button>
 				<button style="font-size: 13px; color: #b7b7b7; background: none; border: none;" onclick="comment_cancle()">취소</button>

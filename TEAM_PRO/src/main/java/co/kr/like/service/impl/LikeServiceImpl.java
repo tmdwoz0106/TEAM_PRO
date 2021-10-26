@@ -46,4 +46,10 @@ public class LikeServiceImpl implements LikeService {
 		return likeMapper.likeBtn(param);
 	}
 
+	@Override
+	public int likedelete(int board_no) {
+
+		return likeMapper.likedelete(board_no);
+	}
+
 }

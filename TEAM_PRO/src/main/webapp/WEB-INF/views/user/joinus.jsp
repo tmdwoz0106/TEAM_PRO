@@ -20,7 +20,7 @@ function join(){
 			alert(vo);
 			
 			if(result == 1){
-				location.href = "/";
+				location.href = "/login.do";
 			}else{
 				location.href = "/userJoin.do";
 			}

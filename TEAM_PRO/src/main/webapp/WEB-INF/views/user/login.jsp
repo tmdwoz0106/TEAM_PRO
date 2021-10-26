@@ -19,7 +19,7 @@ function login(){
 	
 			if(vo.msg != null){
 				alert(vo.msg);
-				location.href = "/";
+				location.href = "/login.do";
 			}else{
 				alert("환영합니다 회원님");
 				location.href = "/";
