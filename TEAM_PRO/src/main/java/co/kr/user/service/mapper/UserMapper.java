@@ -20,5 +20,11 @@ public interface UserMapper {
 
 	public int join(UserVO vo);
 
+	public int idCheck(String userid);
+
+	public int socialLogin(String userid);
+
+	
+
 	
 }

@@ -86,23 +86,29 @@ public class BoardController {
 		
 		//좋아요 로직 넣을 곳 
 		int likeCnt = likeService.likeCnt(board_no);
-		
-		int likeMax = likeService.likeMax();
-		
-		HashMap<String, Object> param = new HashMap<String, Object>();
-		
 
-		int user_no = Integer.parseInt(session.getAttribute("user_no").toString());
-		
-		param.put("board_no", board_no);
-		param.put("user_no", user_no);
-		int likeBtn = likeService.likeBtn(param);
-		
-		model.addAttribute("likeBtn", likeBtn);
-		model.addAttribute("likeMax", likeMax+1);
+		int likeMax = likeService.likeMax();
+
+		HashMap<String, Object> param = new HashMap<String, Object>();
+
+		if (session.getAttribute("user_no") != null) {
+			int user_no = Integer.parseInt(session.getAttribute("user_no").toString());
+			param.put("board_no", board_no);
+			param.put("user_no", user_no);
+			int likeBtn = likeService.likeBtn(param);
+			model.addAttribute("likeBtn", likeBtn);
+			model.addAttribute("user_no", user_no);
+		} else {
+			int user_no = 0;
+			param.put("board_no", board_no);
+			param.put("user_no", user_no);
+			int likeBtn = likeService.likeBtn(param);
+			model.addAttribute("likeBtn", likeBtn);
+			model.addAttribute("user_no", user_no);
+		}
+
+		model.addAttribute("likeMax", likeMax + 1);
 		model.addAttribute("like", likeCnt);
-		model.addAttribute("user_no", user_no);
-		
 		
 		model.addAttribute("vo", vo);
 		return "board/detail";

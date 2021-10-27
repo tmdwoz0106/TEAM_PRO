@@ -8,6 +8,16 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
+
+function naverLogout() {
+	openPopUp();
+	setTimeout(function() {
+		closePopUp();
+		}, 1000);
+	
+	
+}
+
 function list(page){
 	$.ajax({
 		url:"/listGET.do",
@@ -99,9 +109,13 @@ function logout(){
 	<c:if test="${user_no ne null }">
 		<a href="/BoardInsert.do"><button>게시글쓰기</button></a>
 		<button type="button" onclick="logout()">로그아웃</button>
+		 <a href="javascript:void(0)">
+          <span>네이버 로그아웃</span>
+        </a>
 	</c:if>
 	<c:if test="${user_no eq null }">
 		<a href="/login.do"><button>로그인</button></a>
+		
 	</c:if>
 	
 </body>

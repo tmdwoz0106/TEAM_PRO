@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,7 +34,7 @@ function join(){
 <body>
 <h1>회원가입</h1>
 <form id="joinForm">
-<input type="hidden" name="user_no" value="${max }" readonly="readonly" />
+<input type="hidden" name="user_no" value="${max}" readonly="readonly" />
 <table>
 	<tr>
 		<td>아이디</td>
@@ -43,7 +45,14 @@ function join(){
 		<td>핸드폰번호</td>
 	</tr>
 	<tr>
-		<td><input type="text" name="user_id" /></td>
+	
+     <c:if test="${ssid ne null} ">
+	<td><input type="text" name="user_id" value="${ssid}" /></td>
+	</c:if>
+	
+	<c:if test="${ssid eq null} ">
+	<td><input type="text" name="user_id" /></td>
+	</c:if>
 		<td><input type="text" name="user_pw" /></td>
 		<td><input type="text" name="user_name" /></td>
 		<td><input type="text" name="user_nick" /></td>

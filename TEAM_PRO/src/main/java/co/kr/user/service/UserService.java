@@ -11,5 +11,10 @@ public interface UserService {
 	public int max();
 
 	public int join(UserVO vo);
-
+	public int idCheck(String userid);
+	
+	public int userCheck(String userid);
+	
+	public int socialLogin(String userid);
+	
 }

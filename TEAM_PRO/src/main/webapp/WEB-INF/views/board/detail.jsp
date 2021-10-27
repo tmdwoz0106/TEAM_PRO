@@ -22,6 +22,7 @@ function BoardDelete(){
 		})
 	}
 }
+//
 function like(board_no,user_no,like_no){
 	$.ajax({
 		url:"/like.do",
@@ -88,12 +89,18 @@ function likeDelete(board_no,user_no){
 		</tr>
 	</table>
 	
-	     <c:if test="${likeBtn > 0 }">
-		<button style="border: none; background: none; font-size: 13px;" onclick="likeDelete(${vo.board_no},${user_no})">싫어요~꾹</button>
-		</c:if>
-		<c:if test="${likeBtn <= 0 }">
-		<button style="border: none; background: none; font-size: 13px;" onclick="like(${vo.board_no},${user_no},${likeMax })">좋아요~꾹</button>
-		</c:if>
+	    <c:if test="${likeBtn > 0 and user_no ne 0}">
+		<button style="border: none; background: none; font-size: 13px;" 
+		onclick="likeDelete(${vo.board_no},${user_no})">싫어요~꾹</button>
+	</c:if>
+	<c:if test="${likeBtn <= 0 and user_no ne 0}">
+		<button style="border: none; background: none; font-size: 13px;"
+		 onclick="like(${vo.board_no},${user_no},${likeMax})">좋아요~꾹</button>
+	</c:if>
+
+
+	
+	   
 </form>
 </body>
 </html>

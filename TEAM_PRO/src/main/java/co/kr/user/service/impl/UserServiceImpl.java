@@ -61,4 +61,22 @@ public class UserServiceImpl implements UserService {
 		return userMapper.join(vo);
 
 	}
+
+	@Override
+	public int idCheck(String userid) {
+		// TODO Auto-generated method stub
+		return userMapper.idCheck(userid);
+	}
+
+	@Override
+	public int userCheck(String userid) {
+		// TODO Auto-generated method stub
+		return userMapper.userCheck(userid);
+	}
+
+	@Override
+	public int socialLogin(String userid) {
+		// TODO Auto-generated method stub
+		return userMapper.socialLogin(userid);
+	}
 }

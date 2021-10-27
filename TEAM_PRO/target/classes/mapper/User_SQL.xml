@@ -3,11 +3,19 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.kr.user.service.mapper.UserMapper">
 
+    <select id="socialLogin" resultType="int">
+ 		SELECT user_no
+		FROM pro_user
+		WHERE user_id = #{user_id}
+	</select>
+	
+
 	<select id="userCheck" resultType="int">
 		SELECT COUNT(*)
 		FROM   pro_user
 		WHERE  user_id = #{user_id}
 	</select>
+	
 	
 	<select id="login" resultType="co.kr.user.VO.UserVO">
 		SELECT *
