@@ -1,5 +1,7 @@
 package co.kr.user;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,34 +73,29 @@ public class UserController {
 		System.out.println("콜백 처리 부분 ...");
 		return "user/login2";
 	}
-	@RequestMapping(value = "/callback2", method=RequestMethod.GET)
-	public String Logincallback2() {
-		//int i= userService.userCheck(userid);
-		System.out.println("콜백 처리 부분 ...");
-		return "user/login2";
-	}
+
 	
 	
 	@RequestMapping(value = "/naverlogin.do", method=RequestMethod.POST)
 	public ModelAndView socalTest(@RequestParam (name="user_id") 
-	String userid,HttpSession session)
+	String user_id,HttpSession session)
 	{
 	
 		ModelAndView json= new ModelAndView("jsonView");
-		System.out.println(userService.userCheck(userid));
+		System.out.println(userService.userCheck(user_id));
         ////아이디 찾기 
-	    int i = userService.userCheck(userid);
+	    int i = userService.userCheck(user_id);
 	    System.out.println("유저아이디"+i);
 
 		if (i!= 0) {
-			int k = userService.socialLogin(userid);
+			int k = userService.socialLogin(user_id);
 			if (k != 0) {
 				session.setAttribute("user_no", k);
 				System.out.println("회원번호"+k);
 			} 
 		}
 		json.addObject("result",i);
-	    System.out.println("userid는:"+userid);	 
+	    System.out.println("userid는:"+user_id);	 
 	   
 		return json;
 		
@@ -107,13 +104,25 @@ public class UserController {
 	
 	@RequestMapping(value = "/test", method=RequestMethod.GET)
 	public String test(@RequestParam (name="user_id") 
-	String userid,HttpSession session)
+	String user_id,HttpSession session)
 	{
-		session.setAttribute("ssid",userid);
-		System.out.println("userid는:"+userid);	 
+		session.setAttribute("ssid",user_id);
+		System.out.println("userid는:"+user_id);	 
 	     
 		return "login2";
 		
 	}
+	
+	//로그아웃 
+	@RequestMapping(value = "/naverlogout", method = { RequestMethod.GET, 
+			RequestMethod.POST }) public String 
+	    naverlogout(HttpSession session)throws IOException {
+		System.out.println("여기는 네이버 logout"); 
+		session.invalidate(); 
+		return "user/login"; 
+		
+	}
+
+	
 
 }

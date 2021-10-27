@@ -46,13 +46,7 @@ function join(){
 	</tr>
 	<tr>
 	
-     <c:if test="${ssid ne null} ">
-	<td><input type="text" name="user_id" value="${ssid}" /></td>
-	</c:if>
-	
-	<c:if test="${ssid eq null} ">
-	<td><input type="text" name="user_id" /></td>
-	</c:if>
+   <td><input type="text" name="user_id" value="${ssid }" /></td>
 		<td><input type="text" name="user_pw" /></td>
 		<td><input type="text" name="user_name" /></td>
 		<td><input type="text" name="user_nick" /></td>

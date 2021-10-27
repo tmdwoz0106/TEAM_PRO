@@ -109,9 +109,7 @@ function logout(){
 	<c:if test="${user_no ne null }">
 		<a href="/BoardInsert.do"><button>게시글쓰기</button></a>
 		<button type="button" onclick="logout()">로그아웃</button>
-		 <a href="javascript:void(0)">
-          <span>네이버 로그아웃</span>
-        </a>
+		<a href="/naverlogout.do">네이버로그아웃</a>
 	</c:if>
 	<c:if test="${user_no eq null }">
 		<a href="/login.do"><button>로그인</button></a>

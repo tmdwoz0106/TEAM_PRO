@@ -44,7 +44,7 @@ function naverLogin() {
 
 <h1>네이버 소셜 로그인 </h1>
 
-          <form  id="naver">
+           <form  id="naver">
           
           아이디  <input type="text" name="user_id" value="${ssid}" />
           
