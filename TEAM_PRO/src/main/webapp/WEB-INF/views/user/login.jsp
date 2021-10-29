@@ -3,10 +3,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name ="google-signin-client_id" content="415549652819-r9tvjtsgkljq5v56dslamalkju2tjcoe.apps.googleusercontent.com"></meta>
 <meta charset="UTF-8">
+<script src="https://apis.google.com/js/platform.js" async defer></script>
 <title>Insert title here</title>
+<!-- 구글 api 사용을 위한 스크립트 -->
+
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script src="/resources/js/kakaoLogin.js"></script>
+<script src="/resources/js/googleLogin.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 function login(){
@@ -50,29 +55,14 @@ function login(){
 <a href="/userJoin.do"><button>회원가입</button></a>
 <div>
 <a href="javascript:kakaoLogin();" ><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFQOJtNpYFKTS1T5QdhIDFFgLzQO93BuFjFw&usqp=CAU" style="width:200px"/></a>
-<a href="javascript:kakaoLogout()">카카오 로그아웃</a>
-<a href="javascript:다른사용자()">카카오 자동로그인 로그아웃</a>
-</div>	
+<!-- <a href="javascript:kakaoLogout()">카카오 로그아웃</a> -->
+<a href="javascript:다른사용자()">카카오 자동로그인 연결끊기</a>
 
-				<!-- <div>
-				
-				<a id="custom-login-btn" href="javascript:loginWithKakao()">
-				  <img
-				    src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg"
-				    width="222"
-				  />
-				</a>
-				<p id="token-result"></p>
-				<script type="text/javascript">
-				  function loginWithKakao() {
-				    Kakao.Auth.authorize({
-				      redirectUri: 'http://localhost:8088/login.do',
-				      prompts: 'login'
-				      
-				    });
-				  }
-				  </script>
-				</div> -->
-
+	
+	 <div class="g-signin2" onclick="onSignIn()" data-theme="dark"></div>
+	<a href="#" onclick="googleSignout2()">구글 로그아웃</a>
+	
+	
+</div>
 </body>
 </html>

@@ -35,7 +35,7 @@
 
 </head>
 <body>
-소셜로그인
+					 소셜로그인
 			<form id="sslogin">
 			<input type="text" name="user_id" value="${ssID}"  />
 			</form>

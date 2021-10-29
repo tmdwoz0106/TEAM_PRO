@@ -16,7 +16,9 @@ import co.kr.user.VO.UserVO;
 import co.kr.user.service.UserService;
 @Controller
 public class UserController {
-
+	
+	private HttpSession session = null;
+	
 	@Autowired
 	public UserService userService;
 	//----------------------------로그인---------------------------
@@ -26,7 +28,7 @@ public class UserController {
 		return "user/login";
 	}
 	@RequestMapping(value = "/loginPost.do", method = RequestMethod.POST)
-	public ModelAndView login_post(UserVO vo,HttpSession session) {
+	public ModelAndView login_post(UserVO vo) {
 		ModelAndView json = new ModelAndView("jsonView");
 		vo = userService.login(vo,session);
 		json.addObject("vo", vo);
@@ -60,25 +62,33 @@ public class UserController {
 		return json;
 	}
 	@RequestMapping(value = "slogin.do" ,method = RequestMethod.GET)
-	public String slogin_page() {
-		
+	public String slogin_page(String user_id,HttpSession session) {
+		session.getAttribute("ssID");
 		return "user/socialLogin";
 	}
 	// 소셜로그인 parameter값 받아오기
 	@GetMapping("/test")
-	public String posttest(@RequestParam(name="userid")String userid,Model model,HttpSession session) {
+	public String kakaopost(@RequestParam(name="userid")String userid,HttpSession session) {
 		System.out.println("\n\n\n\n\n");
 		System.out.println("userid =="+userid);
-		//model.addAttribute("userid", userid );
+		
+		session.setAttribute("ssID", userid);
+		
+		return userid;
+	}
+	@GetMapping("/test1")
+	public String googlepost(@RequestParam(name="userid")String userid,HttpSession session) {
+		System.out.println("\n\n\n\n\n");
+		System.out.println("userid ==>>>"+userid);
+		
 		session.setAttribute("ssID", userid);
 		
 		return userid;
 	}
 	//카카오 아이디와 DB 확인
 	@RequestMapping(value="/kakaoLogin.do",method = RequestMethod.POST)
-	public ModelAndView kakaoLogin(String user_id,HttpSession session,UserVO vo) {
+	public ModelAndView kakaoLogin(String user_id,UserVO vo,HttpSession session) {
 		ModelAndView json = new ModelAndView("jsonView");
-		
 		
 		int i =userService.idCheck(user_id);
 		if(i!=0) {
@@ -86,6 +96,7 @@ public class UserController {
 			int k = userService.socialLogin(user_id);
 			if(k !=0) {
 				session.setAttribute("user_no", k);
+				System.out.println(k);
 			}
 		}
 		
@@ -94,4 +105,25 @@ public class UserController {
 		
 		return json;
 	}
+	
+	@RequestMapping(value="/googleLogin.do",method = RequestMethod.POST)
+	public String googleLogin(String user_id,HttpSession session) {
+
+		session.setAttribute("ssID", user_id);
+		int i =userService.idCheck(user_id);
+			if(i!=0) {
+			int k = userService.socialLogin(user_id);
+				if(k !=0) {
+					session.setAttribute("user_no", k);
+					System.out.println(k);
+					return "board/list";
+				}
+		}else {
+			return "redirect:userJoin.do";
+		}
+		
+		return null;
+		
+	}
+
 }

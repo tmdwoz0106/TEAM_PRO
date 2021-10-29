@@ -1,9 +1,8 @@
 package co.kr.user.service.mapper;
 
 import java.util.HashMap;
-import java.util.List;
 
-import javax.servlet.http.HttpSession;
+import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 

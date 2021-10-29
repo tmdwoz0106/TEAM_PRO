@@ -30,10 +30,10 @@ function kakaoLogin() {
 			Kakao.API.request({
 				url: '/v2/user/me',
 				success: function(res) {
-			var jsonid = JSON.stringify(res.kakao_account.email);
+					var jsonid = JSON.stringify(res.kakao_account.email);
 			          alert(jsonid);
 					var id = res.kakao_account.email;
-					console.log(id);
+						console.log(id);
 					let url = '/test';
 					fetch(url + "?userid=" + id)
 						.then()
