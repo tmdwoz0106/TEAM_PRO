@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
 import co.kr.user.VO.UserVO;
@@ -60,27 +61,28 @@ public class UserController {
 		return json;
 	}
 	
-	@RequestMapping(value = "/socalLogin.do", method=RequestMethod.GET)
-	public String LoginForm() {
-		
-		System.out.println("소셜 로그인 페이지 이동합니다 ");
-		return "user/login2";
-	}
+//	@RequestMapping(value = "/socalLogin.do", method=RequestMethod.GET)
+//	public String LoginForm() {
+//		
+//		System.out.println("소셜 로그인 페이지 이동합니다 ");
+//		return "user/login2";
+//	}
 	
-	@RequestMapping(value = "/callback", method=RequestMethod.GET)
-	public String Logincallback1() {
+	@RequestMapping(value = "/nlogin.do", method=RequestMethod.GET)
+	public String Logincallback1(HttpSession session) {
 		//int i= userService.userCheck(userid);
 		System.out.println("콜백 처리 부분 ...");
+		System.out.println(""+ session.getAttribute("ssid"));
+	   
 		return "user/login2";
 	}
 
-	
-	
 	@RequestMapping(value = "/naverlogin.do", method=RequestMethod.POST)
 	public ModelAndView socalTest(@RequestParam (name="user_id") 
 	String user_id,HttpSession session)
 	{
 	
+		session.setAttribute("ssid",user_id);
 		ModelAndView json= new ModelAndView("jsonView");
 		System.out.println(userService.userCheck(user_id));
         ////아이디 찾기 
@@ -107,22 +109,18 @@ public class UserController {
 	String user_id,HttpSession session)
 	{
 		session.setAttribute("ssid",user_id);
-		System.out.println("userid는:"+user_id);	 
+		//System.out.println("userid는:"+user_id);	 
 	     
-		return "login2";
-		
-	}
-	
-	//로그아웃 
-	@RequestMapping(value = "/naverlogout", method = { RequestMethod.GET, 
-			RequestMethod.POST }) public String 
-	    naverlogout(HttpSession session)throws IOException {
-		System.out.println("여기는 네이버 logout"); 
-		session.invalidate(); 
 		return "user/login"; 
 		
 	}
-
 	
-
+	@RequestMapping(value = "/naverlogout.do", method=RequestMethod.GET)
+	public String naverLogout()
+	{
+		System.out.println("네아 로그아웃");
+	     
+		return "user/naverlogout"; 
+		
+	}
 }
