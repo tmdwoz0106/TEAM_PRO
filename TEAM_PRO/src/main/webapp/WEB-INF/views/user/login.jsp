@@ -83,7 +83,7 @@ function login(){
         {
             clientId: "Kxm25o90mXmhCTTosotq", 
             //내 애플리케이션 정보에 cliendId를 입력해줍니다.
-            callbackUrl:"http://localhost:8088/nlogin.do",
+            callbackUrl:"http://localhost:8088/login.do",
             // 내 애플리케이션 API설정의 Callback URL 을 입력해줍니다.
             isPopup: false,
             callbackHandle: true
@@ -99,11 +99,11 @@ naverLogin.getLoginStatus(function (status) {
         var email = naverLogin.user.getEmail();
         // 필수로 설정할것을 받아와 아래처럼 조건문을 줍니다.
         //console.log(email);
-        // alert(email);
+        alert(email);
         let url ='/test';
         fetch(url+"?user_id="+email)
         .then()
-        //location.href="/login.do";
+        location.href="/nlogin.do";
         
         
         if( email == undefined || email == null) {
