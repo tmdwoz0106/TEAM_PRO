@@ -61,12 +61,21 @@ public class UserController {
 		}
 		return json;
 	}
+	//카카오 소셜로그인 
 	@RequestMapping(value = "slogin.do" ,method = RequestMethod.GET)
 	public String slogin_page(String user_id,HttpSession session) {
 		session.getAttribute("ssID");
 		return "user/socialLogin";
 	}
-	// 소셜로그인 parameter값 받아오기
+	//구글 소셜로그인
+	@RequestMapping(value = "slogin2.do" ,method = RequestMethod.GET)
+	public String slogin2_page(String user_id,HttpSession session) {
+		session.setAttribute("ssID",user_id);
+		return "user/socialLogin";
+	}
+	
+	
+	// 카카오 소셜로그인 parameter값 받아오기
 	@GetMapping("/test")
 	public String kakaopost(@RequestParam(name="userid")String userid,HttpSession session) {
 		System.out.println("\n\n\n\n\n");
@@ -76,16 +85,8 @@ public class UserController {
 		
 		return userid;
 	}
-	@GetMapping("/test1")
-	public String googlepost(@RequestParam(name="userid")String userid,HttpSession session) {
-		System.out.println("\n\n\n\n\n");
-		System.out.println("userid ==>>>"+userid);
-		
-		session.setAttribute("ssID", userid);
-		
-		return userid;
-	}
-	//카카오 아이디와 DB 확인
+
+	//소셜로그인 아이디와 DB 확인
 	@RequestMapping(value="/kakaoLogin.do",method = RequestMethod.POST)
 	public ModelAndView kakaoLogin(String user_id,UserVO vo,HttpSession session) {
 		ModelAndView json = new ModelAndView("jsonView");
@@ -106,24 +107,18 @@ public class UserController {
 		return json;
 	}
 	
-	@RequestMapping(value="/googleLogin.do",method = RequestMethod.POST)
-	public String googleLogin(String user_id,HttpSession session) {
-
-		session.setAttribute("ssID", user_id);
-		int i =userService.idCheck(user_id);
-			if(i!=0) {
-			int k = userService.socialLogin(user_id);
-				if(k !=0) {
-					session.setAttribute("user_no", k);
-					System.out.println(k);
-					return "board/list";
-				}
-		}else {
-			return "redirect:userJoin.do";
-		}
-		
-		return null;
-		
-	}
+	/*
+	 * @RequestMapping(value="/googleLogin.do",method = RequestMethod.POST) public
+	 * String googleLogin(String user_id,HttpSession session) {
+	 * 
+	 * session.setAttribute("ssID", user_id); int i =userService.idCheck(user_id);
+	 * if(i!=0) { int k = userService.socialLogin(user_id); if(k !=0) {
+	 * session.setAttribute("user_no", k); System.out.println(k); return
+	 * "board/list"; } }else { return "redirect:userJoin.do"; }
+	 * 
+	 * return null;
+	 * 
+	 * }
+	 */
 
 }

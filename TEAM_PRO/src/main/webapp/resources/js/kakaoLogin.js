@@ -2,8 +2,9 @@
 window.Kakao.init('316e09adcb8c6b0ca831d8169c4e67c2');
 
 
-displayToken()
-  function displayToken() {
+displayToken();
+
+ function displayToken() {
     const token = getCookie('reauthenticate-access-token')
     if(token) {
       Kakao.Auth.setAccessToken(token)
@@ -66,7 +67,8 @@ function kakaoLogout() {
 		console.log('카카오 인증 엑세스 토큰이 존재합니다.', Kakao.Auth.getAccessToken())
 		Kakao.Auth.logout(() => {
 			console.log('로그아웃 되셨습니다.', Kakao.Auth.getAccessToken());
-
+		다른사용자();
 		});
 	}
+	
 }

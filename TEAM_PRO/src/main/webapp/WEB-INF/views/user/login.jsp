@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
 <meta name ="google-signin-client_id" content="415549652819-r9tvjtsgkljq5v56dslamalkju2tjcoe.apps.googleusercontent.com"></meta>
 <meta charset="UTF-8">
-<script src="https://apis.google.com/js/platform.js" async defer></script>
 <title>Insert title here</title>
 <!-- 구글 api 사용을 위한 스크립트 -->
 
@@ -58,9 +58,12 @@ function login(){
 <!-- <a href="javascript:kakaoLogout()">카카오 로그아웃</a> -->
 <a href="javascript:다른사용자()">카카오 자동로그인 연결끊기</a>
 
+	<div class="g-signin2" data-onsuccess="onSignIn"></div>
 	
-	 <div class="g-signin2" onclick="onSignIn()" data-theme="dark"></div>
+	<!--  <div class="g-signin2" onclick="onSignIn()" data-theme="dark">구글 로그인 </div> -->
 	<a href="#" onclick="googleSignout2()">구글 로그아웃</a>
+	
+	
 	
 	
 </div>

@@ -6,6 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="/resources/js/googleLogin.js"></script>
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script src="/resources/js/kakaoLogin.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 function list(page){
@@ -86,13 +89,12 @@ function logout(){
 	<c:if test="${user_no ne null }">
 		<a href="/BoardInsert.do"><button>게시글쓰기</button></a>
 		<button type="button" onclick="logout()"><a href="javascript:kakaoLogout()">로그아웃</a></button>
+		
 	</c:if>
 	<c:if test="${user_no eq null }">
 		<a href="/login.do"><button>로그인</button></a>
 	</c:if>
 	
 	
-	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-	<script src="/resources/js/kakaoLogin.js"></script>
 </body>
 </html>
