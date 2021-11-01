@@ -27,6 +27,7 @@ public class UserController {
 		
 		return "user/login";
 	}
+	//
 	@RequestMapping(value = "/loginPost.do", method = RequestMethod.POST)
 	public ModelAndView login_post(UserVO vo) {
 		ModelAndView json = new ModelAndView("jsonView");
