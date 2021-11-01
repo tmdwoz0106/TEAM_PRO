@@ -33,6 +33,7 @@ public class UserController {
 		vo = userService.login(vo,session);
 		json.addObject("vo", vo);
 		return json;
+		//
 	}
 	//-----------------------------로그아웃---------------------------
 	@RequestMapping(value = "/logout.do", method = RequestMethod.POST)
