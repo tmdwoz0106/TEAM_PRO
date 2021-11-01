@@ -63,9 +63,46 @@ function login(){
 	<!--  <div class="g-signin2" onclick="onSignIn()" data-theme="dark">구글 로그인 </div> -->
 	<a href="#" onclick="googleSignout2()">구글 로그아웃</a>
 	
+	</div>
+	<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+	<!--  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa  -->
+	<div id="naver_id_login"></div>
+
+  
+      <a href="javascript:void(0)" onclick="naverLogout(); return false;">
+      
+       로그아웃 
+      </a>
+
+	  <script type="text/javascript">
+	  	var naver_id_login = new naver_id_login("u_PTkLzzH6Gzne3cO8hw", "http://localhost:8088/slogin.do");
+	  	var state = naver_id_login.getUniqState();
+	  	naver_id_login.setButton("white", 2,40);
+	  	naver_id_login.setDomain("http://localhost:8088");
+	  	naver_id_login.setState(state);
+	  	//naver_id_login.setPopup();
+	  	naver_id_login.init_naver_id_login();
+
+	  	var testPopUp;
+	  	function openPopUp() {
+	  	    testPopUp= window.open("https://nid.naver.com/nidlogin.logout",
+	  	          "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,width=1,height=1");
+	  	}
+	  	function closePopUp(){
+	  	    testPopUp.close();
+	  	}
+
+	  	function naverLogout() {
+	  	   openPopUp();
+	  	   setTimeout(function() {
+	  	      closePopUp();
+	  	      }, 3000);
+	  	   
+	  	}
+
+  </script>
 	
 	
-	
-</div>
+
 </body>
 </html>
