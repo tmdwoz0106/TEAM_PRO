@@ -70,11 +70,12 @@ public class UserController {
 //		return "user/login2";
 //	}
 	
-	@RequestMapping(value = "/nlogin.do", method=RequestMethod.GET)
+	@RequestMapping(value = "/slogin.do", method=RequestMethod.GET)
 	public String Logincallback1(HttpSession session) {
 		//int i= userService.userCheck(userid);
 		System.out.println("콜백 처리 부분 ...");
-		System.out.println(""+ session.getAttribute("ssid"));
+		System.out.println("세션유저값"+ session.getAttribute("ssid"));
+		session.getAttribute("ssid");
 	   
 		return "user/login2";
 	}
@@ -99,7 +100,7 @@ public class UserController {
 			} 
 		}
 		json.addObject("result",i);
-	    System.out.println("userid는:"+user_id);	 
+	   // System.out.println("userid는:"+user_id);	 
 	   
 		return json;
 		
@@ -111,18 +112,20 @@ public class UserController {
 	String user_id,HttpSession session)
 	{
 		session.setAttribute("ssid",user_id);
-		//System.out.println("userid는:"+user_id);	 
+		System.out.println("userid는:"+user_id);	 
 	     
-		return "user/login"; 
+		return "user/login2"; 
 		
 	}
 	
-	@RequestMapping(value = "/naverlogout.do", method=RequestMethod.GET)
-	public String naverLogout()
+	
+	@RequestMapping(value = "/chat.do", method=RequestMethod.GET)
+	public String chat()
 	{
-		System.out.println("네아 로그아웃");
-	     
-		return "user/naverlogout"; 
+	
+	     System.out.println("채팅페이지 이동 ");
+		return "chatting/chat"; 
 		
 	}
+
 }
