@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+     <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -105,6 +106,29 @@
     <input type="text" name="user_birth" id="user_BIR" class="form-control" placeholder="ex) 950101" required></label>
 <label for="inputPhone">전화번호
     <input type="text" name="user_phone" id="user_PHO" class="form-control" placeholder="ex) 01012341234" required></label>    
+<table>
+	<tr>
+		<td>아이디</td>
+		<td>비밀번호</td>
+		<td>이름</td>
+		<td>닉네임</td>
+		<td>생년월일</td>
+		<td>핸드폰번호</td>
+	</tr>
+	<tr>
+	<c:if test="${ssID ne null}">
+		<td><input type="text" name="user_id" value="${ssID}"/></td>
+	</c:if>
+	<c:if test="${ssID eq null}">
+		<td><input type="text" name="user_id" /></td>
+	</c:if>
+		<td><input type="text" name="user_pw" /></td>
+		<td><input type="text" name="user_name" /></td>
+		<td><input type="text" name="user_nick" /></td>
+		<td><input type="text" name="user_birth" /></td>
+		<td><input type="text" name="user_phone" /></td>
+	</tr>
+</table>
 </form>
 
 <button class="btn btn-lg btn-secondary btn-block" type="button" onclick="join()">가입하기</button>

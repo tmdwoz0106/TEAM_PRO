@@ -69,4 +69,9 @@
 		WHERE  user_no = #{user_no}
 	</update>
 		
+	<select id="socialLogin" resultType="int">
+		SELECT user_no
+		FROM pro_user
+		WHERE user_id = #{user_id}
+	</select>
 </mapper>
