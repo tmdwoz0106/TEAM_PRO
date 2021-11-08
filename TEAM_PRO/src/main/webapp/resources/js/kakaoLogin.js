@@ -1,5 +1,6 @@
 //316e09adcb8c6b0ca831d8169c4e67c2    
-window.Kakao.init('316e09adcb8c6b0ca831d8169c4e67c2');
+//로코드 key 	2c97402369243b9f7e57e64ed1143a98
+window.Kakao.init('2c97402369243b9f7e57e64ed1143a98');
 
 
 displayToken();
@@ -31,13 +32,14 @@ function kakaoLogin() {
 			Kakao.API.request({
 				url: '/v2/user/me',
 				success: function(res) {
-					var jsonid = JSON.stringify(res.kakao_account.email);
-			          alert(jsonid);
+					//var jsonid = JSON.stringify(res.kakao_account.email);
+			       
 					var id = res.kakao_account.email;
 						console.log(id);
 					let url = '/test';
 					fetch(url + "?userid=" + id)
 						.then()
+					다른사용자();
 					location.href = "/slogin.do";
 				}
 			});

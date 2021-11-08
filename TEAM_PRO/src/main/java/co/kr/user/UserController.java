@@ -79,13 +79,11 @@ public class UserController {
 	
 	// 카카오 소셜로그인 parameter값 받아오기
 	@GetMapping("/test")
-	public String kakaopost(@RequestParam(name="userid")String userid,HttpSession session) {
+	public void kakaopost(@RequestParam(name="userid")String userid,HttpSession session) {
 		System.out.println("\n\n\n\n\n");
 		System.out.println("userid =="+userid);
 		
 		session.setAttribute("ssID", userid);
-		
-		return userid;
 	}
 
 	//소셜로그인 아이디와 DB 확인
@@ -102,25 +100,7 @@ public class UserController {
 				System.out.println(k);
 			}
 		}
-		
 	    json.addObject("result",i);
-	    
-		
 		return json;
 	}
-	
-	/*
-	 * @RequestMapping(value="/googleLogin.do",method = RequestMethod.POST) public
-	 * String googleLogin(String user_id,HttpSession session) {
-	 * 
-	 * session.setAttribute("ssID", user_id); int i =userService.idCheck(user_id);
-	 * if(i!=0) { int k = userService.socialLogin(user_id); if(k !=0) {
-	 * session.setAttribute("user_no", k); System.out.println(k); return
-	 * "board/list"; } }else { return "redirect:userJoin.do"; }
-	 * 
-	 * return null;
-	 * 
-	 * }
-	 */
-
 }
