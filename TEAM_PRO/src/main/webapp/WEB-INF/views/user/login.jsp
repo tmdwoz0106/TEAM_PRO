@@ -61,9 +61,9 @@
 </div>
     <p class="mt-3 mb-3 text-muted">---------------- 간편 로그인 ----------------</p>
     <div class="social-icons">
-        <a href="" target=""><img class="logo1" src="/resources/img2/ka.png" alt="kakao" width="35" height="35"></a>
+        <a href="javascript:kakaoLogin();" target=""><img class="logo1" src="/resources/img2/ka.png" alt="kakao" width="35" height="35"></a>
         <a href="" target=""><img class="logo2" src="/resources/img2/goo.png" alt="google" width="35" height="35"></a>
-        <a href="" target=""><img class="logo3" src="/resources/img2/na.png" alt="naver" width="35" height="35"></a>
+        <a href="" target=""><img class="logo3" src="/resources/img2/na.png" alt="naver" width="35" height="35" id="naver_id_login"></a>
     </div>
 </div>
 <script type="text/javascript">
@@ -92,31 +92,31 @@
 </script>
 </head>
 <body>
-<h1>로그인</h1>
-<form id="loginForm">
-	<table>
-		<tr>
-			<td>아이디</td>
-			<td><input type="text" name="user_id" value="test"/></td>
-		</tr>
-		<tr>
-			<td>비밀번호</td>
-			<td><input type="text" name="user_pw" value="test"/></td>
-		</tr>
-	</table>
-</form>
-	<button type="button" onclick="login()">로그인</button> |
-	<a href="/userJoin.do"><button>회원가입</button></a>
+<!-- <h1>로그인</h1> -->
+<!-- <form id="loginForm"> -->
+<!-- 	<table> -->
+<!-- 		<tr> -->
+<!-- 			<td>아이디</td> -->
+<!-- 			<td><input type="text" name="user_id" value="test"/></td> -->
+<!-- 		</tr> -->
+<!-- 		<tr> -->
+<!-- 			<td>비밀번호</td> -->
+<!-- 			<td><input type="text" name="user_pw" value="test"/></td> -->
+<!-- 		</tr> -->
+<!-- 	</table> -->
+<!-- </form> -->
+<!-- 	<button type="button" onclick="login()">로그인</button> | -->
+<!-- 	<a href="/userJoin.do"><button>회원가입</button></a> -->
 <!--   카카오 소셜로그인   -->	
 <div>
-	<a href="javascript:kakaoLogin();" ><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFQOJtNpYFKTS1T5QdhIDFFgLzQO93BuFjFw&usqp=CAU" style="width:200px"/></a>
+<!-- 	<a href="javascript:kakaoLogin();" ><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFQOJtNpYFKTS1T5QdhIDFFgLzQO93BuFjFw&usqp=CAU" style="width:200px"/></a> -->
 	<a href="javascript:다른사용자()">카카오 자동로그인 연결끊기</a>
 <!--    구글 소셜로그인    -->
 	<div class="g-signin2" data-onsuccess="onSignIn"></div>
 	<a href="#" onclick="googleSignout2()">구글 로그아웃</a>
 </div>
 <!--  네이버 소셜로그인  -->
-	<div id="naver_id_login"></div>
+<!-- 	<div id="naver_id_login"></div> -->
 	<a href="javascript:void(0)" onclick="naverLogout(); return false;">네이버로그아웃</a>
      <script src="/resources/js/naverLogin.js"></script>
      

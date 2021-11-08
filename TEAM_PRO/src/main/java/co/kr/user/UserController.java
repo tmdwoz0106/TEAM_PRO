@@ -73,7 +73,6 @@ public class UserController {
 		}
 		return json;
 	}
-<<<<<<< HEAD
 	//-------------------------내정보 보러가기-------------------------------
 	@RequestMapping(value = "/userDetail.do", method = RequestMethod.GET)
 	public String user_Detail(int user_no,Model model) {
@@ -95,7 +94,8 @@ public class UserController {
 	public ModelAndView user_modify(UserVO vo) {
 		ModelAndView json = new ModelAndView("jsonView");
 		userService.modify(vo);
-
+		return json;
+	}
 	//카카오 소셜로그인 
 	@RequestMapping(value = "slogin.do" ,method = RequestMethod.GET)
 	public String slogin_page(String user_id,HttpSession session) {
