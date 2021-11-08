@@ -9,8 +9,8 @@
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
-<script src="/resources/js/kakaoLogin.js"></script>
-<script src="/resources/js/googleLogin.js"></script>
+<script src="/resources/js/socialLogin/kakaoLogin.js"></script>
+<script src="/resources/js/socialLogin/googleLogin.js"></script>
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
@@ -65,7 +65,7 @@ function login(){
 <!--  네이버 소셜로그인  -->
 	<div id="naver_id_login"></div>
 	<a href="javascript:void(0)" onclick="naverLogout(); return false;">네이버로그아웃</a>
-     <script src="/resources/js/naverLogin.js"></script>
+     <script src="/resources/js/socialLogin/naverLogin.js"></script>
      
 </body>
 </html>
