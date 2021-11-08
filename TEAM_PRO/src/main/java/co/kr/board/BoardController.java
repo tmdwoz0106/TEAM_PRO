@@ -44,12 +44,52 @@ public class BoardController {
 	
 	@Resource(name = "uploadPath")
 	String uploadPath;
+	
+	@RequestMapping(value = "/head.do", method = RequestMethod.GET)
+	public String head(HttpSession session,Model model) {
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		if(session.getAttribute("user_no") != null) {
+			int user_no = Integer.parseInt(session.getAttribute("user_no").toString());
+			param.put("user_no", user_no);
+			model.addAttribute("user_no", user_no);
+		}else {
+			int user_no = 0;
+			param.put("user_no", user_no);
+			model.addAttribute("user_no", user_no);
+		}
+		return "head/header";
+	}
+	
+	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
+	public String main(HttpSession session,Model model) {
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		if(session.getAttribute("user_no") != null) {
+			int user_no = Integer.parseInt(session.getAttribute("user_no").toString());
+			param.put("user_no", user_no);
+			model.addAttribute("user_no", user_no);
+		}else {
+			int user_no = 0;
+			param.put("user_no", user_no);
+			model.addAttribute("user_no", user_no);
+		}
+		return "main/main";
+	}
+	
 	//----------------------------게시판 리스트-----------------------------------
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String list(HttpSession session,Model model) {
-		
-//		int user_no= Integer.parseInt(session.getAttribute("user_no").toString());
-//		model.addAttribute("user_no", user_no);
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		if(session.getAttribute("user_no") != null) {
+			int user_no = Integer.parseInt(session.getAttribute("user_no").toString());
+			param.put("user_no", user_no);
+			model.addAttribute("user_no", user_no);
+			System.out.println(user_no);
+		}else {
+			int user_no = 0;
+			param.put("user_no", user_no);
+			model.addAttribute("user_no", user_no);
+			System.out.println(user_no);
+		}
 		return "board/list";
 	}
 	@RequestMapping(value = "/listGET.do", method = RequestMethod.GET)
@@ -98,7 +138,6 @@ public class BoardController {
 			String file_path = uploadPath +"\\" + file_name;
 			File target = new File(uploadPath, file_name);
 			FileCopyUtils.copy(file[i].getBytes(), target);
-			
 			Fvo.setFile_name(file_name);
 			Fvo.setFile_path(file_path);
 			Fvo.setFile_no(fileMax+1+i);
@@ -196,5 +235,10 @@ public class BoardController {
 		}
 		
 		return "redirect:/BoardDetail.do?board_no="+vo.getBoard_no();
+	}
+	@RequestMapping(value = "/locode.do", method = RequestMethod.GET)
+	public String Locode() {
+		
+		return "board/locode";
 	}
 }

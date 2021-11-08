@@ -62,4 +62,19 @@ public class UserServiceImpl implements UserService {
 		return userMapper.join(vo);
 
 	}
+
+	@Override
+	public UserVO userDetail(int user_no) {
+		return userMapper.userDetail(user_no);
+	}
+
+	@Override
+	public int userDelete(int user_no) {
+		return userMapper.userDelete(user_no);
+	}
+
+	@Override
+	public int modify(UserVO vo) {
+		return userMapper.userModify(vo);
+	}
 }

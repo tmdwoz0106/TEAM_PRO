@@ -44,4 +44,29 @@
 				 #{user_birth},
 				 #{user_phone})
 	</insert>
+	
+	<select id="userDetail" resultType="co.kr.user.VO.UserVO">
+		SELECT user_id,
+			   user_pw,
+			   user_nick,
+			   user_name,
+			   user_birth,
+			   user_phone
+		FROM   pro_user
+		where  user_no = #{user_no}
+	</select>
+	
+	<delete id="userDelete">
+		delete
+		from    pro_user
+		where   user_no = #{user_no}
+	</delete>
+
+	<update id="userModify">
+		UPDATE pro_user
+		SET    user_pw = #{user_pw},
+		       user_nick = #{user_nick}
+		WHERE  user_no = #{user_no}
+	</update>
+		
 </mapper>

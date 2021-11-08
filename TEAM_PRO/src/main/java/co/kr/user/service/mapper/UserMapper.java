@@ -20,5 +20,11 @@ public interface UserMapper {
 
 	public int join(UserVO vo);
 
+	public UserVO userDetail(int user_no);
+
+	public int userDelete(int user_no);
+
+	public int userModify(UserVO vo);
+
 	
 }

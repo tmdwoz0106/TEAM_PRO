@@ -1,28 +1,26 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
+<style type="text/css">
+#body{
+	margin: auto;
+	width: 80%;
+}
+</style>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="/resources/css/board/list.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="/resources/js/board/list.js">
-function logout(){
-	$.ajax({
-		url:"/logout.do",
-		type:"POST",
-		dataType:"JSON",
-		success : function(reuslt){
-			alert("로그아웃");
-			location.href = "/";
-		}
-	})
-}
-</script>
+<script type="text/javascript" src="/resources/js/board/logout.js"></script>
+<%@ include file="/WEB-INF/views/haed/header.jsp" %>
 </head>
-<body>
-<h1>게시판</h1>
+<body id="body">
+<br />
+<br />
+<br />
 <label>검색</label>
 	<select id="type">
 		<option value="board_content">게시글</option>
@@ -47,13 +45,13 @@ function logout(){
 	</table>
 	
 	<div id="paging"></div>
-	<c:if test="${user_no ne null }">
+	<c:if test="${user_no != 0 }">
 		<a href="/BoardInsert.do"><button>게시글쓰기</button></a>
-		<button type="button" onclick="logout()">로그아웃</button>
+		<a href="/main.do"><button>메인</button></a>
 	</c:if>
-	<c:if test="${user_no eq null }">
-		<a href="/login.do"><button>로그인</button></a>
+	<c:if test="${user_no == 0 }">
+		<a href="/main.do"><button>메인</button></a>
 	</c:if>
-	
+	<%@ include file="/WEB-INF/views/foot/footer.jsp" %>
 </body>
 </html>

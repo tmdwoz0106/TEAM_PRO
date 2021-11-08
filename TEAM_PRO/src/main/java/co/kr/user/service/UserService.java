@@ -12,4 +12,10 @@ public interface UserService {
 
 	public int join(UserVO vo);
 
+	public UserVO userDetail(int user_no);
+
+	public int userDelete(int user_no);
+
+	public int modify(UserVO vo);
+
 }
