@@ -23,4 +23,3 @@ var naver_id_login = new naver_id_login("u_PTkLzzH6Gzne3cO8hw", "http://localhos
 	  	      }, 100);
 	  	   
 	  	}
-	

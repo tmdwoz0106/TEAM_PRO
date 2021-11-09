@@ -39,7 +39,7 @@ public class UserController {
 	}
 	//
 	@RequestMapping(value = "/loginPost.do", method = RequestMethod.POST)
-	public ModelAndView login_post(UserVO vo) {
+	public ModelAndView login_post(UserVO vo,HttpSession session) {
 		ModelAndView json = new ModelAndView("jsonView");
 		vo = userService.login(vo,session);
 		json.addObject("vo", vo);

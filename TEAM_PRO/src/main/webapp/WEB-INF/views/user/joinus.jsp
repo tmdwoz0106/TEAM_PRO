@@ -94,8 +94,14 @@
 <h2 class="text-left">회원가입</h2>
 <h6 class="mt-1 mb-4 text-left">로코드에서 다양한 가치를 얻으세요!</h6>
 <input type="hidden" name="user_no" value="${max }" readonly="readonly" />
+<c:if test="${ssID eq null}">
 <label for="inputId">아이디
     <input type="text" name="user_id" class="form-control" id="user_ID" placeholder="8~25자 사이로 입력하세요." minlength="8" required maxlength="25" autocomplete="off"  required></label>
+</c:if>
+<c:if test="${ssID ne null}">
+<label for="inputId">아이디
+    <input type="text" name="user_id" value="${ssID}" class="form-control" id="user_ID" placeholder="8~25자 사이로 입력하세요." minlength="8" required maxlength="25" autocomplete="off"  required></label>
+</c:if>
 <label for="inputPassword">패스워드
     <input type="password" name="user_pw" class="form-control" id="user_PW" placeholder="소문자,특수문자 포함(4~14)" minlength="4" required maxlength="14" autocomplete="off"  required></label>    
 <label for="inputName">이름
@@ -106,29 +112,29 @@
     <input type="text" name="user_birth" id="user_BIR" class="form-control" placeholder="ex) 950101" required></label>
 <label for="inputPhone">전화번호
     <input type="text" name="user_phone" id="user_PHO" class="form-control" placeholder="ex) 01012341234" required></label>    
-<table>
-	<tr>
-		<td>아이디</td>
-		<td>비밀번호</td>
-		<td>이름</td>
-		<td>닉네임</td>
-		<td>생년월일</td>
-		<td>핸드폰번호</td>
-	</tr>
-	<tr>
-	<c:if test="${ssID ne null}">
-		<td><input type="text" name="user_id" value="${ssID}"/></td>
-	</c:if>
-	<c:if test="${ssID eq null}">
-		<td><input type="text" name="user_id" /></td>
-	</c:if>
-		<td><input type="text" name="user_pw" /></td>
-		<td><input type="text" name="user_name" /></td>
-		<td><input type="text" name="user_nick" /></td>
-		<td><input type="text" name="user_birth" /></td>
-		<td><input type="text" name="user_phone" /></td>
-	</tr>
-</table>
+<!-- <table> -->
+<!-- 	<tr> -->
+<!-- 		<td>아이디</td> -->
+<!-- 		<td>비밀번호</td> -->
+<!-- 		<td>이름</td> -->
+<!-- 		<td>닉네임</td> -->
+<!-- 		<td>생년월일</td> -->
+<!-- 		<td>핸드폰번호</td> -->
+<!-- 	</tr> -->
+<!-- 	<tr> -->
+<%-- 	<c:if test="${ssID ne null}"> --%>
+<%-- 		<td><input type="text" name="user_id" value="${ssID}"/></td> --%>
+<%-- 	</c:if> --%>
+<%-- 	<c:if test="${ssID eq null}"> --%>
+<!-- 		<td><input type="text" name="user_id" /></td> -->
+<%-- 	</c:if> --%>
+<!-- 		<td><input type="text" name="user_pw" /></td> -->
+<!-- 		<td><input type="text" name="user_name" /></td> -->
+<!-- 		<td><input type="text" name="user_nick" /></td> -->
+<!-- 		<td><input type="text" name="user_birth" /></td> -->
+<!-- 		<td><input type="text" name="user_phone" /></td> -->
+<!-- 	</tr> -->
+<!-- </table> -->
 </form>
 
 <button class="btn btn-lg btn-secondary btn-block" type="button" onclick="join()">가입하기</button>

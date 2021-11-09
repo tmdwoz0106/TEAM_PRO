@@ -109,7 +109,7 @@ public class BoardController {
 			endPage = totalPage;
 		}
 		boolean prev = page > startPage;
-		boolean next = page < startPage;
+		boolean next = page < endPage;
 		
 		json.addObject("list", list);
 		json.addObject("endPage", endPage);
