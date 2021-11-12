@@ -17,4 +17,8 @@ public interface UserService {
 	
 	public int socialLogin(String userid);
 	
+	
+	public int sessionUser(String user_nick);
+	
+	
 }

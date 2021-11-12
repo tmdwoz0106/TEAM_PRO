@@ -1,23 +1,40 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Simple Chat</title>
+<title>채팅</title>
 </head>
 <body>
 
-<%
-       HttpSession sesson= request.getSession();
-
-       session.getAttribute("user_nick");
-      
-        out.println( session.getAttribute("user_nick")+"님이 입장하셨습니다");
- %>
+    <h1>실시간 채팅방</h1>
+    
+    
+              <%
+                   HttpSession sesson= request.getSession();
+              
+                   session.getAttribute("user_nick");
+                   
+                   out.println(session.getAttribute("user_nick")+"님의 채팅방");
+                   
+                   out.println("<br>");
+                   
+                  
+                   out.println(session.getAttribute("user_nick")+"님이 입장하셨습니다");
+                   
+              
+             %>
+             
+             <%session.getAttribute("ssid"); %>
+             
+             
+            
     <div>
         <button type="button" onclick="openSocket();">대화방 참여</button>
         <button type="button" onclick="closeSocket();">대회방 나가기</button>
+        <button type="button"><a href="/">HOME</a> </button>
     	<br/><br/><br/>
   		메세지 입력 : 
         <input type="text" id="sender" value="${sessionScope.user_nick}" style="display: none;">
@@ -40,6 +57,7 @@
             }
             //웹소켓 객체 만드는 코드
             ws = new WebSocket("ws://localhost:8088/echo.do");
+          
             
             ws.onopen = function(event){
                 if(event.data === undefined){
@@ -55,7 +73,9 @@
             };
             
             ws.onclose = function(event){
-                writeResponse("대화 종료");
+            	
+            	  writeResponse("대화종료");
+              
             }
             
         }
@@ -67,6 +87,7 @@
             text = "";
         }
         
+      
         function closeSocket(){
             ws.close();
         }

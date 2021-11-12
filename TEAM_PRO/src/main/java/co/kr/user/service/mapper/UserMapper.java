@@ -24,6 +24,8 @@ public interface UserMapper {
 
 	public int socialLogin(String userid);
 
+	public int sessionUser(String user_nick);
+
 	
 
 	

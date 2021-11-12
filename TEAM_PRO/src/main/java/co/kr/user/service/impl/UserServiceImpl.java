@@ -80,4 +80,13 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		return userMapper.socialLogin(userid);
 	}
+
+	@Override
+	public int sessionUser(String user_nick) {
+		// TODO Auto-generated method stub
+		return userMapper.sessionUser(user_nick);
+	}
+
+	
+
 }

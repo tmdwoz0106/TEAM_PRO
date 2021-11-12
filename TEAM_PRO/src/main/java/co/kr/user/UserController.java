@@ -1,12 +1,15 @@
 package co.kr.user;
 
 import java.io.IOException;
+import java.util.HashMap;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -75,36 +78,39 @@ public class UserController {
 		//int i= userService.userCheck(userid);
 		System.out.println("콜백 처리 부분 ...");
 		System.out.println("세션유저값"+ session.getAttribute("ssid"));
-		session.getAttribute("ssid");
+		//session.getAttribute("ssid");
 	   
 		return "user/login2";
 	}
 
 	@RequestMapping(value = "/naverlogin.do", method=RequestMethod.POST)
 	public ModelAndView socalTest(@RequestParam (name="user_id") 
-	String user_id,HttpSession session)
+	String user_id,HttpSession session,String user_nick)
 	{
-	
+		
 		session.setAttribute("ssid",user_id);
 		ModelAndView json= new ModelAndView("jsonView");
-		System.out.println(userService.userCheck(user_id));
-        ////아이디 찾기 
+		
 	    int i = userService.userCheck(user_id);
 	    System.out.println("유저아이디"+i);
+	    int j=userService.sessionUser(user_nick);
 
 		if (i!= 0) {
 			int k = userService.socialLogin(user_id);
-			if (k != 0) {
-				session.setAttribute("user_no", k);
-				System.out.println("회원번호"+k);
-			} 
+			
+				//session.setAttribute("user_no", k);
+				session.setAttribute("user_nick", j);
+				System.out.println("회원번호"+j);
 		}
+
 		json.addObject("result",i);
-	   // System.out.println("userid는:"+user_id);	 
+	
 	   
 		return json;
 		
 	}
+	
+	
 	
 	
 	@RequestMapping(value = "/test", method=RequestMethod.GET)
@@ -119,13 +125,37 @@ public class UserController {
 	}
 	
 	
-	@RequestMapping(value = "/chat.do", method=RequestMethod.GET)
-	public String chat()
+	@RequestMapping(value = "/chat.do/{user_nick:.+}", method=RequestMethod.GET)
+	public String chat(@PathVariable("user_nick") String user_nick,
+	HttpServletRequest req)
 	{
-	
-	     System.out.println("채팅페이지 이동 ");
+		HttpSession session=req.getSession();
+	    user_nick= (String)session.getAttribute("ssid");
+	    System.out.println("세션  usernick(유저컨트롤러에서 호출)"+user_nick);
+	    System.out.println("채팅페이지 이동합니다!! ");
+	    
 		return "chatting/chat"; 
 		
 	}
-
+	
+	@RequestMapping(value = "/room.do", method=RequestMethod.GET)
+	public String chatKakao()
+	{
+	
+	    System.out.println("채팅페이지 이동합니다!! ");
+	    
+		return "chat2/Room1"; 
+		
+	}
+	
+	@RequestMapping(value = "/room2.do", method=RequestMethod.GET)
+	public String chatKakao2(HttpServletRequest req,HttpSession session)
+	{
+	    String usernick= (String) session.getAttribute("user_nick");
+	    System.out.println(usernick);
+	    System.out.println("채팅페이지 이동합니다!! ");
+	    
+		return "chat2/Room2"; 
+		
+	}
 }

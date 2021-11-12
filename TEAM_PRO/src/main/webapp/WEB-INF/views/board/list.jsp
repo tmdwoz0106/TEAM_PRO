@@ -107,9 +107,11 @@ function logout(){
 	<div id="paging"></div>
 	<c:if test="${user_no ne null }">
 		<a href="/BoardInsert.do"><button>게시글쓰기</button></a>
-		 <a href="/chat.do">채팅접속</a>
+		 <a href="/chat.do/{user_nick:.+}">채팅접속</a>
+		 <a href="/room.do">채팅접속(카카오톡)</a>
 		<button type="button" onclick="logout()">로그아웃</button>
 	</c:if>
+	
 	<c:if test="${user_no eq null }">
 		<a href="/login.do"><button>로그인</button></a>
 		

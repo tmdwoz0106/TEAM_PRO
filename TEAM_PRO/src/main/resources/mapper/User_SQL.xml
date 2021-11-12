@@ -9,6 +9,13 @@
 		WHERE user_id = #{user_id}
 	</select>
 	
+	
+	<select id="sessionUser" resultType="int">
+	 select user_nick
+	 from pro_user
+	 where user_id=#{user_id}
+	</select>
+	
 
 	<select id="userCheck" resultType="int">
 		SELECT COUNT(*)
