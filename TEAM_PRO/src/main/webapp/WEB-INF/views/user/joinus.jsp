@@ -48,24 +48,24 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown" href="#" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">로코드</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown07">
-                  <a class="dropdown-item" href="#">Locode 소개</a>
-                  <a class="dropdown-item" href="#">Locode 이야기</a>
+                  <a class="dropdown-item" href="/locode.do">Locode 소개</a>
+                  <a class="dropdown-item" href="/">Locode 전체글</a>
                   </div>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown" href="#" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">강의</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown07">
-                  <a class="dropdown-item" href="#">Front-End</a>
-                  <a class="dropdown-item" href="#">Back-End</a>
-                  <a class="dropdown-item" href="#">Server / DB</a>
+                  <a class="dropdown-item" href="/typeList.do?board_type=강의 영상&board_content=Front">Front-End</a>
+                  <a class="dropdown-item" href="/typeList.do?board_type=강의 영상&board_content=Back">Back-End</a>
+                  <a class="dropdown-item" href="/typeList.do?board_type=강의 영상&board_content=Server">Server / DB</a>
                   </div>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown" href="#" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">커뮤니티</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown07">
-                  <a class="dropdown-item" href="#">자유게시판</a>
-                  <a class="dropdown-item" href="#">Q & A</a>
-                  <a class="dropdown-item" href="#">Tip</a>
+                  <a class="dropdown-item" href="/list.do?board_type=자유게시판">자유게시판</a>
+                  <a class="dropdown-item" href="/list.do?board_type=질문코너">Q & A</a>
+                  <a class="dropdown-item" href="/list.do?board_type=Tip">Tip</a>
                   </div>
               </li>
               <li class="nav-item">
@@ -104,6 +104,11 @@
 </c:if>
 <label for="inputPassword">패스워드
     <input type="password" name="user_pw" class="form-control" id="user_PW" placeholder="소문자,특수문자 포함(4~14)" minlength="4" required maxlength="14" autocomplete="off"  required></label>    
+<label for="inputPassword">이메일
+    <input type="text" name="user_email" class="form-control" id="user_email"  required></label>        
+    <button type="button" class="chekMail btn btn-outline-dark my-2 my-sm-2" onclick="emailChk()">인증번호 전송</button>
+<label for="inputPassword"><input type="text" id="emailInput" value="" class="form-control"/></label>
+<button type="button" id="emailInputChk" class="btn btn-outline-dark my-2 my-sm-2">확인</button>	
 <label for="inputName">이름
     <input type="text" name="user_name" class="form-control" placeholder="ex) 우디조" required></label>
 <label for="inputNick">닉네임
@@ -112,29 +117,6 @@
     <input type="text" name="user_birth" id="user_BIR" class="form-control" placeholder="ex) 950101" required></label>
 <label for="inputPhone">전화번호
     <input type="text" name="user_phone" id="user_PHO" class="form-control" placeholder="ex) 01012341234" required></label>    
-<!-- <table> -->
-<!-- 	<tr> -->
-<!-- 		<td>아이디</td> -->
-<!-- 		<td>비밀번호</td> -->
-<!-- 		<td>이름</td> -->
-<!-- 		<td>닉네임</td> -->
-<!-- 		<td>생년월일</td> -->
-<!-- 		<td>핸드폰번호</td> -->
-<!-- 	</tr> -->
-<!-- 	<tr> -->
-<%-- 	<c:if test="${ssID ne null}"> --%>
-<%-- 		<td><input type="text" name="user_id" value="${ssID}"/></td> --%>
-<%-- 	</c:if> --%>
-<%-- 	<c:if test="${ssID eq null}"> --%>
-<!-- 		<td><input type="text" name="user_id" /></td> -->
-<%-- 	</c:if> --%>
-<!-- 		<td><input type="text" name="user_pw" /></td> -->
-<!-- 		<td><input type="text" name="user_name" /></td> -->
-<!-- 		<td><input type="text" name="user_nick" /></td> -->
-<!-- 		<td><input type="text" name="user_birth" /></td> -->
-<!-- 		<td><input type="text" name="user_phone" /></td> -->
-<!-- 	</tr> -->
-<!-- </table> -->
 </form>
 
 <button class="btn btn-lg btn-secondary btn-block" type="button" onclick="join()">가입하기</button>

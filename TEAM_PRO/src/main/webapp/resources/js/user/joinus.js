@@ -1,3 +1,46 @@
+var emailKey="";
+
+function emailChk(){
+   
+
+      var mail= $("#user_email").val();
+      
+      if(mail == ""){
+         alert("메일 주소를 입력해 주세요.");
+         return ;
+      } else {
+         mail =$("#user_email").val();
+      
+         
+         $.ajax({
+            type:"POST",
+            url: "/checkMail.do",
+            data: {
+               mail: mail},
+            dataType: "JSON",
+            success : function(result) {
+                emailKey = result.authCode;
+                  $("#emailInputChk").click(function(){
+                     
+                     if($("#emailInput").val() == emailKey){
+                      alert("인증에 성공하였습니다.");
+                     }else if($("#emailInput").val() == ""){
+                        alert("인증번호를 입력해주세요");
+                        return false;
+                     }else {
+                        alert("인증번호가 일치하지 않습니다.");
+                        return false;
+                     }
+                  })
+            }
+         });
+         alert("인증번호가 전송되었습니다. ");
+         isCertification= true;
+      }
+
+}
+
+
 function join(){  
 	//id 검사
 	var id = $("#user_ID").val();
@@ -71,6 +114,17 @@ function join(){
 				alert("핸드폰 번호는 11자로 입력해주세요.");
   				return;
 		}
+		//이메일
+      var emailChk= $("#emailInput").val();
+      
+      if(emailChk == ""){   
+         alert("인증번호를 입력해 주세요.");
+         return;
+      } else if (emailChk != emailKey){
+         alert("인증번호가 일치하지 않습니다. 다시 확인해 주세요.");
+         console.log(emailKey);
+         return;
+      }
 	else {
 		joinus();
 	}

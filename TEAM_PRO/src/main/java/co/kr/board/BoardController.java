@@ -55,7 +55,7 @@ public class BoardController {
 		}else {
 			int user_no = 0;
 			param.put("user_no", user_no);
-			model.addAttribute("user_no", user_no);
+			model.addAttribute("user_no", user_no);	
 		}
 		return "head/header";
 	}
@@ -217,8 +217,9 @@ public class BoardController {
 		boardService.modify(vo);
 		//파일 수정//기존 파일 삭제 후 새로 추가하는 파일을 업로드시킴
 		fileService.delete(board_no);
-		System.out.println(fvo);
+		System.out.println("fvo : "+fvo);
 		int fileMax = fileService.fileMax();
+		if(file[0].getSize() != 0) {
 		for(int i = 0; i < file.length; i++) {
 			System.out.println(i);
 			String file_name = file[i].getOriginalFilename();
@@ -233,12 +234,21 @@ public class BoardController {
 			
 			fileService.insert(fvo);
 		}
-		
+		}
 		return "redirect:/BoardDetail.do?board_no="+vo.getBoard_no();
 	}
 	@RequestMapping(value = "/locode.do", method = RequestMethod.GET)
-	public String Locode() {
-		
+	public String Locode(Model model,HttpSession session) {
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		if(session.getAttribute("user_no") != null) {
+			int user_no = Integer.parseInt(session.getAttribute("user_no").toString());
+			param.put("user_no", user_no);
+			model.addAttribute("user_no", user_no);
+		}else {
+			int user_no = 0;
+			param.put("user_no", user_no);
+			model.addAttribute("user_no", user_no);	
+		}
 		return "board/locode";
 	}
 }

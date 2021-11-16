@@ -37,10 +37,10 @@
 	}
 </style>
 </head>
+<body>
 <header>
 	<%@ include file="../haed/header.jsp" %>
 </header>
-<body>
 <br />
 <br />
 <br />

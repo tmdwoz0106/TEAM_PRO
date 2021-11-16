@@ -63,28 +63,25 @@ width: 25%; /* Could be more or less, depending on screen size */
 <script type="text/javascript" src="/resources/js/reply/reply_delete.js"></script>
 <script type="text/javascript" src="/resources/js/reply/reply_modify.js"></script>
 <script type="text/javascript" src="/resources/js/like/like.js"></script>
-<script type="text/javascript" src="/resources/js/board/delete.js"></script>
-<script type="text/javascript" src="/resources/js/board/img.js"></script>
+<script type="text/javascript" src="/resources/js/board2/delete.js"></script>
+<!-- <script type="text/javascript" src="/resources/js/board2/img.js"></script> -->
 <script type="text/javascript">
-function content(){
 var memo1 = $("#content").val();
-console.log($("#content").val());
 console.log(memo1);
-	var userPatterns = {
-	  'url'   : /(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
-	}
-	
-	var userReplaceFunctions = {
-	  'url'  : function(_url){return '<a href="' + _url + '">'+ _url +'</a>'}
-	}
-	
-	var memo2 = memo1.replace(userPatterns['url'], userReplaceFunctions['url'])
-	$("#autolink").append("<a href = memo2>"+memo2+"</a>");
-}
-$(function(){
-	content();
-})
 
+var url = "";
+
+var userPatterns = {
+  url : /^(((http(s?))\:\/\/)?)([0-9a-zA-Z\-]+\.)+[a-zA-Z]{2,6}(\:[0-9]+)?(\/\S*)?/;
+}
+
+var userReplaceFunctions = {
+  url  : function(url){return '<a href="' + url + '">'+ url +'</a>'}
+}
+
+var memo2 = memo1.replace(userPatterns[url], userReplaceFunctions[url])
+document.write(memo2)
+document.write("<br>") // a line BReak in text
 </script>
 </head>
 <header>
@@ -100,11 +97,12 @@ $(function(){
               </div>
      <div class="container" role="detail">
                      
-<form id="deleteForm">
+<form id="deleteForm" action="/TypeDelete.do" method="POST">
+<input type="hidden" name="board_type" value="${board_type }" id="Board_Type" />
 <input type="hidden" name="user_no" value="${vo.user_no }" readonly="readonly" />
 <input type="hidden" name="board_no" value="${vo.board_no }" readonly="readonly" id="Board_NO"/>
 </form>
-                    <div class="mt-4 mb-4 ">
+                    <div class="mt-4 mb-4">
                         <h2>
                             <img src="/resources/img2/qna.png" alt="" width="40" height="40">
                             <c:out value=""/>${vo.board_title }
@@ -124,26 +122,19 @@ $(function(){
                           <hr/>
                       </div>
                                         
-                        <div class="board_content" style="width: 400px; height: 190px;" id="autolink">
-                        <input type="text" id="content" name="board_content" value="${vo.board_content }" readonly="readonly" style="border: none; width: 400px;" />
+                        <div class="board_content" id="content" style="width: 400px; height: 190px;">
+						<c:out value="${vo.board_content }"></c:out>
                         </div>
                         <hr />
+                        <table>
                         <td>
-                      <div class="mb-4 shadow-sm">
-                      <label for="imgCard"><b>기존 사진</b></label>
-                        <div class="row">
-	                        <div class="col-md-4">
-		                        <div class="card mb-4 shadow-sm">
-			                        <div id="IMG2">
-			                        		<c:forEach var="File" items="${file}">
-												<img src="/resources/img/${File.file_name}" id="IMG" style="width: 300px; height: 350px;"  onclick="big()"/>
-											</c:forEach>
-									</div>		
-								</div>
-							</div>
-						</div>
-						</div>
+                        <div id="IMG2">
+                        		<c:forEach var="File" items="${file}">
+									<img src="/resources/img/${File.file_name}" id="IMG" style="width: 300px; height: 350px;" onclick="big()"/>
+								</c:forEach>
+						</div>		
 						</td>
+						</table>
                           <hr/>
                           <div class="container text-right">
                           <c:if test="${likeBtn <= 0 and user_no ne 0}">
@@ -162,7 +153,7 @@ $(function(){
                             <a href="/BoardModify.do?board_no=${vo.board_no }"><button type="button" class="btn btn-sm btn-outline-secondary" id="btnUpdate">수정</button></a>
                             <button type="button" class="btn btn-sm btn-outline-secondary" id="btnDelete" onclick="BoardDelete()">삭제</button>
                           </c:if>
-                            <a href="/"><button type="button" class="btn btn-sm btn-outline-secondary" id="btnList">목록</button></a>
+                            <a href="/list.do?board_type=${vo.board_type}"><button type="button" class="btn btn-sm btn-outline-secondary" id="btnList">목록</button></a>
                           </div>
                           
                           <form id="commentForm" name="commentForm" method="post">
@@ -189,67 +180,9 @@ $(function(){
                                 <input type="hidden" id="" name="" value="" />        
                            </form>
                       </div>
-                          
-                          
-                          
-                          
-<%-- <c:if test="${user_no eq vo.user_no }"> --%>
-<%-- <a href="/BoardModify.do?board_no=${vo.board_no }"><button>수정</button></a> | --%>
-<!-- <button type="button" onclick="BoardDelete()">삭제</button> | -->
-<%-- </c:if> --%>
-<!-- <a href="/"><button>홈</button></a> -->
-<!-- <form id="deleteForm"> -->
-<%-- <input type="hidden" name="user_no" value="${vo.user_no }" readonly="readonly" /> --%>
-<%-- <input type="hidden" name="board_no" value="${vo.board_no }" readonly="readonly" id="Board_NO"/> --%>
-<!-- 	<table border="1" style="border: none;"> -->
-<!-- 		<tr> -->
-<!-- 			<td>분류</td> -->
-<%-- 			<td><input type="text" name="board_type" value="${vo.board_type }" readonly="readonly" /></td> --%>
-<!-- 		</tr> -->
-<!-- 		<tr> -->
-<!-- 			<td>제목</td> -->
-<%-- 			<td><input type="text" name="board_title" value="${vo.board_title }" readonly="readonly" /></td> --%>
-<!-- 		</tr> -->
-<!-- 		<tr> -->
-<!-- 			<td>내용</td> -->
-<%-- 			<td><input type="text" name="board_content" value="${vo.board_content }" readonly="readonly" /></td> --%>
-<!-- 		</tr> -->
-<!-- 		<tr> -->
-<!-- 			<td>작성자</td> -->
-<%-- 			<td><input type="text" name="user_nick" value="${vo.user_nick }" readonly="readonly" /></td> --%>
-<!-- 		</tr> -->
-<!-- 		<tr> -->
-<!-- 			<td>날짜</td> -->
-<%-- 			<td><input type="text" name="board_day" value="${vo.board_day }" readonly="readonly" /></td> --%>
-<!-- 		</tr> -->
-<!-- 		<tr> -->
-<!-- 			<td>조회수</td> -->
-<%-- 			<td><input type="text" name="board_view" value="${vo.board_view }" readonly="readonly" /></td> --%>
-<!-- 		</tr> -->
-<!-- 		<tr> -->
-<!-- 			<td>좋아요</td> -->
-<%-- 			<td><input type="text" name="board_like" value="${like}" readonly="readonly" /></td> --%>
-<!-- 		</tr> -->
-<!-- 	</table> -->
-<%-- 		<c:forEach var="File" items="${file}"> --%>
-<%-- 			<img src="/resources/img/${File.file_name}" style="width: 150px; height: 150px;"/> --%>
-<%-- 		</c:forEach> --%>
-<!-- 	</form> -->
-<%-- 	 <c:if test="${likeBtn > 0 and user_no ne 0}"> --%>
-<%-- 		<button style="border: none; background: none; font-size: 13px;" onclick="likeDelete(${vo.board_no},${user_no})">싫어요~꾹</button> --%>
-<%-- 	</c:if> --%>
-<%-- 	<c:if test="${likeBtn <= 0 and user_no ne 0}"> --%>
-<%-- 		<button style="border: none; background: none; font-size: 13px;" onclick="like(${vo.board_no},${user_no},${likeMax })">좋아요~꾹</button> --%>
-<%-- 	</c:if> --%>
+
 	
 	<div>
-<%-- 	<c:if test="${user_no ne 0 }"> --%>
-<!-- 	<div class="my-box" id="reply_box"> -->
-<%-- 			<em class="comment_inbox">${user_nick }</em> --%>
-<!-- 			<textarea placeholder="댓글을 남겨주세요" class="comment_inbox" rows="2" cols="3" style="height: 19px; margin: 0px -5px 0px 0px; border: none; width: 498px; font-size: 15px; outline: none; resize: none; max-height: 500px;" id="TextArea"></textarea> -->
-<!-- 			<button style="font-size: 13px; color: #b7b7b7; background: none; border: none;" onclick="comment_add(0,0)">등록</button> -->
-<!-- 	</div> -->
-<%-- 	</c:if> --%>
 	<c:forEach var="reply" items="${list }">
 		<c:forEach begin="0" end="${reply.reply_depth }">
 		<c:if test="${reply.reply_group == 0}">

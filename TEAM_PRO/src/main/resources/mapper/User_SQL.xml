@@ -35,14 +35,16 @@
 				 user_name,
 				 user_nick,
 				 user_birth,
-				 user_phone)
+				 user_phone,
+				 user_email)
 		values   (#{user_no},
 				 #{user_id},
 				 #{user_pw},
 				 #{user_name},
 				 #{user_nick},
 				 #{user_birth},
-				 #{user_phone})
+				 #{user_phone},
+				 #{user_email})
 	</insert>
 	
 	<select id="userDetail" resultType="co.kr.user.VO.UserVO">

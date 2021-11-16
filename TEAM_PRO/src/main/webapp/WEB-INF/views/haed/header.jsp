@@ -50,15 +50,15 @@
                 <a class="nav-link dropdown" href="#" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">로코드</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown07">
                   <a class="dropdown-item" href="/locode.do">Locode 소개</a>
-                  <a class="dropdown-item" href="#">Locode 이야기</a>
+                  <a class="dropdown-item" href="/">Locode 전체글</a>
                   </div>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown" href="/list.do?board_type=강의 영상" id="dropdown07" data-toggle="" aria-haspopup="true" aria-expanded="false">강의</a>
+                <a class="nav-link dropdown" href="/list.do?board_type=강의 영상" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">강의</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown07">
-<!--                   <a class="dropdown-item" href="#">Front-End</a> -->
-<!--                   <a class="dropdown-item" href="#">Back-End</a> -->
-<!--                   <a class="dropdown-item" href="#">Server / DB</a> -->
+                  <a class="dropdown-item" href="/typeList.do?board_type=강의 영상&board_content=Front">Front-End</a>
+                  <a class="dropdown-item" href="/typeList.do?board_type=강의 영상&board_content=Back">Back-End</a>
+                  <a class="dropdown-item" href="/typeList.do?board_type=강의 영상&board_content=Server">Server / DB</a>
                   </div>
               </li>
               <li class="nav-item dropdown">

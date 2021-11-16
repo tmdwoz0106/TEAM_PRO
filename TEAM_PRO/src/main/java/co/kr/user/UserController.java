@@ -1,8 +1,16 @@
 package co.kr.user;
 
+import java.security.PrivateKey;
+import java.util.Random;
+
+import javax.crypto.Cipher;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
  
@@ -31,6 +39,43 @@ public class UserController {
 	@Autowired
 	public FileService fileService;
 	
+	@Autowired
+	JavaMailSender mailSender;
+	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+	public String decryptRsa(PrivateKey privateKey, String securedValue) {
+		 String decryptedValue = "";
+		 try{
+			Cipher cipher = Cipher.getInstance("RSA");
+		   /**
+			* 암호화 된 값은 byte 배열이다.
+			* 이를 문자열 폼으로 전송하기 위해 16진 문자열(hex)로 변경한다. 
+			* 서버측에서도 값을 받을 때 hex 문자열을 받아서 이를 다시 byte 배열로 바꾼 뒤에 복호화 과정을 수행한다.
+			*/
+			byte[] encryptedBytes = hexToByteArray(securedValue);
+			cipher.init(Cipher.DECRYPT_MODE, privateKey);
+			byte[] decryptedBytes = cipher.doFinal(encryptedBytes);
+			decryptedValue = new String(decryptedBytes, "utf-8"); // 문자 인코딩 주의.
+		 }catch(Exception e)
+		 {
+			 logger.info("decryptRsa Exception Error : "+e.getMessage());
+		 }
+			return decryptedValue;
+	} 
+	/** 
+	 * 16진 문자열을 byte 배열로 변환한다. 
+	 */
+	 public static byte[] hexToByteArray(String hex) {
+		if (hex == null || hex.length() % 2 != 0) {
+			return new byte[]{};
+		}
+	 
+		byte[] bytes = new byte[hex.length() / 2];
+		for (int i = 0; i < hex.length(); i += 2) {
+			byte value = (byte)Integer.parseInt(hex.substring(i, i + 2), 16);
+			bytes[(int) Math.floor(i / 2)] = value;
+		}
+		return bytes;
+	}
 	//----------------------------로그인---------------------------
 	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
 	public String login() {
@@ -73,6 +118,30 @@ public class UserController {
 		}
 		return json;
 	}
+	
+	//-------------------------이메일 체크---------------------------------
+	@RequestMapping(value = "/checkMail.do", method = RequestMethod.POST)
+	   public ModelAndView sendMail(String mail) {
+	      ModelAndView json = new ModelAndView("jsonView");
+	      Random random = new Random(); // 난수
+	      String authCode = ""; // 인증번호
+
+	      SimpleMailMessage message = new SimpleMailMessage();
+	      message.setTo(mail);
+	      for (int i = 0; i < 3; i++) {
+	         int index = random.nextInt(25) + 65; // a~z 알파벳
+	         authCode += (char) index;
+	      }
+	      int numIndex = random.nextInt(9999) + 1000;// 4자리 랜덤정수
+	      authCode += numIndex;
+	      message.setSubject("[locode] 귀하의 계정 생성을 위한 인증 코드를 확인해 주세요.");
+	      message.setText("[locode]귀하의 인증번호는 " + authCode+"입니다.계정 생성에 동의한다면 회원가입 창에 인증 번호를 입력해 주세요.문제가 있다면, 관리자에게 문의 바랍니다.");
+	      mailSender.send(message);
+	      System.out.println(authCode+"오토코드");
+	      json.addObject("authCode", authCode);
+	      return json;
+	   }
+
 	//-------------------------내정보 보러가기-------------------------------
 	@RequestMapping(value = "/userDetail.do", method = RequestMethod.GET)
 	public String user_Detail(int user_no,Model model) {

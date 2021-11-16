@@ -59,15 +59,15 @@
                 <a class="nav-link dropdown" href="#" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">로코드</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown07">
                   <a class="dropdown-item" href="/locode.do">Locode 소개</a>
-                  <a class="dropdown-item" href="#">Locode 이야기</a>
+                  <a class="dropdown-item" href="/">Locode 전체글</a>
                   </div>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown" href="/list.do?board_type=강의 영상" id="dropdown07" data-toggle="" aria-haspopup="" aria-expanded="false">강의</a>
+                <a class="nav-link dropdown" href="/list.do?board_type=강의 영상" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">강의</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown07">
-<!--                   <a class="dropdown-item" href="#">Front-End</a> -->
-<!--                   <a class="dropdown-item" href="#">Back-End</a> -->
-<!--                   <a class="dropdown-item" href="#">Server / DB</a> -->
+                  <a class="dropdown-item" href="/typeList.do?board_type=강의 영상&board_content=Front">Front-End</a>
+                  <a class="dropdown-item" href="/typeList.do?board_type=강의 영상&board_content=Back">Back-End</a>
+                  <a class="dropdown-item" href="/typeList.do?board_type=강의 영상&board_content=Server">Server / DB</a>
                   </div>
               </li>
               <li class="nav-item dropdown">
@@ -253,17 +253,17 @@
               <div class="col-6 col-md">
                 <h5>채용정보</h5>
                 <ul class="list-unstyled text-small">
-                  <li><a class="text-muted" href="#">로코드 채용</a></li>
-                  <li><a class="text-muted" href="#">기업 채용</a></li>
-                  <li><a class="text-muted" href="#">채용 안내</a></li>
+                  <li><a class="text-muted" href="/typeList.do?board_type=구인구직&board_content=로코드">로코드 채용</a></li>
+                  <li><a class="text-muted" href="/typeList.do?board_type=구인구직&board_content=기업">기업 채용</a></li>
+                  <li><a class="text-muted" href="/typeList.do?board_type=구인구직&board_content=채용">채용 안내</a></li>
                 </ul>
               </div>
               <div class="col-6 col-md">
                 <h5>학습하기</h5>
                 <ul class="list-unstyled text-small">
-                  <li><a class="text-muted" href="#">Front-End</a></li>
-                  <li><a class="text-muted" href="#">Back-End</a></li>
-                  <li><a class="text-muted" href="#">Server / DB</a></li>
+                  <li><a class="text-muted" href="/typeList.do?board_type=강의 영상&board_content=Front">Front-End</a></li>
+                  <li><a class="text-muted" href="/typeList.do?board_type=강의 영상&board_content=Back">Back-End</a></li>
+                  <li><a class="text-muted" href="/typeList.do?board_type=강의 영상&board_content=Server">Server / DB</a></li>
                 </ul>
               </div>
               <div class="col-6 col-md">

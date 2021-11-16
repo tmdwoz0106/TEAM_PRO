@@ -26,23 +26,23 @@
               <div class="col-6 col-md">
                 <h5>채용정보</h5>
                 <ul class="list-unstyled text-small">
-                  <li><a class="text-muted" href="#">로코드 채용</a></li>
-                  <li><a class="text-muted" href="#">기업 채용</a></li>
-                  <li><a class="text-muted" href="#">채용 안내</a></li>
+                  <li><a class="text-muted" href="/typeList.do?board_type=구인구직&board_content=로코드">로코드 채용</a></li>
+                  <li><a class="text-muted" href="/typeList.do?board_type=구인구직&board_content=기업">기업 채용</a></li>
+                  <li><a class="text-muted" href="/typeList.do?board_type=구인구직&board_content=채용">채용 안내</a></li>
                 </ul>
               </div>
               <div class="col-6 col-md">
                 <h5>학습하기</h5>
                 <ul class="list-unstyled text-small">
-                  <li><a class="text-muted" href="#">Front-End</a></li>
-                  <li><a class="text-muted" href="#">Back-End</a></li>
-                  <li><a class="text-muted" href="#">Server / DB</a></li>
+                  <li><a class="text-muted" href="/typeList.do?board_type=강의 영상&board_content=Front">Front-End</a></li>
+                  <li><a class="text-muted" href="/typeList.do?board_type=강의 영상&board_content=Back">Back-End</a></li>
+                  <li><a class="text-muted" href="/typeList.do?board_type=강의 영상&board_content=Server">Server / DB</a></li>
                 </ul>
               </div>
               <div class="col-6 col-md">
                 <h5>고객센터</h5>
                 <ul class="list-unstyled text-small">
-                  <li><a class="text-muted" href="#">자주묻는 질문</a></li>
+                  <li><a class="text-muted" href="">자주묻는 질문</a></li>
                   <li><a class="text-muted" href="#">이용약관</a></li>
                   <li><a class="text-muted" href="#">개인정보취급방침</a></li>
                 </ul>

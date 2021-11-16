@@ -6,8 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="/resources/js/board/insert.js"></script>
-
+<script type="text/javascript" src="/resources/js/board2/insert.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <title>locode :: 글쓰기</title>
 
@@ -41,12 +40,12 @@
               </div>
 
               <div class="container mb-3 mt-4" role="main">
-                  <form name="form" id="form" role="form" action="/InsertBoard.do" method="POST" enctype="multipart/form-data">                   
+                  <form name="form" id="form" role="form" action="/InsertType.do" method="POST" enctype="multipart/form-data">                   
                     <input type="hidden" name="board_no" value="${max}" readonly="readonly"/>
 					<input type="hidden" name="user_no" value="${user_no}" readonly="readonly"/>
                     <div class="mb-3">
                         <label for="tag"><b>분류</b></label>
-                        <select class="form-inline" name="board_type" id="board_Type">
+                        <select class="form-inline" name="board_type">
                             <option value="자유게시판">자유게시판</option>
 							<option value="질문코너">질문코너</option>
 							<option value="tip">tip</option>
@@ -74,12 +73,13 @@
                     </div>
                     
                 <div class="text-right">
-                    <button type="submit" class="btn btn-sm btn-secondary" id="btnSave" onclick="autolink(${content})">저장</button>
+                    <button type="submit" class="btn btn-sm btn-secondary" id="btnSave" >저장</button>
                     <a href="/"><button type="button" class="btn btn-sm btn-secondary" id="btnList">목록</button></a>
                 </div>
                 </form>
             </div>
             </div>
+
 <footer>
 	<%@ include file="../foot/footer.jsp" %>
 </footer>

@@ -28,7 +28,11 @@
 
 	<select id="total" resultType="int">
 		SELECT COUNT(*)
-		FROM   pro_board
+		FROM   pro_board,pro_user
+		WHERE  pro_board.user_no = pro_user.user_no
+		<if test="keyword != null and keyword !=''">
+			AND ${type} like '%'||#{keyword}||'%'
+		</if>	
 	</select>
 
 	<select id="max" resultType="int">

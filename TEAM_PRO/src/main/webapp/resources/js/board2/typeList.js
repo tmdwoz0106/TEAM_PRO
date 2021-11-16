@@ -1,8 +1,8 @@
 function list(page){
 	$.ajax({
-		url:"/listType.do",
+		url:"/TypeList.do",
 		type:"GET",
-		data:{page:page, keyword:$("#keyword").val(), type:$("#type option:selected").val(), board_type:$("#board_Type").val()},
+		data:{page:page, keyword:$("#keyword").val(), type:$("#type option:selected").val(),board_type:$("#board_type").val(),board_content:$("#board_content").val()},
 		dataType:"JSON",
 		success : function(result){
 			var list = result.list;
