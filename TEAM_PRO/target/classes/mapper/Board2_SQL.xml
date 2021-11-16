@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.kr.board2.service.mapper.BoardMapper2">
+
+	<select id="list" resultType="co.kr.board.VO.BoardUserVO">
+	<![CDATA[
+		SELECT * FROM
+			(SELECT ROW_NUMBER() OVER(ORDER BY board_no desc)rn,
+															 board_no,
+															 board_title,
+															 board_day,
+															 board_view,
+															 board_type,
+															 user_nick
+			 from pro_board,pro_user
+			 where pro_board.user_no = pro_user.user_no		
+	]]>
+		<if test="keyword != null and keyword != ''">
+			AND ${type} LIKE '%'||#{keyword}||'%'
+		</if>
+			ORDER BY board_no desc
+	<![CDATA[
+			)a
+			where a.rn > #{startRn}
+			and a.rn <= #{endRn}
+			and board_type = #{board_type}								 
+
+	]]>
+	</select>
+
+	<select id="total" resultType="int">
+		SELECT COUNT(*)
+		FROM pro_board,pro_user
+		WHERE pro_board.user_no = pro_user.user_no		
+		AND  board_type = #{board_type}
+		<if test="keyword != null and keyword != ''">
+			AND ${type} LIKE '%'||#{keyword}||'%'
+		</if>
+	</select>
+	
+	<select id="detail" resultType="co.kr.board.VO.BoardUserVO">
+		SELECT * FROM(
+			SELECT pro_board.user_no,
+			       board_no,
+				   board_title,
+			       board_content,
+			       board_type,
+			       user_nick,
+			       board_day,
+				   board_view
+			FROM   pro_board,pro_user
+			WHERE  pro_board.user_no = pro_user.user_no
+		)a
+		WHERE a.board_no = #{board_no}
+	</select>
+	
+	<update id="cntUp">
+		update pro_board
+		set    board_view = #{board_view}
+		where  board_no = #{board_no}
+	</update>
+	
+	<select id="TypeList" resultType="co.kr.board.VO.BoardUserVO">
+		<![CDATA[
+		SELECT * FROM
+			(SELECT ROW_NUMBER() OVER(ORDER BY board_no desc)rn,
+														   	 board_no,
+														     board_title,
+														     board_view,
+														     board_day,
+														     user_nick,
+														     board_type,
+														     board_content
+			FROM pro_user,pro_board
+			WHERE pro_user.user_no = pro_board.user_no
+			AND   board_type = #{board_type}
+			AND   board_content like '%'||#{board_content}||'%'
+		]]>
+		<if test="keyword != null and keyword != ''">
+			AND ${type} LIKE '%'||#{keyword}||'%'
+		</if>
+			ORDER BY board_no desc
+	<![CDATA[
+			)a
+			WHERE a.rn > #{startRn}
+			AND   a.rn <= #{endRn}
+
+		]]>
+	</select>
+	
+	<select id="Typetotal" resultType="int">
+		SELECT COUNT(*)
+		FROM pro_user,pro_board
+		WHERE pro_user.user_no = pro_board.user_no
+		AND   board_type = #{board_type}
+		AND   board_content like '%'||#{board_content}||'%'
+		<if test="keyword != null and keyword != ''">
+			AND ${type} LIKE '%'||#{keyword}||'%'
+		</if>
+	</select>
+
+	<insert id="insert">
+		insert into
+		pro_board
+				  (board_no,
+				  board_title,
+				  board_content,
+				  board_view,
+				  board_day,
+				  board_type,
+				  user_no)
+		values   (#{board_no},
+				  #{board_title},
+				  #{board_content},
+				  #{board_view},
+				  #{board_day},
+				  #{board_type},
+				  #{user_no})
+	</insert>
+	
+	<select id="max" resultType="int">
+		SELECT MAX(board_no)
+		FROM   pro_board
+	</select>
+</mapper>

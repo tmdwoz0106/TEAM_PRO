@@ -21,7 +21,7 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public List<BoardVO> list(int page, String type, String keyword) {
-		int amount = 20;
+		int amount = 10;
 		HashMap<String, Object> param = new HashMap<String, Object>();
 		param.put("startRn", (page-1)*amount);
 		param.put("endRn", page*amount);
