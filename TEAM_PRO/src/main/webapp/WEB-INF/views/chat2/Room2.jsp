@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,11 +8,6 @@
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 <title>Insert title here</title>
-
-<body>
-<input type ="hidden" name="userid"/>
-</body>
-
 <style>
 .body-chat{
   padding-bottom: 0;
@@ -163,13 +157,16 @@ display: flex;
 
 </style>
 
-
+<body>
+    <input type="text" name="user_nick"/>
+</body>
 <script language="javascript">
 
 var socket = null;
 connect();
 
-var gUserId=document.getElementById("userid");
+
+var gUserId= document.getElementById("user_nick");
 
 function connect() {
 	var ws = new WebSocket("ws://localhost:8088/echo.do");

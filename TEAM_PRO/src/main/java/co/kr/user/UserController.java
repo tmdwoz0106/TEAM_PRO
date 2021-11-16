@@ -149,10 +149,11 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/room2.do", method=RequestMethod.GET)
-	public String chatKakao2(HttpServletRequest req,HttpSession session)
+	public String chatKakao2(HttpServletRequest req,HttpSession session
+			)
 	{
-	    String usernick= (String) session.getAttribute("user_nick");
-	    System.out.println(usernick);
+	 String usernick= (String) session.getAttribute("user_nick");
+	    System.out.println("세션에저장 유저 닉네임"+usernick);
 	    System.out.println("채팅페이지 이동합니다!! ");
 	    
 		return "chat2/Room2"; 
