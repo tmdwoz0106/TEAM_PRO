@@ -6,7 +6,7 @@ import co.kr.user.VO.UserVO;
 
 public interface UserService {
 
-	public UserVO login(UserVO vo,HttpSession session);
+	public UserVO login(UserVO vo,HttpSession session,String decryptedUID,String decryptedPWD);
 
 	public int max();
 
