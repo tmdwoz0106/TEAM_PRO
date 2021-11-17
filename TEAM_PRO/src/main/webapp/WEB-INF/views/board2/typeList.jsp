@@ -8,11 +8,23 @@
 	margin: auto;
 	width: 80%;
 }
+#searchbtn {
+	background-color: #6c757d;
+	color: white;
+	border: 0px;
+	outline: 0px;
+	border-radius: 4px;
+}
+#searchbtn:hover {
+	background-color: #5a6268;
+	border-color: #545b62;
+}
 </style>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="/resources/js/board2/typeList.js"></script>
-<link href="/resources/css/board/list.css" rel="stylesheet" type="text/css"/>
-<link href="/resources/css/board/board.css" rel="stylesheet" type="text/css"/>
+<link href="./resources/css/board/list.css" rel="stylesheet" type="text/css"/>
+<link href="./resources/css/board/board.css" rel="stylesheet" type="text/css"/>
+<jsp:include page="/resources/public/logo_div.jsp"></jsp:include>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -37,7 +49,7 @@
 	<div class="col-4 input-group">
 	<input type="text" class="form-control" id="keyword" placeholder="검색어를 입력하세요"/>
 	<div class="input-group-append">
-		<button class="btn btn-secondary" type="button" onclick="list(1)">검색</button>
+		<input id="searchbtn" type="button" onclick="list(1)" value="검색"/>
 	</div> 
 </div>
 </form>

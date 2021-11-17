@@ -59,33 +59,14 @@ width: 25%; /* Could be more or less, depending on screen size */
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="/resources/js/reply/reply_comment.js"></script>
-<script type="text/javascript" src="/resources/js/reply/reply_delete.js"></script>
-<script type="text/javascript" src="/resources/js/reply/reply_modify.js"></script>
-<script type="text/javascript" src="/resources/js/like/like.js"></script>
-<script type="text/javascript" src="/resources/js/board/delete.js"></script>
-<script type="text/javascript" src="/resources/js/board/img.js"></script>
-<script type="text/javascript">
-function content(){
-var memo1 = $("#content").val();
-console.log($("#content").val());
-console.log(memo1);
-	var userPatterns = {
-	  'url'   : /(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
-	}
-	
-	var userReplaceFunctions = {
-	  'url'  : function(_url){return '<a href="' + _url + '">'+ _url +'</a>'}
-	}
-	
-	var memo2 = memo1.replace(userPatterns['url'], userReplaceFunctions['url'])
-	$("#autolink").append("<a href = memo2>"+memo2+"</a>");
-}
-$(function(){
-	content();
-})
-
-</script>
+<script type="text/javascript" src="./resources/js/reply/reply_comment.js"></script>
+<script type="text/javascript" src="./resources/js/reply/reply_delete.js"></script>
+<script type="text/javascript" src="./resources/js/reply/reply_modify.js"></script>
+<script type="text/javascript" src="./resources/js/like/like.js"></script>
+<script type="text/javascript" src="./resources/js/board/delete.js"></script>
+<script type="text/javascript" src="./resources/js/board/img.js"></script>
+<script type="text/javascript" src="./resources/js/board/detail.js"></script>
+<jsp:include page="/resources/public/logo_div.jsp"></jsp:include>
 </head>
 <header>
 <%@include file="../haed/header.jsp" %>

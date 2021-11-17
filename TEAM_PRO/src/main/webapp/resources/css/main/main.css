@@ -2,7 +2,7 @@
 -------------------------------------------------- */
 /* Padding below the footer and lighter body text */
 
-body {
+body {																																																																																																																																																																																																																																																																																																																																															
   padding-top: 3rem;
   padding-bottom: 3rem;
   color: #5a5a5a;
@@ -27,7 +27,7 @@ body {
   height: 20rem;
 }
 .carousel-item > img {
-  position: absolute;
+  position: static;
   top: 0;
   left: 0;
   min-width: 100%;
@@ -101,5 +101,3 @@ body {
 .blog-footer p:last-child {
   margin-bottom: 0;
 }
-
-

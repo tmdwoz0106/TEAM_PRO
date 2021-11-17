@@ -8,35 +8,30 @@
 	margin: auto;
 	width: 80%;
 }
+#searchbtn {
+	background-color: #6c757d;
+	color: white;
+	border: 0px;
+	outline: 0px;
+	border-radius: 4px;
+}
+#searchbtn:hover {
+	background-color: #5a6268;
+	border-color: #545b62;
+}
 </style>
+<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+<link rel="icon" href="./favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="/resources/css/board/list.css" rel="stylesheet" type="text/css"/>
-<script src="/resources/js/googleLogin.js"></script>
-<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-<script src="/resources/js/kakaoLogin.js"></script>
+<link href="./resources/css/board/list.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="/resources/js/board/list.js">
-<script type="text/javascript" src="/resources/js/board/logout.js"></script>
+<script type="text/javascript" src="./resources/js/board/list.js">
+<script type="text/javascript" src="./resources/js/board/logout.js"></script>
 <link href="/resources/css/board/board.css" rel="stylesheet" type="text/css"/>
 <%@ include file="/WEB-INF/views/haed/header.jsp" %>
-<script type="text/javascript">
-var testPopUp;
-	function openPopUp() {
-	    testPopUp= window.open("https://nid.naver.com/nidlogin.logout",
-	          "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,width=1,height=1");
-	}
-	function closePopUp(){
-	    testPopUp.close();
-	}
-
-	function naverLogout() {
-	   openPopUp();
-	   setTimeout(function(){
-	      closePopUp();
-	      }, 1000);
-	}	
-</script>
+<jsp:include page="/resources/public/logo_div.jsp"></jsp:include>
 </head>
 <body id="body">
 <br />
@@ -54,7 +49,7 @@ var testPopUp;
             <div class="col-4 input-group">
             <input type="text" class="form-control" id="keyword" placeholder="검색어를 입력하세요" value="">
              <div class="input-group-append"> 
-              <button class="btn btn-secondary" type="button" onclick="list(1)">검색</button>
+              <input id="searchbtn" type="button" onclick="list(1)" value="검색"/>
              </div> 
           </div>
  </form>
@@ -78,7 +73,7 @@ var testPopUp;
         <a href="/main.do" class="btn btn-secondary">메인</a>
     </c:if>
     <c:if test="${user_no == 0 }">
-		<a href="/main.do" class="page-item active">메인</a>
+		<a href="/" class="btn btn-secondary">메인</a>
 	</c:if>
     </div>
     
@@ -87,5 +82,6 @@ var testPopUp;
 	<button value="1"></button>
 
 	<%@ include file="/WEB-INF/views/foot/footer.jsp" %>
+	<script src="./resources/js/adver/adver.js"></script>
 </body>
 </html>

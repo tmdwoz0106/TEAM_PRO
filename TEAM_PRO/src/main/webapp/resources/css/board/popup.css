@@ -1,0 +1,16 @@
+	.noshow{
+		position: fixed;
+		bottom: 0px;
+		right: 0px;
+	}
+	#thumbnail{
+		height: 100%;
+		width: 100%;
+		left: 5%;
+		right: 5%;
+		text-align: center;
+	}
+	img {
+		width: 1000px;
+		height: 325px
+	}

@@ -228,8 +228,8 @@ public class UserController {
 	}
 
 	//소셜로그인 아이디와 DB 확인
-	@RequestMapping(value="/kakaoLogin.do",method = RequestMethod.POST)
-	public ModelAndView kakaoLogin(String user_id,UserVO vo,HttpSession session) {
+	@RequestMapping(value="/social.do",method = RequestMethod.POST)
+	public ModelAndView social(String user_id,UserVO vo,HttpSession session) {
 		ModelAndView json = new ModelAndView("jsonView");
 		
 		int i =userService.idCheck(user_id);
