@@ -15,29 +15,12 @@
 	
     <title>locode :: 메인홈페이지</title>
 
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-
-    </style>
-
-    
     <!-- Custom styles for this template -->
-    <link href="\resources\css\main\main.css" rel="stylesheet">
+    <link href="/resources/css/main/main.css" rel="stylesheet">
+    <link href="./resources/css/main/main2.css" rel="stylesheet">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script type="text/javascript" src="/resources/js/board/logout.js"></script>
+	<script type="text/javascript" src="./resources/js/board/logout.js"></script>
+	<jsp:include page="/resources/public/logo_div.jsp"></jsp:include>
   </head>
   <body>
 
@@ -47,7 +30,7 @@
     <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
         <div class="container">
           <div class="mainlogo">
-          <a href="/"><img src="/resources/img2/mainlogo.png" width="150" height="40" alt="Locode로고 이미지"></a>
+          <a href="/"><img src="./resources/img2/mainlogo.png" width="150" height="40" alt="Locode로고 이미지"></a>
         </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -59,15 +42,15 @@
                 <a class="nav-link dropdown" href="#" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">로코드</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown07">
                   <a class="dropdown-item" href="/locode.do">Locode 소개</a>
-                  <a class="dropdown-item" href="#">Locode 이야기</a>
+                  <a class="dropdown-item" href="/">Locode 전체글</a>
                   </div>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown" href="/list.do?board_type=강의 영상" id="dropdown07" data-toggle="" aria-haspopup="" aria-expanded="false">강의</a>
+                <a class="nav-link dropdown" href="/list.do?board_type=강의 영상" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">강의</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown07">
-<!--                   <a class="dropdown-item" href="#">Front-End</a> -->
-<!--                   <a class="dropdown-item" href="#">Back-End</a> -->
-<!--                   <a class="dropdown-item" href="#">Server / DB</a> -->
+                  <a class="dropdown-item" href="/typeList.do?board_type=강의 영상&board_content=Front">Front-End</a>
+                  <a class="dropdown-item" href="/typeList.do?board_type=강의 영상&board_content=Back">Back-End</a>
+                  <a class="dropdown-item" href="/typeList.do?board_type=강의 영상&board_content=Server">Server / DB</a>
                   </div>
               </li>
               <li class="nav-item dropdown">
@@ -109,14 +92,14 @@
           </ol>
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img src="images/123.png" alt="배너" />
+              <img src="images/123.png" alt="배너"/>
               <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false"><title> </title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em"> </text></svg>
       
               <div class="container">
                 <div class="carousel-caption text-left">
-                  <h1>Locode 소개 배너</h1>
-                  <p>우리는 성장기회의 평등을 추구합니다.</p>
-                  <p><a class="btn btn-lg btn-light" href="/locode.do">Locode는</a></p>
+                <h1>Locode 소개 배너</h1>
+	                  <p id="ddd">우리는 성장기회의 평등을 추구합니다.</p>
+	                  <p><a class="btn btn-lg btn-light"href="/locode.do">Locode는</a></p>
                 </div>
               </div>
             </div>
@@ -253,17 +236,17 @@
               <div class="col-6 col-md">
                 <h5>채용정보</h5>
                 <ul class="list-unstyled text-small">
-                  <li><a class="text-muted" href="#">로코드 채용</a></li>
-                  <li><a class="text-muted" href="#">기업 채용</a></li>
-                  <li><a class="text-muted" href="#">채용 안내</a></li>
+                  <li><a class="text-muted" href="/typeList.do?board_type=구인구직&board_content=로코드">로코드 채용</a></li>
+                  <li><a class="text-muted" href="/typeList.do?board_type=구인구직&board_content=기업">기업 채용</a></li>
+                  <li><a class="text-muted" href="/typeList.do?board_type=구인구직&board_content=채용">채용 안내</a></li>
                 </ul>
               </div>
               <div class="col-6 col-md">
                 <h5>학습하기</h5>
                 <ul class="list-unstyled text-small">
-                  <li><a class="text-muted" href="#">Front-End</a></li>
-                  <li><a class="text-muted" href="#">Back-End</a></li>
-                  <li><a class="text-muted" href="#">Server / DB</a></li>
+                  <li><a class="text-muted" href="/typeList.do?board_type=강의 영상&board_content=Front">Front-End</a></li>
+                  <li><a class="text-muted" href="/typeList.do?board_type=강의 영상&board_content=Back">Back-End</a></li>
+                  <li><a class="text-muted" href="/typeList.do?board_type=강의 영상&board_content=Server">Server / DB</a></li>
                 </ul>
               </div>
               <div class="col-6 col-md">
@@ -280,6 +263,5 @@
         
 <!--         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
-        
 </body>
 </html>

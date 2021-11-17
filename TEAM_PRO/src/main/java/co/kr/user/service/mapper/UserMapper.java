@@ -1,6 +1,7 @@
 package co.kr.user.service.mapper;
 
 import java.util.HashMap;
+
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -25,6 +26,9 @@ public interface UserMapper {
 	public int userDelete(int user_no);
 
 	public int userModify(UserVO vo);
+
+	public int socialLogin(String user_id);
+
 
 	
 }

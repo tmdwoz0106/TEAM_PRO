@@ -20,12 +20,13 @@ public class UserServiceImpl implements UserService {
 
 	// ---------------------------------------로그인------------------------------
 	@Override
-	public UserVO login(UserVO vo, HttpSession session) {
+	public UserVO login(UserVO vo, HttpSession session,String decryptedUID,String decryptedPWD) {
 		HashMap<String, Object> param = new HashMap<String, Object>();
-		int i = userMapper.userCheck(vo.getUser_id());
+		int i = userMapper.userCheck(decryptedUID);
+		System.out.println(i);
 		if (i > 0) {
-			param.put("user_id", vo.getUser_id());
-			param.put("user_pw", vo.getUser_pw());
+			param.put("user_id", decryptedUID);
+			param.put("user_pw", decryptedPWD);
 			vo = userMapper.login(param);
 			if (vo == null) {
 				vo = new UserVO();
@@ -76,5 +77,16 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public int modify(UserVO vo) {
 		return userMapper.userModify(vo);
+	}
+	
+	public int idCheck(String user_id) {
+	
+		return userMapper.userCheck(user_id);
+	}
+
+
+	@Override
+	public int socialLogin(String user_id) {
+		return userMapper.socialLogin(user_id);
 	}
 }

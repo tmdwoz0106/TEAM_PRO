@@ -11,7 +11,10 @@ tr, td {
 button {
   background-color: white;
   color: black;
-  border: 2px solid #e7e7e7;
+  border: 0;
+  outline: 0;
 }
-
+button:focus{
+	color:red;
+}
 button:hover {background-color: #e7e7e7;}

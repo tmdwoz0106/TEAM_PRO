@@ -24,21 +24,18 @@
           font-size: 3.5rem;
         }
       }
-
     </style>
-
-    
     <!-- Custom styles for this template -->
-    <link href="\resources\css\main\main.css" rel="stylesheet">
+    <link href="/resources/css/main/main.css" rel="stylesheet">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script type="text/javascript" src="/resources/js/board/logout.js"></script>
+	<script type="text/javascript" src="./resources/js/board/logout.js"></script>
   </head>
 <body>
  <header>
     <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
         <div class="container">
           <div class="mainlogo">
-          <a href="/main.do"><img src="/resources/img2/mainlogo.png" width="150" height="40" alt="Locode로고 이미지"></a>
+          <a href="/main.do"><img src="./resources/img2/mainlogo.png" width="150" height="40" alt="Locode로고 이미지"></a>
         </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -50,15 +47,15 @@
                 <a class="nav-link dropdown" href="#" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">로코드</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown07">
                   <a class="dropdown-item" href="/locode.do">Locode 소개</a>
-                  <a class="dropdown-item" href="#">Locode 이야기</a>
+                  <a class="dropdown-item" href="/">Locode 전체글</a>
                   </div>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown" href="/list.do?board_type=강의 영상" id="dropdown07" data-toggle="" aria-haspopup="true" aria-expanded="false">강의</a>
+                <a class="nav-link dropdown" href="/list.do?board_type=강의 영상" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">강의</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown07">
-<!--                   <a class="dropdown-item" href="#">Front-End</a> -->
-<!--                   <a class="dropdown-item" href="#">Back-End</a> -->
-<!--                   <a class="dropdown-item" href="#">Server / DB</a> -->
+                  <a class="dropdown-item" href="/typeList.do?board_type=강의 영상&board_content=Front">Front-End</a>
+                  <a class="dropdown-item" href="/typeList.do?board_type=강의 영상&board_content=Back">Back-End</a>
+                  <a class="dropdown-item" href="/typeList.do?board_type=강의 영상&board_content=Server">Server / DB</a>
                   </div>
               </li>
               <li class="nav-item dropdown">
@@ -90,6 +87,5 @@
         </div>
       </nav>
     </header>
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 </body>
 </html>

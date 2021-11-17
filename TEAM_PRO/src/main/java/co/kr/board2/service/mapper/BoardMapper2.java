@@ -7,12 +7,25 @@ import org.apache.ibatis.annotations.Mapper;
 
 import co.kr.board.VO.BoardUserVO;
 import co.kr.board.VO.BoardVO;
+import co.kr.user.VO.UserVO;
 
 @Mapper
 public interface BoardMapper2 {
 
-	List<BoardVO> list(HashMap<String, Object> param);
+	public List<BoardVO> list(HashMap<String, Object> param);
 
-	int total(HashMap<String, Object> param);
+	public int total(HashMap<String, Object> param);
+
+	public BoardUserVO detail(int board_no);
+
+	public int cntUp(BoardUserVO vo);
+
+	public List<BoardUserVO> TypeList(HashMap<String, Object> param);
+
+	public int Typetotal(HashMap<String, Object> param);
+
+	public int insert(BoardVO vo);
+
+	public int max();
 
 }

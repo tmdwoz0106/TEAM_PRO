@@ -27,6 +27,24 @@
   	<bean id="uploadPath" class="java.lang.String">
     	<constructor-arg value="C:\Users\tmdwo\git\TEAM_PRO\TEAM_PRO\src\main\webapp\resources\img"/>
   	</bean>
+  	
+  	    <!-- email 인증코드 -->
+   <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+      <property name="host" value="smtp.gmail.com" />
+      <property name="port" value="587" />
+      <property name="username" value="locode.master@gmail.com" />
+      <property name="password" value="locode1234@" />
+      <property name="defaultEncoding" value="utf-8" />
+   <!-- 보안연결 SSL과 관련된 설정 -->
+       <property name="javaMailProperties">
+          <props>
+              <prop key="mail.transport.protocol">smtp</prop>
+               <prop key="mail.smtp.auth">true</prop>
+               <prop key="mail.smtp.starttls.enable">true</prop>
+               <prop key="mail.debug">true</prop>
+           </props>
+    </property>
+   </bean>
   
     <mybatis-spring:scan base-package="co.kr.*.service.mapper"/>
 </beans>

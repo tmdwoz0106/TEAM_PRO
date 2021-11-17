@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+     <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,24 +48,24 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown" href="#" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">로코드</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown07">
-                  <a class="dropdown-item" href="#">Locode 소개</a>
-                  <a class="dropdown-item" href="#">Locode 이야기</a>
+                  <a class="dropdown-item" href="/locode.do">Locode 소개</a>
+                  <a class="dropdown-item" href="/">Locode 전체글</a>
                   </div>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown" href="#" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">강의</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown07">
-                  <a class="dropdown-item" href="#">Front-End</a>
-                  <a class="dropdown-item" href="#">Back-End</a>
-                  <a class="dropdown-item" href="#">Server / DB</a>
+                  <a class="dropdown-item" href="/typeList.do?board_type=강의 영상&board_content=Front">Front-End</a>
+                  <a class="dropdown-item" href="/typeList.do?board_type=강의 영상&board_content=Back">Back-End</a>
+                  <a class="dropdown-item" href="/typeList.do?board_type=강의 영상&board_content=Server">Server / DB</a>
                   </div>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown" href="#" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">커뮤니티</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown07">
-                  <a class="dropdown-item" href="#">자유게시판</a>
-                  <a class="dropdown-item" href="#">Q & A</a>
-                  <a class="dropdown-item" href="#">Tip</a>
+                  <a class="dropdown-item" href="/list.do?board_type=자유게시판">자유게시판</a>
+                  <a class="dropdown-item" href="/list.do?board_type=질문코너">Q & A</a>
+                  <a class="dropdown-item" href="/list.do?board_type=Tip">Tip</a>
                   </div>
               </li>
               <li class="nav-item">
@@ -93,10 +94,21 @@
 <h2 class="text-left">회원가입</h2>
 <h6 class="mt-1 mb-4 text-left">로코드에서 다양한 가치를 얻으세요!</h6>
 <input type="hidden" name="user_no" value="${max }" readonly="readonly" />
+<c:if test="${ssID eq null}">
 <label for="inputId">아이디
     <input type="text" name="user_id" class="form-control" id="user_ID" placeholder="8~25자 사이로 입력하세요." minlength="8" required maxlength="25" autocomplete="off"  required></label>
+</c:if>
+<c:if test="${ssID ne null}">
+<label for="inputId">아이디
+    <input type="text" name="user_id" value="${ssID}" class="form-control" id="user_ID" placeholder="8~25자 사이로 입력하세요." minlength="8" required maxlength="25" autocomplete="off"  required></label>
+</c:if>
 <label for="inputPassword">패스워드
     <input type="password" name="user_pw" class="form-control" id="user_PW" placeholder="소문자,특수문자 포함(4~14)" minlength="4" required maxlength="14" autocomplete="off"  required></label>    
+<label for="inputPassword">이메일
+    <input type="text" name="user_email" class="form-control" id="user_email"  required></label>        
+    <button type="button" class="chekMail btn btn-outline-dark my-2 my-sm-2" onclick="emailChk()">인증번호 전송</button>
+<label for="inputPassword"><input type="text" id="emailInput" value="" class="form-control"/></label>
+<button type="button" id="emailInputChk" class="btn btn-outline-dark my-2 my-sm-2">확인</button>	
 <label for="inputName">이름
     <input type="text" name="user_name" class="form-control" placeholder="ex) 우디조" required></label>
 <label for="inputNick">닉네임

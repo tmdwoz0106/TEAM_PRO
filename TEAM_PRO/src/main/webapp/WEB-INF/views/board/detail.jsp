@@ -4,6 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+ <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 <style type="text/css">
 .my-box 
 { border:1px solid;
@@ -15,7 +17,7 @@
 }
 textarea{
 font-family : "돋움";
-color : #666666;
+color : #666666;;
 border : 1px #c9c9c9 solid;
 }
 .searchModal {
@@ -38,76 +40,197 @@ border: 1px solid #888;
 width: 25%; /* Could be more or less, depending on screen size */
 }
 
-출처: https://newehblog.tistory.com/28 [웹쟁이의 일상]
+.bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
 
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
 </style>
+ <link href="/resources/css/board/detail.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="/resources/js/reply/reply_comment.js"></script>
-<script type="text/javascript" src="/resources/js/reply/reply_delete.js"></script>
-<script type="text/javascript" src="/resources/js/reply/reply_modify.js"></script>
-<script type="text/javascript" src="/resources/js/like/like.js"></script>
-<script type="text/javascript" src="/resources/js/board/delete.js"></script>
+<script type="text/javascript" src="./resources/js/reply/reply_comment.js"></script>
+<script type="text/javascript" src="./resources/js/reply/reply_delete.js"></script>
+<script type="text/javascript" src="./resources/js/reply/reply_modify.js"></script>
+<script type="text/javascript" src="./resources/js/like/like.js"></script>
+<script type="text/javascript" src="./resources/js/board/delete.js"></script>
+<script type="text/javascript" src="./resources/js/board/img.js"></script>
+<script type="text/javascript" src="./resources/js/board/detail.js"></script>
+<jsp:include page="/resources/public/logo_div.jsp"></jsp:include>
 </head>
+<header>
+<%@include file="../haed/header.jsp" %>
+</header>
 <body>
-<c:if test="${user_no eq vo.user_no }">
-<a href="/BoardModify.do?board_no=${vo.board_no }"><button>수정</button></a> |
-<button type="button" onclick="BoardDelete()">삭제</button> |
-</c:if>
-<a href="/"><button>홈</button></a>
+<br />
+<br />
+<div class="mt-4 mb-4 container">
+              <div class="board-title">
+                  <h2>이야기를 나눠요</h2>
+                  <h4>62만명의 커뮤니티!! 함께 토론해봐요.</h4>
+              </div>
+     <div class="container" role="detail">
+                     
 <form id="deleteForm">
 <input type="hidden" name="user_no" value="${vo.user_no }" readonly="readonly" />
 <input type="hidden" name="board_no" value="${vo.board_no }" readonly="readonly" id="Board_NO"/>
-	<table border="1" style="border: none;">
-		<tr>
-			<td>분류</td>
-			<td><input type="text" name="board_type" value="${vo.board_type }" readonly="readonly" /></td>
-		</tr>
-		<tr>
-			<td>제목</td>
-			<td><input type="text" name="board_title" value="${vo.board_title }" readonly="readonly" /></td>
-		</tr>
-		<tr>
-			<td>내용</td>
-			<td><input type="text" name="board_content" value="${vo.board_content }" readonly="readonly" /></td>
-		</tr>
-		<tr>
-			<td>작성자</td>
-			<td><input type="text" name="user_nick" value="${vo.user_nick }" readonly="readonly" /></td>
-		</tr>
-		<tr>
-			<td>날짜</td>
-			<td><input type="text" name="board_day" value="${vo.board_day }" readonly="readonly" /></td>
-		</tr>
-		<tr>
-			<td>조회수</td>
-			<td><input type="text" name="board_view" value="${vo.board_view }" readonly="readonly" /></td>
-		</tr>
-		<tr>
-			<td>좋아요</td>
-			<td><input type="text" name="board_like" value="${like}" readonly="readonly" /></td>
-		</tr>
-	</table>
-		<c:forEach var="File" items="${file}">
-			<img src="/resources/img/${File.file_name}" style="width: 150px; height: 150px;"/>
-		</c:forEach>
-	</form>
-	 <c:if test="${likeBtn > 0 and user_no ne 0}">
-		<button style="border: none; background: none; font-size: 13px;" onclick="likeDelete(${vo.board_no},${user_no})">싫어요~꾹</button>
-	</c:if>
-	<c:if test="${likeBtn <= 0 and user_no ne 0}">
-		<button style="border: none; background: none; font-size: 13px;" onclick="like(${vo.board_no},${user_no},${likeMax })">좋아요~꾹</button>
-	</c:if>
+</form>
+                    <div class="mt-4 mb-4 ">
+                        <h2>
+                            <img src="/resources/img2/qna.png" alt="" width="40" height="40">
+                            <c:out value=""/>${vo.board_title }
+                        </h2>
+                        <hr/>
+                          <div class="mb-3">
+                            <h5 class="board_">▶
+                              <c:out value=""/>${vo.board_type}
+                            </h5>
+                          </div>
+                          <div class="mb-2">
+                            <span class="board_writer"><b><c:out value="작성자 : "/>${vo.user_nick }</b></span><h6></h6>
+                            <span class="board_data text-muted"><c:out value="작성날 : "/>${vo.board_day }</span><h6></h6>
+                            <span class="board_writer">조회수 : <c:out value="조회수 : "/>${vo.board_view }</span><h6></h6>
+                            <span class="board_writer"><c:out value="좋아요 : "/>${like}</span>
+                          </div>
+                          <hr/>
+                      </div>
+                                        
+                        <div class="board_content" style="width: 400px; height: 190px;" id="autolink">
+                        <input type="text" id="content" name="board_content" value="${vo.board_content }" readonly="readonly" style="border: none; width: 400px;" />
+                        </div>
+                        <hr />
+                        <td>
+                      <div class="mb-4 shadow-sm">
+                      <label for="imgCard"><b>기존 사진</b></label>
+                        <div class="row">
+	                        <div class="col-md-4">
+		                        <div class="card mb-4 shadow-sm">
+			                        <div id="IMG2">
+			                        		<c:forEach var="File" items="${file}">
+												<img src="/resources/img/${File.file_name}" id="IMG" style="width: 300px; height: 350px;"  onclick="big()"/>
+											</c:forEach>
+									</div>		
+								</div>
+							</div>
+						</div>
+						</div>
+						</td>
+                          <hr/>
+                          <div class="container text-right">
+                          <c:if test="${likeBtn <= 0 and user_no ne 0}">
+                            <button type="button" class="btn btn-sm btn-outline-danger" onclick="like(${vo.board_no},${user_no},${likeMax })">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                                    <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                                </svg> Like</button>
+        				 </c:if>
+        				 <c:if test="${likeBtn > 0 and user_no ne 0}">
+                            <button type="button" class="btn btn-sm btn-outline-danger" onclick="likeDelete(${vo.board_no},${user_no})"> 
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                                    <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                                </svg> Bad</button>
+        				 </c:if>
+                          <c:if test="${user_no eq vo.user_no }">
+                            <a href="/BoardModify.do?board_no=${vo.board_no }"><button type="button" class="btn btn-sm btn-outline-secondary" id="btnUpdate">수정</button></a>
+                            <button type="button" class="btn btn-sm btn-outline-secondary" id="btnDelete" onclick="BoardDelete()">삭제</button>
+                          </c:if>
+                            <a href="/"><button type="button" class="btn btn-sm btn-outline-secondary" id="btnList">목록</button></a>
+                          </div>
+                          
+                          <form id="commentForm" name="commentForm" method="post">
+                            <br/>
+                                    <div>
+                                        <span><b>Comments</b></span><span id=""></span>
+                                    </div>
+                                    
+                                        <table class="table">                    
+                                            <tr>
+                                                <td>
+                                                    <textarea style="width: 1060px" rows="4" cols="30" id="TextArea" name="comment" placeholder="댓글을 입력하세요"></textarea>
+                                                    <br>
+                                                    <div class="text-right">
+                                                    <c:if test="${user_no ne 0 }">
+                                                        <a href='#' onclick="comment_add(0,0)" class="btn btn-sm btn-outline-secondary">등록</a>
+                                                    </c:if>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                <input type="hidden" id="" name="" value="" />        
+                           </form>
+                      </div>
+                          
+                          
+                          
+                          
+<%-- <c:if test="${user_no eq vo.user_no }"> --%>
+<%-- <a href="/BoardModify.do?board_no=${vo.board_no }"><button>수정</button></a> | --%>
+<!-- <button type="button" onclick="BoardDelete()">삭제</button> | -->
+<%-- </c:if> --%>
+<!-- <a href="/"><button>홈</button></a> -->
+<!-- <form id="deleteForm"> -->
+<%-- <input type="hidden" name="user_no" value="${vo.user_no }" readonly="readonly" /> --%>
+<%-- <input type="hidden" name="board_no" value="${vo.board_no }" readonly="readonly" id="Board_NO"/> --%>
+<!-- 	<table border="1" style="border: none;"> -->
+<!-- 		<tr> -->
+<!-- 			<td>분류</td> -->
+<%-- 			<td><input type="text" name="board_type" value="${vo.board_type }" readonly="readonly" /></td> --%>
+<!-- 		</tr> -->
+<!-- 		<tr> -->
+<!-- 			<td>제목</td> -->
+<%-- 			<td><input type="text" name="board_title" value="${vo.board_title }" readonly="readonly" /></td> --%>
+<!-- 		</tr> -->
+<!-- 		<tr> -->
+<!-- 			<td>내용</td> -->
+<%-- 			<td><input type="text" name="board_content" value="${vo.board_content }" readonly="readonly" /></td> --%>
+<!-- 		</tr> -->
+<!-- 		<tr> -->
+<!-- 			<td>작성자</td> -->
+<%-- 			<td><input type="text" name="user_nick" value="${vo.user_nick }" readonly="readonly" /></td> --%>
+<!-- 		</tr> -->
+<!-- 		<tr> -->
+<!-- 			<td>날짜</td> -->
+<%-- 			<td><input type="text" name="board_day" value="${vo.board_day }" readonly="readonly" /></td> --%>
+<!-- 		</tr> -->
+<!-- 		<tr> -->
+<!-- 			<td>조회수</td> -->
+<%-- 			<td><input type="text" name="board_view" value="${vo.board_view }" readonly="readonly" /></td> --%>
+<!-- 		</tr> -->
+<!-- 		<tr> -->
+<!-- 			<td>좋아요</td> -->
+<%-- 			<td><input type="text" name="board_like" value="${like}" readonly="readonly" /></td> --%>
+<!-- 		</tr> -->
+<!-- 	</table> -->
+<%-- 		<c:forEach var="File" items="${file}"> --%>
+<%-- 			<img src="/resources/img/${File.file_name}" style="width: 150px; height: 150px;"/> --%>
+<%-- 		</c:forEach> --%>
+<!-- 	</form> -->
+<%-- 	 <c:if test="${likeBtn > 0 and user_no ne 0}"> --%>
+<%-- 		<button style="border: none; background: none; font-size: 13px;" onclick="likeDelete(${vo.board_no},${user_no})">싫어요~꾹</button> --%>
+<%-- 	</c:if> --%>
+<%-- 	<c:if test="${likeBtn <= 0 and user_no ne 0}"> --%>
+<%-- 		<button style="border: none; background: none; font-size: 13px;" onclick="like(${vo.board_no},${user_no},${likeMax })">좋아요~꾹</button> --%>
+<%-- 	</c:if> --%>
 	
 	<div>
-	<c:if test="${user_no ne 0 }">
-	<div class="my-box" id="reply_box">
-			<em class="comment_inbox">${user_nick }</em>
-			<textarea placeholder="댓글을 남겨주세요" class="comment_inbox" rows="2" cols="3" style="height: 19px; margin: 0px -5px 0px 0px; border: none; width: 498px; font-size: 15px; outline: none; resize: none; max-height: 500px;" id="TextArea"></textarea>
-			<button style="font-size: 13px; color: #b7b7b7; background: none; border: none;" onclick="comment_add(0,0)">등록</button>
-	</div>
-	</c:if>
+<%-- 	<c:if test="${user_no ne 0 }"> --%>
+<!-- 	<div class="my-box" id="reply_box"> -->
+<%-- 			<em class="comment_inbox">${user_nick }</em> --%>
+<!-- 			<textarea placeholder="댓글을 남겨주세요" class="comment_inbox" rows="2" cols="3" style="height: 19px; margin: 0px -5px 0px 0px; border: none; width: 498px; font-size: 15px; outline: none; resize: none; max-height: 500px;" id="TextArea"></textarea> -->
+<!-- 			<button style="font-size: 13px; color: #b7b7b7; background: none; border: none;" onclick="comment_add(0,0)">등록</button> -->
+<!-- 	</div> -->
+<%-- 	</c:if> --%>
 	<c:forEach var="reply" items="${list }">
 		<c:forEach begin="0" end="${reply.reply_depth }">
 		<c:if test="${reply.reply_group == 0}">
@@ -168,7 +291,7 @@ width: 25%; /* Could be more or less, depending on screen size */
 		</div>
 
 
-<form action="/replyInsert.do" id="reply_insert" method="get">
+<form action="/replyInsert.do" id="reply_insert" method="get" style="display: none;">
 	<input type="text" name="reply_no" value="${replyMax }"/>
 	<input type="text" name="board_no" value="${vo.board_no }"/>
 	<input type="text" name="user_no" value="${user_no }" />
@@ -185,5 +308,8 @@ width: 25%; /* Could be more or less, depending on screen size */
 <!-- 	<input type="text" name="reply_content" id="content" /> -->
 <!-- 	<input type="text" name="reply_day" /> -->
 <!-- </form> -->
+<footer>
+<%@ include file="../foot/footer.jsp" %>
+</footer>
 </body>
 </html>

@@ -1,0 +1,16 @@
+#loginlayout {
+	text-align: center !important;
+}	
+#loginlayout>div {
+	overflow: hidden !important;
+	width: 40px !important;
+	height: 40px !important;
+	display: inline-block !important;
+	border: 0px !important;
+	outline: 0px !important;
+	border-radius: 10px !important;
+}
+#kakao_icon {
+	width: 40px !important;
+	height: 40px !important;
+}
