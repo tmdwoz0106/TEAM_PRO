@@ -5,6 +5,7 @@ function list(page){
 		data:{page:page, keyword:$("#keyword").val(), type:$("#type option:selected").val()},
 		dataType:"JSON",
 		success : function(result){
+			console.log(result);
 			console.log(result.list);
 			$("#tbody").empty();
 			$("#paging").empty();

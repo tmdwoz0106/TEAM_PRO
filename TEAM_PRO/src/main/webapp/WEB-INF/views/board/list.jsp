@@ -47,9 +47,9 @@
             </select>  
             </div>
             <div class="col-4 input-group">
-            <input type="text" class="form-control" id="keyword" placeholder="검색어를 입력하세요" value="">
+            <input type="text" class="form-control" id="keyword" placeholder="검색어를 입력하세요">
              <div class="input-group-append"> 
-              <input id="searchbtn" type="button" onclick="list(1)" value="검색"/>
+              <button type="button" onclick="list(1)" id="searchbtn">검색</button>
              </div> 
           </div>
  </form>

@@ -35,11 +35,8 @@
     <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
         <div class="container">
           <div class="mainlogo">
-<<<<<<< HEAD
           <a href="/"><img src="/resources/img2/mainlogo.png" width="150" height="40" alt="Locode로고 이미지"></a>
-=======
-          <a href="/main.do"><img src="./resources/img2/mainlogo.png" width="150" height="40" alt="Locode로고 이미지"></a>
->>>>>>> branch 'jisoo' of https://github.com/tmdwoz0106/TEAM_PRO.git
+<!--           <a href="/main.do"><img src="./resources/img2/mainlogo.png" width="150" height="40" alt="Locode로고 이미지"></a> -->
         </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

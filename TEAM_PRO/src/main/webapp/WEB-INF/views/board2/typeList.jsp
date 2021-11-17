@@ -49,7 +49,7 @@
 	<div class="col-4 input-group">
 	<input type="text" class="form-control" id="keyword" placeholder="검색어를 입력하세요"/>
 	<div class="input-group-append">
-		<input id="searchbtn" type="button" onclick="list(1)" value="검색"/>
+		<button type="button" onclick="list(1)" id="searchbtn">검색</button>
 	</div> 
 </div>
 </form>
@@ -72,18 +72,11 @@
 	</c:if>
 	<c:if test="${user_no != 0 }">
 		<a href="/TypeInsert.do" class="btn btn-secondary">글쓰기</a>
-		<a href="/main.do" class="btn btn-secondary">메인</a>
+		<a href="/" class="btn btn-secondary">메인</a>
 	</c:if>
 	
 	</div>
-	<div id="paging">
-	<ul class="pagination justify-content-center">
-	<li class="page-item">
-	 <a class="page-link" href="#" aria-label="Previous">
-	 </a>
-	 </li>
-	 </ul>
-	</div>
+	<div id="paging" class="pagination justify-content-center"></div>
 </body>
 <footer>
 <%@ include file="../foot/footer.jsp" %>

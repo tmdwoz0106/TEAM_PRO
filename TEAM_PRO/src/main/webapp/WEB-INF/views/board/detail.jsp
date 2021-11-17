@@ -59,7 +59,6 @@ width: 25%; /* Could be more or less, depending on screen size */
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<<<<<<< HEAD
 <script type="text/javascript" src="/resources/js/reply/reply_comment.js"></script>
 <script type="text/javascript" src="/resources/js/reply/reply_delete.js"></script>
 <script type="text/javascript" src="/resources/js/reply/reply_modify.js"></script>
@@ -88,7 +87,6 @@ $(function(){
 })
 
 </script>
-=======
 <script type="text/javascript" src="./resources/js/reply/reply_comment.js"></script>
 <script type="text/javascript" src="./resources/js/reply/reply_delete.js"></script>
 <script type="text/javascript" src="./resources/js/reply/reply_modify.js"></script>
@@ -97,7 +95,6 @@ $(function(){
 <script type="text/javascript" src="./resources/js/board/img.js"></script>
 <script type="text/javascript" src="./resources/js/board/detail.js"></script>
 <jsp:include page="/resources/public/logo_div.jsp"></jsp:include>
->>>>>>> branch 'jisoo' of https://github.com/tmdwoz0106/TEAM_PRO.git
 </head>
 <header>
 <%@include file="../haed/header.jsp" %>

@@ -17,10 +17,7 @@
 
     <!-- Custom styles for this template -->
     <link href="/resources/css/main/main.css" rel="stylesheet">
-<<<<<<< HEAD
-=======
     <link href="./resources/css/main/main2.css" rel="stylesheet">
->>>>>>> branch 'jisoo' of https://github.com/tmdwoz0106/TEAM_PRO.git
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript" src="./resources/js/board/logout.js"></script>
 	<jsp:include page="/resources/public/logo_div.jsp"></jsp:include>
@@ -100,7 +97,7 @@
           </ol>
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img src="images/123.png" alt="배너"/>
+              <img src="/resources/img/123.png" alt="배너"/>
               <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false"><title> </title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em"> </text></svg>
       
               <div class="container">
@@ -112,7 +109,7 @@
               </div>
             </div>
             <div class="carousel-item">
-              <img src="images/123.png" alt="배너" />
+              <img src="/resources/img/123.png" alt="배너" />
               <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false"><title> </title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em"> </text></svg>
       
               <div class="container">
@@ -124,7 +121,7 @@
               </div>
             </div>
             <div class="carousel-item">
-              <img src="images/123.png" alt="배너" />
+              <img src="/resources/img/123.png" alt="배너" />
               <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false"><title> </title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em"> </text></svg>
       
               <div class="container">
