@@ -8,6 +8,8 @@ import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.RSAPublicKeySpec;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import javax.crypto.Cipher;
@@ -142,6 +144,7 @@ public class UserController {
 	public String joinus(Model model) {
 		int max = userService.max();
 		model.addAttribute("max", max+1);
+		System.out.println("유저 마지막 번호 : "+max);
 		return "user/joinus";
 	}
 	
@@ -242,6 +245,45 @@ public class UserController {
 			}
 		}
 	    json.addObject("result",i);
+		return json;
+	}
+	//----------------------------관리자 유저 정보확인----------------------------
+	@RequestMapping(value = "/userInfo.do",method = RequestMethod.GET)
+	public String userDelete() {
+		
+		return "user/userInfo";
+	}
+	@RequestMapping(value = "/infoUser.do", method = RequestMethod.GET)
+	public ModelAndView user_info(int page, String keyword, String type) {
+		ModelAndView json = new ModelAndView("jsonView");
+		List<UserVO> list = userService.list(page,keyword,type);
+		int endPage = (int)(Math.ceil(page*1.0/10))*10;
+		int startPage = endPage - 9;
+		if(startPage <= 0) {
+			startPage = 1;
+		}
+		int total = userService.userTotal(keyword,type);
+		int totalPage = (int)(Math.ceil(total*1.0/10));
+		if(endPage > totalPage) {
+			endPage = totalPage;
+		}
+		boolean prev = page > 1;
+		boolean next = page < endPage;
+		
+		json.addObject("list", list);
+		json.addObject("endPage", endPage);
+		json.addObject("startPage", startPage);
+		json.addObject("prev", prev);
+		json.addObject("next", next);
+		return json;
+	}
+	
+	//-------------------------관리자 유저 삭제-----------------------------
+	@RequestMapping(value = "/deleteUser.do", method = RequestMethod.POST)
+	public ModelAndView userdelete(int user_no) {
+		ModelAndView json = new ModelAndView("jsonView");
+		System.out.println("들어오는 유저 넘버 : " + user_no);
+		userService.userDelete(user_no);
 		return json;
 	}
 }

@@ -34,7 +34,7 @@ function list(page){
 				$("#paging").append("<button onclick = list("+Number(page-1)+")>이전</button>")
 			}
 			for(var i = result.startPage; i <= result.endPage; i++){
-				$("#paging").append("<button id='Btn' value='1' onclick = list("+i+")>"+i+"</button>")
+				$("#paging").append("<button class='Btn' onclick = list("+i+")>"+i+"</button>")
 			}
 			if(result.next){
 				$("#paging").append("<button onclick = list("+Number(page+1)+")>다음</button>")

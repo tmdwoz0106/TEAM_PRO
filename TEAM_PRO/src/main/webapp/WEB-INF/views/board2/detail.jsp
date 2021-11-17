@@ -66,22 +66,25 @@ width: 25%; /* Could be more or less, depending on screen size */
 <script type="text/javascript" src="/resources/js/board2/delete.js"></script>
 <!-- <script type="text/javascript" src="/resources/js/board2/img.js"></script> -->
 <script type="text/javascript">
+function content(){
 var memo1 = $("#content").val();
+console.log($("#content").val());
 console.log(memo1);
-
-var url = "";
-
-var userPatterns = {
-  url : /^(((http(s?))\:\/\/)?)([0-9a-zA-Z\-]+\.)+[a-zA-Z]{2,6}(\:[0-9]+)?(\/\S*)?/;
+	var userPatterns = {
+	  'url'   : /^([A-Za-z]{1}[A-Za-z\d_]*\.)*[A-Za-z][A-Za-z\d_]*$/
+	}
+	
+	var userReplaceFunctions = {
+	  'url'  : function(_url){return '<a href="' + _url + '">'+ _url +'</a>'}
+	}
+	
+	var memo2 = memo1.replace(userPatterns['url'], userReplaceFunctions['url'])
+	$("#autolink").append("<a href = memo2>"+memo2+"</a>");
 }
+$(function(){
+	content();
+})
 
-var userReplaceFunctions = {
-  url  : function(url){return '<a href="' + url + '">'+ url +'</a>'}
-}
-
-var memo2 = memo1.replace(userPatterns[url], userReplaceFunctions[url])
-document.write(memo2)
-document.write("<br>") // a line BReak in text
 </script>
 </head>
 <header>
@@ -122,8 +125,9 @@ document.write("<br>") // a line BReak in text
                           <hr/>
                       </div>
                                         
-                        <div class="board_content" id="content" style="width: 400px; height: 190px;">
-						<c:out value="${vo.board_content }"></c:out>
+                        <div class="board_content" id="autolink" style="width: 400px; height: 190px;" >
+<%-- 						<c:out value="${vo.board_content }"></c:out> --%>
+						<input type="hidden" name="board_content" id="content" value="${vo.board_content }" readonly="readonly" style="border: none; width: 400px;"  />
                         </div>
                         <hr />
                         <table>

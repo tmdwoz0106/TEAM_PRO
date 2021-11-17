@@ -75,16 +75,15 @@ var testPopUp;
     <div class="text-right">
     <c:if test="${user_no != 0 }">
         <a href="/BoardInsert.do" class="btn btn-secondary">글쓰기</a>
-        <a href="/main.do" class="btn btn-secondary">메인</a>
+        <a href="/" class="btn btn-secondary">메인</a>
     </c:if>
     <c:if test="${user_no == 0 }">
-		<a href="/main.do" class="page-item active">메인</a>
+		<a href="/" class="btn btn-secondary">메인</a>
 	</c:if>
     </div>
     
 	<div id="paging" class="pagination justify-content-center"></div>
 
-	<button value="1"></button>
 
 	<%@ include file="/WEB-INF/views/foot/footer.jsp" %>
 </body>

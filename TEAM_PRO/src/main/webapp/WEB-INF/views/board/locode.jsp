@@ -60,6 +60,10 @@
 			<p>서로의 지식을 나눌 수 있는 커뮤니티입니다.</p>
 		</div>
 	<br />
+	<div style="display: in inline-block;text-align: center;">
+		<img alt="" src="/resources/img2/loco.png" style="width: 70%;">
+	</div>
+	<br />
 	<br />
 	<h3 id="h3_2">Locode 개발자의 한마디</h3>
 	<br />

@@ -69,9 +69,9 @@ width: 25%; /* Could be more or less, depending on screen size */
 function content(){
 var memo1 = $("#content").val();
 console.log($("#content").val());
-console.log(memo1);
+// console.log(memo1);
 	var userPatterns = {
-	  'url'   : /(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
+	  'url'   : /(http(s)?:\/\/)([a-z0-9\w]+\.*)+[a-z0-9]/gi
 	}
 	
 	var userReplaceFunctions = {
@@ -79,6 +79,7 @@ console.log(memo1);
 	}
 	
 	var memo2 = memo1.replace(userPatterns['url'], userReplaceFunctions['url'])
+
 	$("#autolink").append("<a href = memo2>"+memo2+"</a>");
 }
 $(function(){
@@ -125,7 +126,7 @@ $(function(){
                       </div>
                                         
                         <div class="board_content" style="width: 400px; height: 190px;" id="autolink">
-                        <input type="text" id="content" name="board_content" value="${vo.board_content }" readonly="readonly" style="border: none; width: 400px;" />
+                        <input type="hidden" id="content" name="board_content" value="${vo.board_content }" readonly="readonly" style="border: none; width: 400px;" />
                         </div>
                         <hr />
                         <td>

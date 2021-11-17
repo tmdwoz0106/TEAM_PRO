@@ -46,7 +46,7 @@ public class BoardController2 {
 	String uploadPath;
 	
 	
-	@RequestMapping(value = "/list.do",method = RequestMethod.GET)
+	@RequestMapping(value = "/ListType.do",method = RequestMethod.GET)
 	public String list_detail(String board_type,Model model,HttpSession session) {
 		if(session.getAttribute("user_no") != null) {
 			int user_no = Integer.parseInt(session.getAttribute("user_no").toString());

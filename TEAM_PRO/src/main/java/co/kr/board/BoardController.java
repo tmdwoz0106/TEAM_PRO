@@ -60,13 +60,14 @@ public class BoardController {
 		return "head/header";
 	}
 	
-	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String main(HttpSession session,Model model) {
 		HashMap<String, Object> param = new HashMap<String, Object>();
 		if(session.getAttribute("user_no") != null) {
 			int user_no = Integer.parseInt(session.getAttribute("user_no").toString());
 			param.put("user_no", user_no);
 			model.addAttribute("user_no", user_no);
+			System.out.println("세션에 저장된 유저넘버 : "+user_no);
 		}else {
 			int user_no = 0;
 			param.put("user_no", user_no);
@@ -76,7 +77,7 @@ public class BoardController {
 	}
 	
 	//----------------------------게시판 리스트-----------------------------------
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/list.do", method = RequestMethod.GET)
 	public String list(HttpSession session,Model model) {
 		HashMap<String, Object> param = new HashMap<String, Object>();
 		if(session.getAttribute("user_no") != null) {

@@ -29,6 +29,10 @@ public interface UserMapper {
 
 	public int socialLogin(String user_id);
 
+	public List<UserVO> list(HashMap<String, Object> param);
+
+	public int userTotal(HashMap<String, Object> param);
+
 
 	
 }

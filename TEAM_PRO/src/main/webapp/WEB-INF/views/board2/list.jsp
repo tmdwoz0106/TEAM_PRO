@@ -48,6 +48,7 @@
 			<td>작성자</td>
 			<td>날짜</td>
 			<td>조회수</td>
+			<td>좋아요</td>
 		</tr>
 		<tbody id="tbody2"></tbody>
 	</table>
@@ -59,7 +60,7 @@
 		<a href="/main.do" class="btn btn-secondary">메인</a>
 	</c:if>
 	 <c:if test="${user_no == 0 }">
-		<a href="/main.do" class="page-item active">메인</a>
+		<a href="/" class="btn btn-secondary">메인</a>
 	</c:if>
 	</div>
 	

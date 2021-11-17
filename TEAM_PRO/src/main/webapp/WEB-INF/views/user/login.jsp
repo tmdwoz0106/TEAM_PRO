@@ -9,9 +9,9 @@
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
-<script src="/resources/js/kakaoLogin.js"></script>
-<script src="/resources/js/googleLogin.js"></script>
-<script src="/resources/js/naverLogin.js"></script>
+<script src="/resources/js/social/kakaoLogin.js"></script>
+<script src="/resources/js/social/googleLogin.js"></script>
+<script src="/resources/js/social/naverLogin.js"></script>
 <script src="/resources/js/security/rsa.js"></script>
 <script src="/resources/js/security/jsbn.js"></script>
 <script src="/resources/js/security/prng4.js"></script>
@@ -118,9 +118,6 @@
 	        document.getElementById("user_id").value ="";
 	        document.getElementById("user_pw").value ="";
 	        
-	        
-// 			document.getElementById("loginForm").submit();
-			
 		login();
 		};
 		
