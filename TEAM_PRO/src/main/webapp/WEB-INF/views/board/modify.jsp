@@ -32,7 +32,7 @@
 
     
     <!-- Custom styles for this template -->
-    <link href="/resources/css/board/boardModify.css" rel="stylesheet">
+    <link href="./resources/css/board/boardModify.css" rel="stylesheet">
 </head>
 <body>
 <%@ include file="../haed/header.jsp" %>

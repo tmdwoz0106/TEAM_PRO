@@ -64,7 +64,7 @@ width: 25%; /* Could be more or less, depending on screen size */
 <script type="text/javascript" src="/resources/js/reply/reply_modify.js"></script>
 <script type="text/javascript" src="/resources/js/like/like.js"></script>
 <script type="text/javascript" src="/resources/js/board2/delete.js"></script>
-<!-- <script type="text/javascript" src="/resources/js/board2/img.js"></script> -->
+<jsp:include page="/resources/public/logo_div.jsp"></jsp:include>
 <script type="text/javascript">
 function content(){
 var memo1 = $("#content").val();

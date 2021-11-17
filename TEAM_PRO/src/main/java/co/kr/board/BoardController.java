@@ -1,6 +1,7 @@
 package co.kr.board;
 
 import java.io.File;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -251,5 +252,10 @@ public class BoardController {
 			model.addAttribute("user_no", user_no);	
 		}
 		return "board/locode";
+	}
+	
+	@RequestMapping(value = "/adverpop.do", method = RequestMethod.GET)
+	public String adver() {
+		return "adver/adver";
 	}
 }

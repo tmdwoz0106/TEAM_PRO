@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<jsp:include page="/resources/public/logo_div.jsp"></jsp:include>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">

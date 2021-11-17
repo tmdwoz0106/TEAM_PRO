@@ -24,21 +24,22 @@
           font-size: 3.5rem;
         }
       }
-
     </style>
-
-    
     <!-- Custom styles for this template -->
     <link href="/resources/css/main/main.css" rel="stylesheet">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script type="text/javascript" src="/resources/js/board/logout.js"></script>
+	<script type="text/javascript" src="./resources/js/board/logout.js"></script>
   </head>
 <body>
  <header>
     <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
         <div class="container">
           <div class="mainlogo">
+<<<<<<< HEAD
           <a href="/"><img src="/resources/img2/mainlogo.png" width="150" height="40" alt="Locode로고 이미지"></a>
+=======
+          <a href="/main.do"><img src="./resources/img2/mainlogo.png" width="150" height="40" alt="Locode로고 이미지"></a>
+>>>>>>> branch 'jisoo' of https://github.com/tmdwoz0106/TEAM_PRO.git
         </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -90,6 +91,5 @@
         </div>
       </nav>
     </header>
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 </body>
 </html>
