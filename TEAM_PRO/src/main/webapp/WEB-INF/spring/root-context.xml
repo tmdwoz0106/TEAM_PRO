@@ -25,7 +25,7 @@
   	</bean>
   
   	<bean id="uploadPath" class="java.lang.String">
-    	<constructor-arg value="C:\Users\tmdwo\git\TEAM_PRO\TEAM_PRO\src\main\webapp\resources\img"/>
+    	<constructor-arg value="C:\Users\kopil\git\TEAM_PRO\TEAM_PRO\src\main\webapp\resources\img"/>
   	</bean>
   	
   	    <!-- email 인증코드 -->
