@@ -1,0 +1,20 @@
+@charset "UTF-8";
+table {
+  border-top: 1px solid #dddddd;
+  border-collapse: collapse;
+  
+}
+tr, td {
+  border-bottom: 1px solid #dddddd;
+}
+
+button {
+  background-color: white;
+  color: black;
+  border: 0;
+  outline: 0;
+}
+button:focus{
+	color:red;
+}
+button:hover {background-color: #e7e7e7;}

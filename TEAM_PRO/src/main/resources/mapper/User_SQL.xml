@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.kr.user.service.mapper.UserMapper">
 
 	<select id="userCheck" resultType="int">
@@ -34,13 +35,78 @@
 				 user_name,
 				 user_nick,
 				 user_birth,
-				 user_phone)
+				 user_phone,
+				 user_email)
 		values   (#{user_no},
 				 #{user_id},
 				 #{user_pw},
 				 #{user_name},
 				 #{user_nick},
 				 #{user_birth},
-				 #{user_phone})
+				 #{user_phone},
+				 #{user_email})
 	</insert>
+	
+	<select id="userDetail" resultType="co.kr.user.VO.UserVO">
+		SELECT user_id,
+			   user_pw,
+			   user_nick,
+			   user_name,
+			   user_birth,
+			   user_phone
+		FROM   pro_user
+		where  user_no = #{user_no}
+	</select>
+	
+	<delete id="userDelete">
+		delete
+		from    pro_user
+		where   user_no = #{user_no}
+	</delete>
+
+	<update id="userModify">
+		UPDATE pro_user
+		SET    user_pw = #{user_pw},
+		       user_nick = #{user_nick}
+		WHERE  user_no = #{user_no}
+	</update>
+		
+	<select id="socialLogin" resultType="int">
+		SELECT user_no
+		FROM pro_user
+		WHERE user_id = #{user_id}
+	</select>
+	
+	<select id="list" resultType="co.kr.user.VO.UserVO">
+	<![CDATA[
+		SELECT * FROM
+			(
+				SELECT ROW_NUMBER() OVER(ORDER BY user_no DESC)rn,
+															 user_no,
+															 user_id,
+															 user_pw,
+															 user_name,
+															 user_nick,
+															 user_email,
+															 user_birth,
+															 user_phone
+				FROM 										 pro_user
+				]]>			
+					<if test="keyword != null and keyword != ''">
+						WHERE ${type} like '%'||#{keyword}||'%'
+					</if>				
+				<![CDATA[
+			)a
+		WHERE a.rn > #{startRn}
+		AND   a.rn <= #{endRn}
+	]]>
+	</select>
+	
+	<select id="userTotal" resultType="int">
+		select count(*)
+		from   pro_user
+		<if test="keyword != null and keyword != ''">
+			where ${type} like '%'||#{keyword}||'%'
+		</if>
+	</select>
 </mapper>

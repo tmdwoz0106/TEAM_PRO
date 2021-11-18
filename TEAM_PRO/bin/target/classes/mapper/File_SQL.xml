@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.kr.file.service.mapper.FileMapper">
+
+	<select id="fileMax" resultType="int">
+		SELECT NVL(MAX(file_no),0)
+		FROM   pro_file
+	</select>
+
+	<insert id="insert">
+		insert into
+		pro_file (
+				  file_no,
+				  board_no,
+				  file_name,
+				  file_path
+				  )
+		values    (
+				  #{file_no},
+				  #{board_no},
+				  #{file_name},
+				  #{file_path}
+				  )
+	</insert>
+
+	<select id="fileList" resultType="co.kr.file.VO.FileVO">
+		SELECT file_no,
+			   board_no,
+			   file_name,
+			   file_path
+		FROM   pro_file
+		WHERE  board_no = #{board_no}
+	</select>
+	
+	<delete id="delete">
+		DELETE
+		FROM   pro_file
+		WHERE  board_no = #{board_no}
+	</delete>
+</mapper>
