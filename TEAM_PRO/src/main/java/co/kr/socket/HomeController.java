@@ -45,17 +45,6 @@ public class HomeController {
 	public String home(HttpSession session) {
 		String serverip = getServerIp();
 		session.setAttribute("serverIp", serverip);
-		return "chat/home";
-	}
-	
-	@RequestMapping(value = "login.do", method = RequestMethod.POST)
-	public String login(HttpSession session,HttpServletRequest request) {
-			
-			String user_nick = request.getParameter("user_nick");
-			session.setAttribute("user_nick", user_nick);
-			session.setAttribute("chatID", user_nick);
-			
-			System.out.println();
 		return "chat/chat";
 	}
 	

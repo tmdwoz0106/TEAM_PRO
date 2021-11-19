@@ -31,7 +31,6 @@ public class HandshakeInterceptor extends HttpSessionHandshakeInterceptor{
   
         // HttpSession 에 저장된 이용자의 아이디를 추출하는 경우
         String user_nick = (String)req.getSession().getAttribute("user_nick");
-//        req.getSession().getAttribute(user_nick);
         attributes.put("user_nick", user_nick);
         System.out.println("HttpSession에 저장된 nick :"+user_nick);
         return super.beforeHandshake(request, response, wsHandler, attributes);
