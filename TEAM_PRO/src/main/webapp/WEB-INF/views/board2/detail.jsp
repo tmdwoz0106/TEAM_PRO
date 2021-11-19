@@ -126,7 +126,6 @@ $(function(){
                       </div>
                                         
                         <div class="board_content" id="autolink" style="width: 400px; height: 190px;" >
-<%-- 						<c:out value="${vo.board_content }"></c:out> --%>
 						<input type="hidden" name="board_content" id="content" value="${vo.board_content }" readonly="readonly" style="border: none; width: 400px;"  />
                         </div>
                         <hr />
@@ -157,7 +156,7 @@ $(function(){
                             <a href="/BoardModify.do?board_no=${vo.board_no }"><button type="button" class="btn btn-sm btn-outline-secondary" id="btnUpdate">수정</button></a>
                             <button type="button" class="btn btn-sm btn-outline-secondary" id="btnDelete" onclick="BoardDelete()">삭제</button>
                           </c:if>
-                            <a href="/list.do?board_type=${vo.board_type}"><button type="button" class="btn btn-sm btn-outline-secondary" id="btnList">목록</button></a>
+                            <a href="/ListType.do?board_type=${vo.board_type}"><button type="button" class="btn btn-sm btn-outline-secondary" id="btnList">목록</button></a>
                           </div>
                           
                           <form id="commentForm" name="commentForm" method="post">

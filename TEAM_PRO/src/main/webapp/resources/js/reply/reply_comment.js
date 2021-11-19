@@ -2,7 +2,8 @@ function comment_add(reply_group,reply_depth){
 	$("#reply_group").val(reply_group);
 	$("#reply_depth").val(reply_depth);
 	var reply = $("#TextArea").val();
-	$("#content").val(reply);
+	console.log(reply);
+	$("#REPLY_content").val(reply);
 	$("#reply_insert").submit();
 }
 
@@ -20,7 +21,8 @@ function comment_cancle(){
 
 function reply_comment_add(){
 	var reply = $("#reply_TextArea").val();
-	$("#content").val(reply);
+	console.log(reply);
+	$("#REPLY_content").val(reply);
 	$("#reply_insert").submit();	
 }
 
