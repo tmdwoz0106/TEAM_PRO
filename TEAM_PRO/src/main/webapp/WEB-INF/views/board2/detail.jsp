@@ -64,28 +64,29 @@ width: 25%; /* Could be more or less, depending on screen size */
 <script type="text/javascript" src="/resources/js/reply/reply_modify.js"></script>
 <script type="text/javascript" src="/resources/js/like/like.js"></script>
 <script type="text/javascript" src="/resources/js/board2/delete.js"></script>
+<script type="text/javascript" src="./resources/js/board/detail.js"></script>
 <jsp:include page="/resources/public/logo_div.jsp"></jsp:include>
-<script type="text/javascript">
-function content(){
-var memo1 = $("#content").val();
-console.log($("#content").val());
-console.log(memo1);
-	var userPatterns = {
-	  'url'   : /^([A-Za-z]{1}[A-Za-z\d_]*\.)*[A-Za-z][A-Za-z\d_]*$/
-	}
+<!-- <!-- <script type="text/javascript"> --> -->
+<!-- // function content(){ -->
+<!-- // var memo1 = $("#content").val(); -->
+<!-- // console.log($("#content").val()); -->
+<!-- // console.log(memo1); -->
+<!-- // 	var userPatterns = { -->
+<!-- // 	  'url'   : /^([A-Za-z]{1}[A-Za-z\d_]*\.)*[A-Za-z][A-Za-z\d_]*$/ -->
+<!-- // 	} -->
 	
-	var userReplaceFunctions = {
-	  'url'  : function(_url){return '<a href="' + _url + '">'+ _url +'</a>'}
-	}
+<!-- // 	var userReplaceFunctions = { -->
+<!-- // 	  'url'  : function(_url){return '<a href="' + _url + '">'+ _url +'</a>'} -->
+<!-- // 	} -->
 	
-	var memo2 = memo1.replace(userPatterns['url'], userReplaceFunctions['url'])
-	$("#autolink").append("<a href = memo2>"+memo2+"</a>");
-}
-$(function(){
-	content();
-})
+<!-- // 	var memo2 = memo1.replace(userPatterns['url'], userReplaceFunctions['url']) -->
+<!-- // 	$("#autolink").append("<a href = memo2>"+memo2+"</a>"); -->
+<!-- // } -->
+<!-- // $(function(){ -->
+<!-- // 	content(); -->
+<!-- // }) -->
 
-</script>
+<!-- <!-- </script> --> -->
 </head>
 <header>
 <%@include file="../haed/header.jsp" %>

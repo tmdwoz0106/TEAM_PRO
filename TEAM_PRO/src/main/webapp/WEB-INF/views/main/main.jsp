@@ -74,10 +74,12 @@
               <a href="/userJoin.do"><button class="btn btn-outline-dark my-2 my-sm-2" type="button">회원가입</button></a>
             </c:if> 
             <c:if test="${user_no != 0 and user_no != 1}">
+              <a href="/chat.do">입장</a>
               <button class="btn btn-outline-dark my-2 my-sm-2" type="button" onclick="logout()">로그아웃</button>
               <a href="userDetail.do?user_no=${user_no }"><button class="btn btn-outline-dark my-2 my-sm-2" type="button">내정보</button></a>
             </c:if>
             <c:if test="${user_no == 1}">
+              <a href="/chat.do">입장</a>
               <button class="btn btn-outline-dark my-2 my-sm-2" type="button" onclick="logout()">로그아웃</button>
               <a href="userDetail.do?user_no=${user_no }"><button class="btn btn-outline-dark my-2 my-sm-2" type="button">내정보</button></a>
               <a href="/userInfo.do"><button class="btn btn-outline-dark my-2 my-sm-2" type="button">회원 정보</button></a>
