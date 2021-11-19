@@ -8,7 +8,7 @@ function BoardDelete(){
 			success : function(result){
 				console.log($("#Board_Type").val());
 				alert("삭제하였습니다");
-				location.href = "/";
+				location.href = "/list.do";
 			}
 		})
 	}

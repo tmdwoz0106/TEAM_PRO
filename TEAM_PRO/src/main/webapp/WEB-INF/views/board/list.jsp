@@ -47,9 +47,9 @@
             </select>  
             </div>
             <div class="col-4 input-group">
-            <input type="text" class="form-control" id="keyword" placeholder="검색어를 입력하세요" value="">
+            <input type="text" class="form-control" id="keyword" placeholder="검색어를 입력하세요">
              <div class="input-group-append"> 
-              <input id="searchbtn" type="button" onclick="list(1)" value="검색"/>
+              <button type="button" onclick="list(1)" id="searchbtn">검색</button>
              </div> 
           </div>
  </form>
@@ -70,7 +70,7 @@
     <div class="text-right">
     <c:if test="${user_no != 0 }">
         <a href="/BoardInsert.do" class="btn btn-secondary">글쓰기</a>
-        <a href="/main.do" class="btn btn-secondary">메인</a>
+        <a href="/" class="btn btn-secondary">메인</a>
     </c:if>
     <c:if test="${user_no == 0 }">
 		<a href="/" class="btn btn-secondary">메인</a>
@@ -79,7 +79,6 @@
     
 	<div id="paging" class="pagination justify-content-center"></div>
 
-	<button value="1"></button>
 
 	<%@ include file="/WEB-INF/views/foot/footer.jsp" %>
 	<script src="./resources/js/adver/adver.js"></script>

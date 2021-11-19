@@ -89,4 +89,23 @@ public class UserServiceImpl implements UserService {
 	public int socialLogin(String user_id) {
 		return userMapper.socialLogin(user_id);
 	}
+
+	@Override
+	public List<UserVO> list(int page, String keyword, String type) {
+		int amount = 10;
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		param.put("startRn", (page-1)*amount);
+		param.put("endRn", page*amount);
+		param.put("keyword", keyword);
+		param.put("type", type);
+		return userMapper.list(param);
+	}
+
+	@Override
+	public int userTotal(String keyword, String type) {
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		param.put("keyword", keyword);
+		param.put("type", type);
+		return userMapper.userTotal(param);
+	}
 }

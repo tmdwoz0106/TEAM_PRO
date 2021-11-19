@@ -6,7 +6,7 @@
 			dataType:"JSON",
 			success : function(result){
 				alert("수정하였습니다");
-				location.href = "/"
+				location.href = "/list.do?board_no="+$("#Board_NO").val();
 			}
 		})
 	}

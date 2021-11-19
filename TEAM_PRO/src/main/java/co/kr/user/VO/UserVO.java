@@ -8,13 +8,13 @@ public class UserVO {
 	private String user_email;
 	private String user_name;
 	private int user_birth;
-	private int user_phone;
+	private String user_phone;
 	private String user_nick;
 	private String msg;
 	private String authCode;
 
 	public UserVO(int user_no, String user_id, String user_pw, String user_email, String user_name, int user_birth,
-			int user_phone, String user_nick, String msg, String authCode) {
+			String user_phone, String user_nick, String msg, String authCode) {
 		super();
 		this.user_no = user_no;
 		this.user_id = user_id;
@@ -80,11 +80,11 @@ public class UserVO {
 		this.user_birth = user_birth;
 	}
 
-	public int getUser_phone() {
+	public String getUser_phone() {
 		return user_phone;
 	}
 
-	public void setUser_phone(int user_phone) {
+	public void setUser_phone(String user_phone) {
 		this.user_phone = user_phone;
 	}
 

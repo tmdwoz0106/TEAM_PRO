@@ -28,9 +28,6 @@ $(document).ready (function(){
 							slowdown.scrollTop(slowdown[0].scrollHeight);
 						};
 					};
-					function nothing(){
-						console.log("시발");
-					}
 					function servicebox() {
 						var i=1;
 						var interval = setInterval(function() {
@@ -47,7 +44,7 @@ $(document).ready (function(){
 					servicebox();
 				},
 				error : function(){
-					alert("실패했다잉");
+					alert("실패");
 				}
 			}); 
 		});

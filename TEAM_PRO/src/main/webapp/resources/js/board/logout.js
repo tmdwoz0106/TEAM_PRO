@@ -5,7 +5,7 @@ function logout(){
 		dataType:"JSON",
 		success : function(reuslt){
 			alert("로그아웃");
-			location.href = "/main.do";
+			location.href = "/";
 		}
 	})
 }

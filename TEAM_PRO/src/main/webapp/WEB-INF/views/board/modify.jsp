@@ -39,7 +39,7 @@
 <br />
 <br>
 <form id="modifyForm" action="/ModifyBoard.do" method="POST" enctype="multipart/form-data">
-<input type="hidden" name="board_no" value="${vo.board_no }" />
+<input type="hidden" name="board_no" value="${vo.board_no }" id="Board_NO"/>
 <div class="mt-4 mb-4 container">
               <div class="board-title">
                   <h2>이야기를 나눠요</h2>

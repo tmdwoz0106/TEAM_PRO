@@ -1,5 +1,7 @@
 package co.kr.user.service;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import co.kr.user.VO.UserVO;
@@ -21,5 +23,10 @@ public interface UserService {
 	public int idCheck(String user_id);
 
 	public int socialLogin(String user_id);
+
+	public List<UserVO> list(int page, String keyword, String type);
+
+	public int userTotal(String keyword, String type);
+
 
 }

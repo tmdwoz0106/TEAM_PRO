@@ -23,6 +23,7 @@ function list(page){
 						html += "<td>"+list[i].user_nick+"</td>";
 						html += "<td>"+list[i].board_day+"</td>";
 						html += "<td>"+list[i].board_view+"</td>";
+						html += "<td>"+likeSu.su+"</td>"
 						$("#tbody2").append(html);
 					}
 				})

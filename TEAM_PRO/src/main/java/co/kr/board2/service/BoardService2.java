@@ -4,7 +4,6 @@ import java.util.List;
 
 import co.kr.board.VO.BoardUserVO;
 import co.kr.board.VO.BoardVO;
-import co.kr.user.VO.UserVO;
 
 public interface BoardService2 {
 

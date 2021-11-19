@@ -7,7 +7,7 @@ function BoardDelete(){
 			dataType:"JSON",
 			success : function(result){
 				alert("삭제하였습니다");
-				location.href = "/";
+				location.href = "/list.do";
 			}
 		})
 	}

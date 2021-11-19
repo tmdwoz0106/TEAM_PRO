@@ -66,22 +66,25 @@ width: 25%; /* Could be more or less, depending on screen size */
 <script type="text/javascript" src="/resources/js/board2/delete.js"></script>
 <jsp:include page="/resources/public/logo_div.jsp"></jsp:include>
 <script type="text/javascript">
+function content(){
 var memo1 = $("#content").val();
+console.log($("#content").val());
 console.log(memo1);
-
-var url = "";
-
-var userPatterns = {
-  url : /^(((http(s?))\:\/\/)?)([0-9a-zA-Z\-]+\.)+[a-zA-Z]{2,6}(\:[0-9]+)?(\/\S*)?/;
+	var userPatterns = {
+	  'url'   : /^([A-Za-z]{1}[A-Za-z\d_]*\.)*[A-Za-z][A-Za-z\d_]*$/
+	}
+	
+	var userReplaceFunctions = {
+	  'url'  : function(_url){return '<a href="' + _url + '">'+ _url +'</a>'}
+	}
+	
+	var memo2 = memo1.replace(userPatterns['url'], userReplaceFunctions['url'])
+	$("#autolink").append("<a href = memo2>"+memo2+"</a>");
 }
+$(function(){
+	content();
+})
 
-var userReplaceFunctions = {
-  url  : function(url){return '<a href="' + url + '">'+ url +'</a>'}
-}
-
-var memo2 = memo1.replace(userPatterns[url], userReplaceFunctions[url])
-document.write(memo2)
-document.write("<br>") // a line BReak in text
 </script>
 </head>
 <header>
@@ -122,8 +125,8 @@ document.write("<br>") // a line BReak in text
                           <hr/>
                       </div>
                                         
-                        <div class="board_content" id="content" style="width: 400px; height: 190px;">
-						<c:out value="${vo.board_content }"></c:out>
+                        <div class="board_content" id="autolink" style="width: 400px; height: 190px;" >
+						<input type="hidden" name="board_content" id="content" value="${vo.board_content }" readonly="readonly" style="border: none; width: 400px;"  />
                         </div>
                         <hr />
                         <table>
@@ -153,7 +156,7 @@ document.write("<br>") // a line BReak in text
                             <a href="/BoardModify.do?board_no=${vo.board_no }"><button type="button" class="btn btn-sm btn-outline-secondary" id="btnUpdate">수정</button></a>
                             <button type="button" class="btn btn-sm btn-outline-secondary" id="btnDelete" onclick="BoardDelete()">삭제</button>
                           </c:if>
-                            <a href="/list.do?board_type=${vo.board_type}"><button type="button" class="btn btn-sm btn-outline-secondary" id="btnList">목록</button></a>
+                            <a href="/ListType.do?board_type=${vo.board_type}"><button type="button" class="btn btn-sm btn-outline-secondary" id="btnList">목록</button></a>
                           </div>
                           
                           <form id="commentForm" name="commentForm" method="post">

@@ -119,7 +119,7 @@
 	</insert>
 	
 	<select id="max" resultType="int">
-		SELECT MAX(board_no)
+		SELECT NVL(MAX(board_no),0)
 		FROM   pro_board
 	</select>
 </mapper>

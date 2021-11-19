@@ -39,14 +39,14 @@
           <div class="collapse navbar-collapse" id="navbarsExample07">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown" href="#" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">로코드</a>
+                <a class="nav-link dropdown" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">로코드</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown07">
                   <a class="dropdown-item" href="/locode.do">Locode 소개</a>
-                  <a class="dropdown-item" href="/">Locode 전체글</a>
+                  <a class="dropdown-item" href="/list.do">Locode 전체글</a>
                   </div>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown" href="/list.do?board_type=강의 영상" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">강의</a>
+                <a class="nav-link dropdown" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">강의</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown07">
                   <a class="dropdown-item" href="/typeList.do?board_type=강의 영상&board_content=Front">Front-End</a>
                   <a class="dropdown-item" href="/typeList.do?board_type=강의 영상&board_content=Back">Back-End</a>
@@ -54,7 +54,7 @@
                   </div>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown" href="#" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">커뮤니티</a>
+                <a class="nav-link dropdown" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">커뮤니티</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown07">
                   <a class="dropdown-item" href="/list.do?board_type=자유게시판">자유게시판</a>
                   <a class="dropdown-item" href="/list.do?board_type=Q&A">Q & A</a>
@@ -73,9 +73,14 @@
               <a href="/login.do"><button class="btn btn-outline-dark my-2 my-sm-2" type="button">로그인</button></a>
               <a href="/userJoin.do"><button class="btn btn-outline-dark my-2 my-sm-2" type="button">회원가입</button></a>
             </c:if> 
-            <c:if test="${user_no != 0 }">
+            <c:if test="${user_no != 0 and user_no != 1}">
               <button class="btn btn-outline-dark my-2 my-sm-2" type="button" onclick="logout()">로그아웃</button>
               <a href="userDetail.do?user_no=${user_no }"><button class="btn btn-outline-dark my-2 my-sm-2" type="button">내정보</button></a>
+            </c:if>
+            <c:if test="${user_no == 1}">
+              <button class="btn btn-outline-dark my-2 my-sm-2" type="button" onclick="logout()">로그아웃</button>
+              <a href="userDetail.do?user_no=${user_no }"><button class="btn btn-outline-dark my-2 my-sm-2" type="button">내정보</button></a>
+              <a href="/userInfo.do"><button class="btn btn-outline-dark my-2 my-sm-2" type="button">회원 정보</button></a>
             </c:if>
             </form>
           </div>
@@ -92,7 +97,7 @@
           </ol>
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img src="images/123.png" alt="배너"/>
+              <img src="/resources/img/123.png" alt="배너"/>
               <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false"><title> </title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em"> </text></svg>
       
               <div class="container">
@@ -104,7 +109,7 @@
               </div>
             </div>
             <div class="carousel-item">
-              <img src="images/123.png" alt="배너" />
+              <img src="/resources/img/123.png" alt="배너" />
               <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false"><title> </title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em"> </text></svg>
       
               <div class="container">
@@ -116,7 +121,7 @@
               </div>
             </div>
             <div class="carousel-item">
-              <img src="images/123.png" alt="배너" />
+              <img src="/resources/img/123.png" alt="배너" />
               <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false"><title> </title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em"> </text></svg>
       
               <div class="container">
@@ -185,7 +190,7 @@
               <div class="container">
                 <h1 class="display-3">Locode와 지식공유!</h1>
                 <p>지식을 나눠주세요. 쉽게 물어보고 다양한 답변을 받을 수 있어요.</p>
-                <p><a class="btn btn-dark btn-lg" href="/" role="button">지식공유 알아보기 &raquo;</a></p>
+                <p><a class="btn btn-dark btn-lg" href="/list.do" role="button">지식공유 알아보기 &raquo;</a></p>
               </div>
             </div>
 
