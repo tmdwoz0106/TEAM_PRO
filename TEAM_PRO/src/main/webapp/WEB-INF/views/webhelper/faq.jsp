@@ -30,8 +30,8 @@
 				</div>
 			</div>
 			<div class="btn">
-				<button value="btn0">0.로그인</button>
-				<button value="btn1">1.버그 및 오류</button>
+				<button value="btn0">로그인</button>
+				<button value="btn1">버그 및 오류</button>
 			</div>
 		</div>
 	</div>
