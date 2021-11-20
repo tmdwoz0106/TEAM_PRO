@@ -12,13 +12,6 @@
 	charset="utf-8"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
-<!-- <script src="/resources/js/social/kakaoLogin.js"></script> -->
-<!-- <script src="/resources/js/social/googleLogin.js"></script> -->
-<!-- <script src="/resources/js/social/naverLogin.js"></script> -->
-<!-- <script src="/resources/js/security/rsa.js"></script> -->
-<!-- <script src="/resources/js/security/jsbn.js"></script> -->
-<!-- <script src="/resources/js/security/prng4.js"></script> -->
-<!-- <script src="/resources/js/security/rng.js"></script> -->
  
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="/resources/js/user/login.js"></script>
@@ -69,8 +62,8 @@
 		<button class="btn btn-lg btn-secondary btn-block" type="button"
 			id="encbtn">로그인</button>
 		<div class="mt-2 mb-3 text-muted">
-			<a class="text-muted" href="">비밀번호 찾기</a> | <a class="text-muted"
-				href="/userJoin.do">회원가입</a>
+<!-- 			<a class="text-muted" href="">비밀번호 찾기</a> |  -->
+			<a class="text-muted" href="/userJoin.do">회원가입</a>
 		</div>
 		<p class="mt-3 mb-3 text-muted">---------------- 간편 로그인----------------</p>
 		<div id="loginlayout">

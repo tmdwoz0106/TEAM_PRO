@@ -42,9 +42,9 @@
               <div class="col-6 col-md">
                 <h5>고객센터</h5>
                 <ul class="list-unstyled text-small">
-                  <li><a class="text-muted" href="">자주묻는 질문</a></li>
-                  <li><a class="text-muted" href="#">이용약관</a></li>
-                  <li><a class="text-muted" href="#">개인정보취급방침</a></li>
+                  <li><a class="text-muted" href="/inform.do">자주묻는 질문</a></li>
+                  <li><a class="text-muted" href="/eyong.do">이용약관</a></li>
+                  <li><a class="text-muted" href="/qna.do">개인정보취급방침</a></li>
                 </ul>
               </div>
             </div>

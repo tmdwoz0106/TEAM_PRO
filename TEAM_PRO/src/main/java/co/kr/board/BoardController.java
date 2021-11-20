@@ -258,4 +258,21 @@ public class BoardController {
 	public String adver() {
 		return "adver/adver";
 	}
+	
+	@RequestMapping(value = "/eyong.do", method = RequestMethod.GET)
+	public String eyong() {
+		System.out.println("로코드 이용약관");
+		return "locode/eyong";
+	}
+	@RequestMapping(value = "/inform.do", method = RequestMethod.GET)
+	public String inform() {
+		System.out.println("로코드 이용약관");
+		return "locode/inform";
+	}
+	@RequestMapping(value = "/qna.do", method = RequestMethod.GET)
+	public String qna() {
+		System.out.println("로코드 이용약관");
+		return "locode/qna";
+	}
+	
 }

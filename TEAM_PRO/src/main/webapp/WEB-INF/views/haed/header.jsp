@@ -75,11 +75,11 @@
               </li>
             </ul>
             <form class="form-inline mt-2 mt-md-0">
-			<c:if test="${user_no eq 0}">
+			<c:if test="${user_no eq null or user_no eq 0}">
               <a href="/login.do"><button class="btn btn-outline-dark my-2 my-sm-2" type="button">로그인</button></a>
               <a href="/userJoin.do"><button class="btn btn-outline-dark my-2 my-sm-2" type="button">회원가입</button></a>
             </c:if> 
-            <c:if test="${user_no ne 0}">
+            <c:if test="${user_no ne null and user_no ne 0}">
               <button class="btn btn-outline-dark my-2 my-sm-2" type="button" onclick="logout()">로그아웃</button>
               <a href="/userDetail.do?user_no=${user_no }"><button class="btn btn-outline-dark my-2 my-sm-2" type="button">내정보</button></a>
             </c:if>

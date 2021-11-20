@@ -62,13 +62,13 @@ function chat(){
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">커뮤니티</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown07">
-                  <a class="dropdown-item" href="/list.do?board_type=자유게시판">자유게시판</a>
-                  <a class="dropdown-item" href="/list.do?board_type=Q&A">Q & A</a>
-                  <a class="dropdown-item" href="/list.do?board_type=Tip">Tip</a>
+                  <a class="dropdown-item" href="/ListType.do?board_type=자유게시판">자유게시판</a>
+                  <a class="dropdown-item" href="/ListType.do?board_type=Q&A">Q & A</a>
+                  <a class="dropdown-item" href="/ListType.do?board_type=Tip">Tip</a>
                   </div>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/list.do?board_type=구인구직">채용정보</a>
+                <a class="nav-link" href="/ListType.do?board_type=구인구직">채용정보</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">연구소</a>
@@ -265,9 +265,9 @@ function chat(){
               <div class="col-6 col-md">
                 <h5>고객센터</h5>
                 <ul class="list-unstyled text-small">
-                  <li><a class="text-muted" href="#">자주묻는 질문</a></li>
-                  <li><a class="text-muted" href="#">이용약관</a></li>
-                  <li><a class="text-muted" href="#">개인정보취급방침</a></li>
+                  <li><a class="text-muted" href="/qna.do">자주묻는 질문</a></li>
+                  <li><a class="text-muted" href="/eyong.do">이용약관</a></li>
+                  <li><a class="text-muted" href="/inform.do">개인정보취급방침</a></li>
                 </ul>
               </div>
             </div>
