@@ -15,10 +15,10 @@
                             console.log(msg)
                             $("#bookbox").html(""); // 태그 초기화
                             /* $("#bookbox").append( "<table border = "+1+" > "); */
-                            $("#bookbox").append( "<strong>제목 : "+msg.documents[0].title+"</strong><hr/>" );
-                            $("#bookbox").append( "<img src='"+msg.documents[0].thumbnail+"'/><button id='bookbtn' value='0'>다음</button><hr/>");
-                            $("#bookbox").append( "<strong>가격 : "+msg.documents[0].price+"</strong><hr/>");
-                            $("#bookbox").append( "<strong><a href='"+msg.documents[0].url+"' target='_blank'>상세정보</a></strong><hr/>");
+                            $("#bookbox").append( "<div><strong>제목 : "+msg.documents[0].title+"</strong></div>" );
+                            $("#bookbox").append( "<div><img src='"+msg.documents[0].thumbnail+"'/><button id='bookbtn' value='0'>다음</button></div>");
+                            $("#bookbox").append( "<div><strong>가격 : "+msg.documents[0].price+"</strong></div>");
+                            $("#bookbox").append( "<div><strong><a href='"+msg.documents[0].url+"' target='_blank'>상세정보</a></strong></div>");
                             $("a").css('text-decoration','none');
                             $("a:link").css('color','blue');
                             $("a:visited").css('color','black');

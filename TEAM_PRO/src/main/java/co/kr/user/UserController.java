@@ -49,7 +49,7 @@ public class UserController {
 	public ReplyService replyService;
 	@Autowired
 	public FileService fileService;
-	
+																																																																																																																																																																
 	@Autowired
 	JavaMailSender mailSender;
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);

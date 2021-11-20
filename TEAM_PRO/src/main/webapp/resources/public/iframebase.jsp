@@ -20,7 +20,6 @@
 			<button id="search">검색</button>
 			<hr/>
 			<div id="bookbox">
-				<div id="booxbox2"></div>
 			</div>
 		</div>
 	</div>
