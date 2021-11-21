@@ -20,3 +20,36 @@
 	#search:hover {
 		background-color: dimgray
 }
+.btn_p_n {
+	border: 0px;
+	outline: 0px;
+	border-radius: 5px;
+	background-color: #B2EBF4;
+	color: black;
+	font-size: 16px;
+	width: 80px;
+	height: 60px;
+	font-weight: bold;
+}
+.btn_p_n:hover {
+	background-color: #5CD1E5;
+	box-shadow: 1px 1px 1px 0px;
+}
+.btn_span {
+	display: table-cell;
+	vertical-align: middle;
+}
+.thumbnail {
+	display: table;
+	height: 175px;
+	width: 298px;
+}
+#bookbox{
+	background-color: #d7cedd;
+	text-align: center;
+	border-radius: 15px;
+}
+#bookbox>div {
+	outline: 0px;
+	border: 1px solid #EAEAEA;
+}

@@ -9,6 +9,5 @@
 </head>
 <body>
 <jsp:include page="/resources/public/iframebase.jsp"></jsp:include>
-
 </body>
 </html>

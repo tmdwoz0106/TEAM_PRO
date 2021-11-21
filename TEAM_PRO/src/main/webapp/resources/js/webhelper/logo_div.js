@@ -24,14 +24,14 @@
 			iframe.style.zIndex = "2000";
 			checknum = 1;
 
-			iframe.contentWindow.onload = function() {
-				var subDocBody = iframe.contentWindow.document.body;
-				var header = subDocBody.getElementsByClassName('header')[0];
-				console.dir(header);
-				//header.onclick = function(event) {
-				//	alert('심봤다');
-				//}
-			}
+			//iframe.contentWindow.onload = function() {
+			//	var subDocBody = iframe.contentWindow.document.body;
+			//	var header = subDocBody.getElementsByClassName('header')[0];
+			//	console.dir(header);
+			//	header.onclick = function(event) {
+			//		alert('심봤다');
+			//	}
+		//	}
 		}
 		
 		// 요소를 숨기는 스타일 태그 적용
@@ -76,8 +76,8 @@
 				createiframe();
 				hideicon();
 				btnshow();
-				console.log(checknum+"클릭시");
-				console.log(document.getElementsByTagName("iframe"));
+				//console.log(checknum+"클릭시");
+				//console.log(document.getElementsByTagName("iframe"));
 			}			
 		}
 		
@@ -88,18 +88,7 @@
 				btnhide();
 				checknum = 0;
 				document.getElementById('helper').remove();
-				console.log(checknum+"닫을시");
+				//console.log(checknum+"닫을시");
 			}
 		}
-
-		// $(function() {
-		// 	$('#helper').toggle();
-		// 	$('#icon').click(function() {
-		// 		$('#helper').toggle();
-		// 		createiframe();
-		// 		hideicon();
-		// 	});
-		// });
-		
-		document.getElementById('helper')
 	}

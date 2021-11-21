@@ -11,8 +11,12 @@
 	src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"
 	charset="utf-8"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<<<<<<< HEAD
 <script src="https://apis.google.com/js/platform.js" async defer></script>
  
+=======
+<script src="https://apis.google.com/js/platform.js" async defer></script> 
+>>>>>>> branch 'jisoo' of https://github.com/tmdwoz0106/TEAM_PRO.git
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="/resources/js/user/login.js"></script>
     <!-- Bootstrap CSS -->
@@ -45,13 +49,13 @@
 	<div class="form-signin">
 		<form class="" id="loginForm">
 			<input type="hidden" id="encryptedID" name="encryptedID" /> <input
-				type="hidden" id="encryptedPWD" name="encryptedPWD" /> <img
+				type="hidden" id="encryptedPWD" name="encryptedPWD"/> <img
 				class="mb-3" src="/resources/img2/logo_icon.png" alt="" width="90"
 				height="72"> <label for="inputEmail" class="sr-only">id</label>
 			<input type="text" id="user_id" class="form-control" placeholder="id"
 				name="user_id" value="" required autofocus> <label
 				for="inputPassword" class="sr-only">Password</label> <input
-				type="password" id="user_pw" class="form-control"
+				type="password" id="user_pw" class="form-control" onkeyup="enterkey()"
 				placeholder="Password" name="user_pw" value="" required>
 			<div class="checkbox mb-3">
 				<label> <input type="checkbox" value="remember-me">
@@ -79,39 +83,49 @@
 		</div>
 	</div>
 	<script type="text/javascript">
+	function encryption(){
+		var Modulus = '<%=a%>';
+		var Exponent = '<%=b%>';
+		var input = document.getElementsByTagName('input');
+		console.log(input);
+
+		var user_id = document.getElementById('user_id').value;
+		console.log(user_id);
+		var user_pw = document.getElementById('user_pw').value;
+		console.log(user_pw);
+		var rsa = new RSAKey();
+
+		rsa.setPublic(Modulus,Exponent);
+		
+        document.getElementById("encryptedID").value = rsa.encrypt(user_id);
+        document.getElementById("encryptedPWD").value = rsa.encrypt(user_pw);
+        document.getElementById("user_id").value ="";
+        document.getElementById("user_pw").value ="";
+        
+		rsa.setPublic(Modulus, Exponent);
+
+		document.getElementById("encryptedID").value = rsa.encrypt(user_id);
+		document.getElementById("encryptedPWD").value = rsa
+				.encrypt(user_pw);
+		document.getElementById("user_id").value = "";
+		document.getElementById("user_pw").value = "";
+
+		// 			document.getElementById("loginForm").submit();
+
+		login();
+	};
 		document.getElementById('encbtn').onclick=function(){
-			var Modulus = '<%=a%>';
-			var Exponent = '<%=b%>';
-			var input = document.getElementsByTagName('input');
-			console.log(input);
-
-			var user_id = document.getElementById('user_id').value;
-			console.log(user_id);
-			var user_pw = document.getElementById('user_pw').value;
-			console.log(user_pw);
-			var rsa = new RSAKey();
-
-			rsa.setPublic(Modulus,Exponent);
-			
-	        document.getElementById("encryptedID").value = rsa.encrypt(user_id);
-	        document.getElementById("encryptedPWD").value = rsa.encrypt(user_pw);
-	        document.getElementById("user_id").value ="";
-	        document.getElementById("user_pw").value ="";
-	        
-			rsa.setPublic(Modulus, Exponent);
-
-			document.getElementById("encryptedID").value = rsa.encrypt(user_id);
-			document.getElementById("encryptedPWD").value = rsa
-					.encrypt(user_pw);
-			document.getElementById("user_id").value = "";
-			document.getElementById("user_pw").value = "";
-
-			// 			document.getElementById("loginForm").submit();
-
-			login();
-		};
+			encryption();
+		}
+		
+	// 비밀번호 포커스 상태에서 엔터키 입력시 로그인 함수 실행
+	function enterkey() {
+		if (window.event.keyCode == 13) {
+			encryption();
+		}
+	}
 	</script>
-	<script src="/resources/js/social/naverLogin.js"></script>
+	<script src="./resources/js/social/naverLogin.js"></script>
 </body>
 </head>
 </html>

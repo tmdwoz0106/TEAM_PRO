@@ -7,7 +7,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	
-<!-- 	<script type="text/javascript" src="/resources/js/user/login.js"></script> -->
+	<script src="./resources/js/chat/chatingopen.js"></script>
 
 	</script>
     <!-- Bootstrap CSS -->
@@ -20,12 +20,6 @@
     <link href="./resources/css/main/main2.css" rel="stylesheet">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript" src="./resources/js/board/logout.js"></script>
-	<script>
-function chat(){
-   window.open("/chat.do","pop","width=370, height=550, history=no, scrollbars=no, menubar=no, directories=no");
-}
-</script>
-	
 	<jsp:include page="/resources/public/logo_div.jsp"></jsp:include>
   </head>
   <body>
@@ -80,12 +74,12 @@ function chat(){
               <a href="/userJoin.do"><button class="btn btn-outline-dark my-2 my-sm-2" type="button">회원가입</button></a>
             </c:if> 
             <c:if test="${user_no != 0 and user_no != 1}">
-              <button id="" onclick="chat()">채팅</button>
+              <button class="btn btn-outline-dark my-2 my-sm-2" id="" onclick="chat()">채팅하기</button>
               <button class="btn btn-outline-dark my-2 my-sm-2" type="button" onclick="logout()">로그아웃</button>
               <a href="userDetail.do?user_no=${user_no }"><button class="btn btn-outline-dark my-2 my-sm-2" type="button">내정보</button></a>
             </c:if>
             <c:if test="${user_no == 1}">
-              <a href="/chat.do">입장</a>
+              <button class="btn btn-outline-dark my-2 my-sm-2" onclick="chat()">채팅하기</button>
               <button class="btn btn-outline-dark my-2 my-sm-2" type="button" onclick="logout()">로그아웃</button>
               <a href="userDetail.do?user_no=${user_no }"><button class="btn btn-outline-dark my-2 my-sm-2" type="button">내정보</button></a>
               <a href="/userInfo.do"><button class="btn btn-outline-dark my-2 my-sm-2" type="button">회원 정보</button></a>
@@ -276,5 +270,6 @@ function chat(){
         
 <!--         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+        <script src="./resources/js/adver/adver.js"></script>
 </body>
 </html>

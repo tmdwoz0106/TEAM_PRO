@@ -36,7 +36,7 @@ public class ChattingLOG {
 	public void inputChatLog(String message) {
 		try {
 			// 파일 객체 생성
-			File file = new File("C:\\Users\\tmdwo\\OneDrive\\바탕 화면\\파이널\\기범이형 코드\\soket\\chat.txt");
+			File file = new File("C:\\Users\\ABC\\Desktop\\chatlog\\chatinglog.txt");
 			BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file, true));
 
 			if (file.isFile() && file.canWrite()) {
