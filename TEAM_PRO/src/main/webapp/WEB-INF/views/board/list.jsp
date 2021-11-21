@@ -81,6 +81,5 @@
 
 
 	<%@ include file="/WEB-INF/views/foot/footer.jsp" %>
-	<script src="./resources/js/adver/adver.js"></script>
 </body>
 </html>

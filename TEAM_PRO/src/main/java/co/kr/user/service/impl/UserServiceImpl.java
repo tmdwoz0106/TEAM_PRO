@@ -35,6 +35,7 @@ public class UserServiceImpl implements UserService {
 			} else {
 				session.setAttribute("user_no", vo.getUser_no());
 				session.setAttribute("user_nick", vo.getUser_nick());
+				System.out.println(session.getAttribute("user_nick"));
 				return vo;
 			}
 		} else {
