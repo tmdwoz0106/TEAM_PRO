@@ -15,6 +15,8 @@
 	<header class="header">
 		<img id="headerimg" alt="logo"
 			src="./resources/webhelperimg/chatbot_logo_bgx_black.png" />
+		<img id="headerimg2" alt="back"
+			src="./resources/webhelperimg/Previous.png" />
 	</header>
 	<div class="layout">
 		<div id="layoutin">
@@ -30,8 +32,12 @@
 				</div>
 			</div>
 			<div class="btn">
-				<button value="btn0">로그인</button>
-				<button value="btn1">버그 및 오류</button>
+				<input type="button" id="btn0" value="로그인"/>
+				<input type="button" id="btn1" value="오류"/>
+				<input type="button" id="btn2" value="계정"/>
+				<input type="button" id="btn3" value="강의"/>
+				<!-- <button value="btn0">로그인</button>
+				<button value="btn1">버그 및 오류</button> -->
 			</div>
 		</div>
 	</div>

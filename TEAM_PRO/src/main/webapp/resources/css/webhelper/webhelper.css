@@ -1,3 +1,20 @@
+	input {
+		border: 0px;
+		outline: 0px;
+		border-radius: 30px;
+		width: 140px;
+		height: 25px;
+		background-color: #5A1D8D;
+		font-size: 15px;
+		color: white;
+		z-index: 9999;
+	}
+	input:hover {
+		box-shadow: 1px 1px 15px;
+		background-color: #d7cedd;
+		color:black;
+		z-index: 9999;
+	}
 	button {
 		border: 0px;
 		outline: 0px;
@@ -12,6 +29,7 @@
 	button:hover {
 		box-shadow: 1px 1px 15px;
 		background-color: #d7cedd;
+		color:black;
 		z-index: 9999;
 	}
 	
@@ -39,11 +57,12 @@
 		border: 0px;
 		outline: 0px;
 		border-radius: 15px;
-		font-size: 18px;
+		font-size: 15px;
 		line-height: 30px;
 		display: inline-block;
 		background-color: #EAEAEA;
 		word-break:break-all;
+		padding: 10px;
 		z-index: 9999;
 	} 
 	
